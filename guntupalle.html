@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guntupalle | The Buddhist Cave Village</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Buddhist-inspired Color Scheme */
+        :root {
+            --primary: #8B4513;   /* Saddle Brown - for caves/earth */
+            --secondary: #DAA520;  /* Goldenrod - Buddhist gold */
+            --accent: #556B2F;     /* Dark Olive Green - nature */
+            --light: #f8f8f8;
+            --dark: #333;
+            --text: #555;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Skip to Content Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header with Cave Background */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('./images/guntupalli.jpg') center/cover fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header-content {
+            width: 100%;
+            animation: fadeIn 1.5s ease;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0 auto;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+        }
+
+        /* Grid Layouts */
+        .name-breakdown,
+        .monuments-grid,
+        .facts-grid,
+        .temple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-content h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Stats Table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .stats-table th, .stats-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stats-table th {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .stats-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        /* Facts Cards */
+        .fact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .fact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .map-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 10px 0;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            header {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 50px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .name-breakdown,
+            .monuments-grid,
+            .facts-grid,
+            .temple-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to Content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="en-btn" aria-label="Switch to English">English</button>
+            <button class="lang-btn" id="te-btn" aria-label="Switch to Telugu">తెలుగు</button>
+        </div>
+
+        <div class="header-content">
+            <h1 id="header-title">Guntupalle</h1>
+            <p id="header-subtitle">The Buddhist Echo in Eluru's Hills</p>
+            <div class="location-tag" id="location-tag">Eluru District, Andhra Pradesh</div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#name" id="nav-name">Name Origin</a></li>
+            <li><a href="#history" id="nav-history">History</a></li>
+            <li><a href="#monuments" id="nav-monuments">Buddhist Monuments</a></li>
+            <li><a href="#temples" id="nav-temples">Sacred Sites</a></li>
+            <li><a href="#festivals" id="nav-festivals">Festivals</a></li>
+            <li><a href="#economy" id="nav-economy">Economy</a></li>
+            <li><a href="#facts" id="nav-facts">Facts</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Name Origin Section -->
+        <section id="name" class="name-origin">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="name-title">Why "Guntupalle"?</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name1-title">"Guntu" (గుంటు)</h3>
+                            <p id="name1-desc">
+                                Telugu word meaning "pit", "hole", or "cave", referencing the village's ancient rock-cut Buddhist caves.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name2-title">"Palle" (పల్లె)</h3>
+                            <p id="name2-desc">
+                                Means "village" or "hamlet". Together, "Guntupalle" translates to "Village of Caves".
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name3-title">Historical Accuracy</h3>
+                            <p id="name3-desc">
+                                The name reflects the ancient Buddhist cave complexes carved into the hillside around 1st century BCE.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="history">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="history-title">Historical Timeline</h2>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era1-title">3rd Century BCE</h3>
+                            <p id="era1-desc">
+                                Peak of Buddhist activity with construction of viharas, chaityas, and rock-cut stupas.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era2-title">Post-Buddhist Era</h3>
+                            <p id="era2-desc">
+                                Continued as a pilgrimage site influenced by Mahayana and later Hindu traditions.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era3-title">British Era</h3>
+                            <p id="era3-desc">
+                                Documented by archaeologists like Alexander Rea in late 19th century.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era4-title">Modern Times</h3>
+                            <p id="era4-desc">
+                                Maintained by Archaeological Survey of India with growing tourism and conservation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buddhist Monuments Section -->
+        <section id="monuments" class="monuments">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="monuments-title">Buddhist Monuments</h2>
+                </div>
+                
+                <div class="monuments-grid">
+                    <div class="card">
+                        <img src="" alt="Maha Stupa" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="monument1-title">Maha Stupa</h3>
+                            <p id="monument1-desc">
+                                Circular brick-and-stone stupa, one of India's oldest Buddhist structures.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Chaityagrihas" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="monument2-title">Chaityagrihas</h3>
+                            <p id="monument2-desc">
+                                Semi-circular cave halls with meditation rooms oriented toward sunrise.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Viharas" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="monument3-title">Viharas</h3>
+                            <p id="monument3-desc">
+                                Monk living quarters carved into the hillside with stone railings.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sacred Sites Section -->
+        <section id="temples" class="temples">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="temples-title">Modern Sacred Sites</h2>
+                </div>
+                
+                <div class="temple-grid">
+                    <div class="card">
+                        <img src="" alt="Poleramma Temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple1-title">Poleramma Gudi</h3>
+                            <p id="temple1-desc">
+                                Village guardian goddess worshipped for protection and prosperity.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Subramanya Temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple2-title">Subramanya Swamy</h3>
+                            <p id="temple2-desc">
+                                Temple associated with valor, popular among youth and farmers.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Naga Shrine" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple3-title">Naga Shrines</h3>
+                            <p id="temple3-desc">
+                                Sacred serpent worship sites continuing from Buddhist naga symbolism.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Festivals Section -->
+        <section id="festivals" class="festivals">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="festivals-title">Festivals & Culture</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="" alt="Buddha Jayanti" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival1-title">Buddha Jayanti</h3>
+                            <p id="festival1-desc">
+                                Celebrated with monks from Visakhapatnam and Amaravati at the ancient caves.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Sankranti" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival2-title">Sankranti</h3>
+                            <p id="festival2-desc">
+                                Traditional rangoli and bull races during this harvest festival.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Burra Katha" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival3-title">Burra Katha</h3>
+                            <p id="festival3-desc">
+                                Storytelling performances on Buddhist legends and local history.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Economy Section -->
+        <section id="economy" class="economy">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="economy-title">Village Economy</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="" alt="Agriculture" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ1-title">Agriculture</h3>
+                            <p id="econ1-desc">
+                                Paddy, chillies, sunflower, jowar & pulses cultivation using traditional methods.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Tourism" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ2-title">Tourism</h3>
+                            <p id="econ2-desc">
+                                ASI-trained guides lead heritage tours of the Buddhist caves.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Handicrafts" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ3-title">Handicrafts</h3>
+                            <p id="econ3-desc">
+                                Local artisans create Buddha statues and traditional pottery for sale.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Village Profile Section -->
+        <section id="demographics" class="demographics">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="demo-title">Village Profile</h2>
+                </div>
+                
+                <table class="stats-table">
+                    <tr>
+                        <th id="stat1-label">Attribute</th>
+                        <th id="stat1-value">Data</th>
+                    </tr>
+                    <tr>
+                        <td id="stat2-label">Population</td>
+                        <td id="stat2-value">~2,100</td>
+                    </tr>
+                    <tr>
+                        <td id="stat3-label">Languages</td>
+                        <td id="stat3-value">Telugu (some Hindi)</td>
+                    </tr>
+                    <tr>
+                        <td id="stat4-label">Literacy Rate</td>
+                        <td id="stat4-value">~72%</td>
+                    </tr>
+                    <tr>
+                        <td id="stat5-label">Nearest Town</td>
+                        <td id="stat5-value">Eluru (~22 km)</td>
+                    </tr>
+                    <tr>
+                        <td id="stat6-label">Transport</td>
+                        <td id="stat6-value">Buses and autos available</td>
+                    </tr>
+                    <tr>
+                        <td id="stat7-label">PIN Code</td>
+                        <td id="stat7-value">534467</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Fascinating Facts Section -->
+        <section id="facts" class="facts">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="facts-title">Little-Known Facts</h2>
+                </div>
+                
+                <div class="facts-grid">
+                    <div class="fact-card">
+                        <h3 id="fact1-title">Older Than Ajanta</h3>
+                        <p id="fact1-desc">
+                            Guntupalle's stupa predates many caves in Maharashtra.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact2-title">Secret Tunnel</h3>
+                        <p id="fact2-desc">
+                            Hidden passage behind a chaitya believed to be a monk escape route.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact3-title">Dharma Chakra</h3>
+                        <p id="fact3-desc">
+                            Ancient carved wheel with Brahmi script still visible on main hill.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact4-title">Cool Caves</h3>
+                        <p id="fact4-desc">
+                            The rock-cut caves maintain a cool temperature year-round.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact5-title">Serpent Worship</h3>
+                        <p id="fact5-desc">
+                            Continues from Buddhist naga symbolism to modern times.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact6-title">Heritage Education</h3>
+                        <p id="fact6-desc">
+                            Buddhist Heritage Museum Learning Center educates visitors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-quote" id="footer-quote">
+                "Guntupalle is not a forgotten ruin — it is a breathing history book. In its silence, you can hear the chants of monks. In its shadows, you see the shape of ancient India."
+            </p>
+            
+            <a href="https://maps.app.goo.gl/yhu66MSFzR1GjGqR9" class="map-btn" target="_blank" id="map-btn" aria-label="View Guntupalle on Google Maps">
+                <i class="fas fa-map-marker-alt"></i> View on Google Maps
+            </a>
+            
+           
+        </div>
+    </footer>
+
+    <script>
+        // Language Data
+        const translations = {
+            // Header
+            "header-title": { 
+                en: "Guntupalle", 
+                te: "గుంటుపల్లె" 
+            },
+            "header-subtitle": { 
+                en: "The Buddhist Echo in Eluru's Hills", 
+                te: "ఏలూరు కొండలలో బౌద్ధ ప్రతిధ్వని" 
+            },
+            "location-tag": { 
+                en: "Eluru District, Andhra Pradesh", 
+                te: "ఏలూరు జిల్లా, ఆంధ్రప్రదేశ్" 
+            },
+
+            // Navigation
+            "nav-name": { 
+                en: "Name Origin", 
+                te: "పేరు మూలం" 
+            },
+            "nav-history": { 
+                en: "History", 
+                te: "చరిత్ర" 
+            },
+            "nav-monuments": { 
+                en: "Buddhist Monuments", 
+                te: "బౌద్ధ స్మారకాలు" 
+            },
+            "nav-temples": { 
+                en: "Sacred Sites", 
+                te: "పవిత్ర స్థలాలు" 
+            },
+            "nav-festivals": { 
+                en: "Festivals", 
+                te: "పండుగలు" 
+            },
+            "nav-economy": { 
+                en: "Economy", 
+                te: "ఆర్థిక వ్యవస్థ" 
+            },
+            "nav-facts": { 
+                en: "Facts", 
+                te: "విశేషాలు" 
+            },
+
+            // Name Origin
+            "name-title": { 
+                en: "Why \"Guntupalle\"?", 
+                te: "\"గుంటుపల్లె\" అనే పేరు ఎందుకు?" 
+            },
+            "name1-title": { 
+                en: "\"Guntu\" (గుంటు)", 
+                te: "\"గుంటు\" (గుంటు)" 
+            },
+            "name1-desc": { 
+                en: "Telugu word meaning \"pit\", \"hole\", or \"cave\", referencing the village's ancient rock-cut Buddhist caves.",
+                te: "పురాతన బౌద్ధ గుహలను సూచించే \"గుంత\", \"రంధ్రం\" లేదా \"గుహ\" అనే అర్థం వచ్చే తెలుగు పదం."
+            },
+            "name2-title": { 
+                en: "\"Palle\" (పల్లె)", 
+                te: "\"పల్లె\" (పల్లె)" 
+            },
+            "name2-desc": { 
+                en: "Means \"village\" or \"hamlet\". Together, \"Guntupalle\" translates to \"Village of Caves\".",
+                te: "\"గ్రామం\" లేదా \"పల్లె\" అని అర్థం. కలిపి, \"గుంటుపల్లె\" అంటే \"గుహల గ్రామం\"."
+            },
+            "name3-title": { 
+                en: "Historical Accuracy", 
+                te: "చారిత్రక ఖచ్చితత్వం" 
+            },
+            "name3-desc": { 
+                en: "The name reflects the ancient Buddhist cave complexes carved into the hillside around 1st century BCE.",
+                te: "క్రీ.పూ. 1వ శతాబ్దంలో కొండల్లో చెక్కబడిన పురాతన బౌద్ధ గుహల సముదాయాన్ని ఈ పేరు ప్రతిబింబిస్తుంది."
+            },
+
+            // History
+            "history-title": { 
+                en: "Historical Timeline", 
+                te: "చారిత్రక కాలక్రమం" 
+            },
+            "era1-title": { 
+                en: "3rd Century BCE", 
+                te: "క్రీ.పూ. 3వ శతాబ్దం" 
+            },
+            "era1-desc": { 
+                en: "Peak of Buddhist activity with construction of viharas, chaityas, and rock-cut stupas.",
+                te: "విహారాలు, చైత్యాలు మరియు రాతి స్తూపాలు నిర్మించబడిన బౌద్ధ కార్యకలాపాల ఉచ్ఛస్థితి."
+            },
+            "era2-title": { 
+                en: "Post-Buddhist Era", 
+                te: "బౌద్ధోత్తర యుగం" 
+            },
+            "era2-desc": { 
+                en: "Continued as a pilgrimage site influenced by Mahayana and later Hindu traditions.",
+                te: "మహాయాన మరియు తరువాతి హిందూ సంప్రదాయాల ప్రభావంతో తీర్థయాత్రా కేంద్రంగా కొనసాగింది."
+            },
+            "era3-title": { 
+                en: "British Era", 
+                te: "బ్రిటిష్ యుగం" 
+            },
+            "era3-desc": { 
+                en: "Documented by archaeologists like Alexander Rea in late 19th century.",
+                te: "19వ శతాబ్దం చివరలో అలెగ్జాండర్ రే వంటి పురావస్తు శాస్త్రవేత్తలచే డాక్యుమెంట్ చేయబడింది."
+            },
+            "era4-title": { 
+                en: "Modern Times", 
+                te: "ఆధునిక కాలం" 
+            },
+            "era4-desc": { 
+                en: "Maintained by Archaeological Survey of India with growing tourism and conservation.",
+                te: "భారత పురావస్తు సర్వేక్షణ ద్వారా నిర్వహించబడుతుంది, పర్యాటకం మరియు సంరక్షణ పెరుగుతున్నాయి."
+            },
+
+            // Buddhist Monuments
+            "monuments-title": { 
+                en: "Buddhist Monuments", 
+                te: "బౌద్ధ స్మారకాలు" 
+            },
+            "monument1-title": { 
+                en: "Maha Stupa", 
+                te: "మహా స్తూపం" 
+            },
+            "monument1-desc": { 
+                en: "Circular brick-and-stone stupa, one of India's oldest Buddhist structures.",
+                te: "ఇటుక మరియు రాతితో చేసిన వృత్తాకార స్తూపం, భారతదేశంలోని పురాతన బౌద్ధ నిర్మాణాలలో ఒకటి."
+            },
+            "monument2-title": { 
+                en: "Chaityagrihas", 
+                te: "చైత్యగృహాలు" 
+            },
+            "monument2-desc": { 
+                en: "Semi-circular cave halls with meditation rooms oriented toward sunrise.",
+                te: "అర్ధవృత్తాకార గుహా హాళ్ళు, సూర్యోదయం వైపు ఉన్న ధ్యాన గదులతో."
+            },
+            "monument3-title": { 
+                en: "Viharas", 
+                te: "విహారాలు" 
+            },
+            "monument3-desc": { 
+                en: "Monk living quarters carved into the hillside with stone railings.",
+                te: "కొండలో చెక్కబడిన భిక్షువుల నివాస ప్రదేశాలు, రాతి కటకాలతో."
+            },
+
+            // Sacred Sites
+            "temples-title": { 
+                en: "Modern Sacred Sites", 
+                te: "ఆధునిక పవిత్ర స్థలాలు" 
+            },
+            "temple1-title": { 
+                en: "Poleramma Gudi", 
+                te: "పోలేరమ్మ గుడి" 
+            },
+            "temple1-desc": { 
+                en: "Village guardian goddess worshipped for protection and prosperity.",
+                te: "రక్షణ మరియు శ్రేయస్సు కోసం పూజించే గ్రామ రక్షక దేవత."
+            },
+            "temple2-title": { 
+                en: "Subramanya Swamy", 
+                te: "సుబ్రహ్మణ్య స్వామి" 
+            },
+            "temple2-desc": { 
+                en: "Temple associated with valor, popular among youth and farmers.",
+                te: "శౌర్యంతో అనుబంధించబడిన దేవాలయం, యువత మరియు రైతులలో ప్రజాదరణ పొందింది."
+            },
+            "temple3-title": { 
+                en: "Naga Shrines", 
+                te: "నాగ దేవాలయాలు" 
+            },
+            "temple3-desc": { 
+                en: "Sacred serpent worship sites continuing from Buddhist naga symbolism.",
+                te: "బౌద్ధ నాగ సంకేతం నుండి కొనసాగిన పవిత్ర సర్ప ఆరాధన స్థలాలు."
+            },
+
+            // Festivals
+            "festivals-title": { 
+                en: "Festivals & Culture", 
+                te: "పండుగలు & సంస్కృతి" 
+            },
+            "festival1-title": { 
+                en: "Buddha Jayanti", 
+                te: "బుద్ధ జయంతి" 
+            },
+            "festival1-desc": { 
+                en: "Celebrated with monks from Visakhapatnam and Amaravati at the ancient caves.",
+                te: "విశాఖపట్నం మరియు అమరావతి నుండి భిక్షువులతో పురాతన గుహలలో జరుపుకుంటారు."
+            },
+            "festival2-title": { 
+                en: "Sankranti", 
+                te: "సంక్రాంతి" 
+            },
+            "festival2-desc": { 
+                en: "Traditional rangoli and bull races during this harvest festival.",
+                te: "ఈ వ్యవసాయ పండుగ సమయంలో సాంప్రదాయ రంగవల్లులు మరియు ఎద్దు పందాలు."
+            },
+            "festival3-title": { 
+                en: "Burra Katha", 
+                te: "బుర్రకథ" 
+            },
+            "festival3-desc": { 
+                en: "Storytelling performances on Buddhist legends and local history.",
+                te: "బౌద్ధ పురాణాలు మరియు స్థానిక చరిత్రపై కథన ప్రదర్శనలు."
+            },
+
+            // Economy
+            "economy-title": { 
+                en: "Village Economy", 
+                te: "గ్రామ ఆర్థిక వ్యవస్థ" 
+            },
+            "econ1-title": { 
+                en: "Agriculture", 
+                te: "వ్యవసాయం" 
+            },
+            "econ1-desc": { 
+                en: "Paddy, chillies, sunflower, jowar & pulses cultivation using traditional methods.",
+                te: "సాంప్రదాయ పద్ధతులను ఉపయోగించి వరి, మిరపకాయలు, పొద్దుతిరుగుడు, జొన్న మరియు పప్పులు సాగు."
+            },
+            "econ2-title": { 
+                en: "Tourism", 
+                te: "పర్యాటకం" 
+            },
+            "econ2-desc": { 
+                en: "ASI-trained guides lead heritage tours of the Buddhist caves.",
+                te: "భారత పురావస్తు సర్వేక్షణ శిక్షణ పొందిన మార్గదర్శకులు బౌద్ధ గుహల యాత్రలను నడిపిస్తారు."
+            },
+            "econ3-title": { 
+                en: "Handicrafts", 
+                te: "హస్తకళలు" 
+            },
+            "econ3-desc": { 
+                en: "Local artisans create Buddha statues and traditional pottery for sale.",
+                te: "స్థానిక కళాకారులు బుద్ధ విగ్రహాలు మరియు సాంప్రదాయ కుండలను అమ్మకం కోసం తయారు చేస్తారు."
+            },
+
+            // Village Profile
+            "demo-title": { 
+                en: "Village Profile", 
+                te: "గ్రామ ప్రొఫైల్" 
+            },
+            "stat1-label": { 
+                en: "Attribute", 
+                te: "లక్షణం" 
+            },
+            "stat1-value": { 
+                en: "Data", 
+                te: "డేటా" 
+            },
+            "stat2-label": { 
+                en: "Population", 
+                te: "జనాభా" 
+            },
+            "stat2-value": { 
+                en: "~2,100", 
+                te: "~2,100" 
+            },
+            "stat3-label": { 
+                en: "Languages", 
+                te: "భాషలు" 
+            },
+            "stat3-value": { 
+                en: "Telugu (some Hindi)", 
+                te: "తెలుగు (కొంత హిందీ)" 
+            },
+            "stat4-label": { 
+                en: "Literacy Rate", 
+                te: "సాక్షరత రేటు" 
+            },
+            "stat4-value": { 
+                en: "~72%", 
+                te: "~72%" 
+            },
+            "stat5-label": { 
+                en: "Nearest Town", 
+                te: "సమీప పట్టణం" 
+            },
+            "stat5-value": { 
+                en: "Eluru (~22 km)", 
+                te: "ఏలూరు (~22 కి.మీ.)" 
+            },
+            "stat6-label": { 
+                en: "Transport", 
+                te: "రవాణా" 
+            },
+            "stat6-value": { 
+                en: "Buses and autos available", 
+                te: "బస్సులు మరియు ఆటోలు అందుబాటులో ఉన్నాయి" 
+            },
+            "stat7-label": { 
+                en: "PIN Code", 
+                te: "పిన్ కోడ్" 
+            },
+            "stat7-value": { 
+                en: "534467", 
+                te: "534467" 
+            },
+
+            // Facts
+            "facts-title": { 
+                en: "Little-Known Facts", 
+                te: "తక్కువ తెలిసిన విషయాలు" 
+            },
+            "fact1-title": { 
+                en: "Older Than Ajanta", 
+                te: "అజంతా కంటే పురాతనమైనది" 
+            },
+            "fact1-desc": { 
+                en: "Guntupalle's stupa predates many caves in Maharashtra.",
+                te: "గుంటుపల్లె స్తూపం మహారాష్ట్రలోని అనేక గుహల కంటే పురాతనమైనది."
+            },
+            "fact2-title": { 
+                en: "Secret Tunnel", 
+                te: "రహస్య సొరంగం" 
+            },
+            "fact2-desc": { 
+                en: "Hidden passage behind a chaitya believed to be a monk escape route.",
+                te: "ఒక చైత్యం వెనుక ఉన్న దాచిన మార్గం, భిక్షువుల తప్పించుకునే మార్గంగా నమ్ముతారు."
+            },
+            "fact3-title": { 
+                en: "Dharma Chakra", 
+                te: "ధర్మ చక్రం" 
+            },
+            "fact3-desc": { 
+                en: "Ancient carved wheel with Brahmi script still visible on main hill.",
+                te: "ప్రధాన కొండపై బ్రాహ్మి లిపితో చెక్కబడిన పురాతన చక్రం ఇప్పటికీ కనిపిస్తుంది."
+            },
+            "fact4-title": { 
+                en: "Cool Caves", 
+                te: "చల్లని గుహలు" 
+            },
+            "fact4-desc": { 
+                en: "The rock-cut caves maintain a cool temperature year-round.",
+                te: "రాతి గుహలు సంవత్సరం పొడవునా చల్లని ఉష్ణోగ్రతను నిర్వహిస్తాయి."
+            },
+            "fact5-title": { 
+                en: "Serpent Worship", 
+                te: "సర్ప ఆరాధన" 
+            },
+            "fact5-desc": { 
+                en: "Continues from Buddhist naga symbolism to modern times.",
+                te: "బౌద్ధ నాగ సంకేతం నుండి ఆధునిక కాలం వరకు కొనసాగుతుంది."
+            },
+            "fact6-title": { 
+                en: "Heritage Education", 
+                te: "వారసత్వ విద్య" 
+            },
+            "fact6-desc": { 
+                en: "Buddhist Heritage Museum Learning Center educates visitors.",
+                te: "బౌద్ధ వారసత్వ మ్యూజియం లెర్నింగ్ సెంటర్ సందర్శకులకు విద్యను అందిస్తుంది."
+            },
+
+            // Footer
+            "footer-quote": { 
+                en: "\"Guntupalle is not a forgotten ruin — it is a breathing history book. In its silence, you can hear the chants of monks. In its shadows, you see the shape of ancient India.\"", 
+                te: "\"గుంటుపల్లె మరచిపోయిన శిధిలం కాదు — ఇది ఒక శ్వాసిస్తున్న చరిత్ర పుస్తకం. దాని నిశ్శబ్దంలో, మీరు భిక్షువుల మంత్రోచ్చారణలు వినవచ్చు. దాని నీడలలో, మీరు ప్రాచీన భారతదేశం యొక్క ఆకారాన్ని చూస్తారు.\"" 
+            },
+            "map-btn": { 
+                en: "View on Google Maps", 
+                te: "గూగుల్ మ్యాప్స్‌లో వీక్షించండి" 
+            },
+            "copyright": { 
+                en: "© 2023 Guntupalle Heritage Project. All rights reserved.", 
+                te: "© 2023 గుంటుపల్లె వారసత్వ ప్రాజెక్ట్. అన్ని హక్కులు ప్రత్యేకించబడినవి." 
+            }
+        };
+
+        // Language Toggle Functionality
+        function setLanguage(lang) {
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update button states
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            document.getElementById('te-btn').classList.toggle('active', lang === 'te');
+            
+            // Update all translatable elements
+            for (const [id, texts] of Object.entries(translations)) {
+                const element = document.getElementById(id);
+                if (element) element.textContent = texts[lang];
+            }
+        }
+
+        // Scroll Animations for Timeline
+        function checkVisibility() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial language from localStorage or default to English
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+            
+            // Set up event listeners
+            document.getElementById('en-btn').addEventListener('click', () => setLanguage('en'));
+            document.getElementById('te-btn').addEventListener('click', () => setLanguage('te'));
+            
+            // Run initial animations
+            checkVisibility();
+        });
+
+        window.addEventListener('scroll', checkVisibility);
+    </script>
+</body>
+</html>

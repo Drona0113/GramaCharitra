@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annavaram | The Divine Hill of Satyanarayana Swamy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --primary: #4a7c59;   
+            --secondary: #6d4c3d;  
+            --accent: #f4a261;   
+            --light: #f9f9f9;
+            --dark: #333;
+            --text: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1519120944692-1a8d8cfc107f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header-content {
+            width: 100%;
+            animation: fadeIn 1.5s ease;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        
+        nav {
+            background: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0 auto;
+        }
+
+      
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+        }
+
+        
+        .name-breakdown,
+        .geo-features,
+        .facts-grid,
+        .temple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-content h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .stats-table th, .stats-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stats-table th {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .stats-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+     
+        .fact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .fact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .map-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 10px 0;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+          
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 50px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .name-breakdown,
+            .geo-features,
+            .facts-grid,
+            .temple-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+         header {
+                background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)),
+                            url('images/annavaram.jpg') center/cover;
+            }
+    </style>
+</head>
+<body>
+    
+    <a href="#main-content" class="skip-link">Skip to Content</a>
+
+  
+    <header>
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="en-btn" aria-label="Switch to English">English</button>
+            <button class="lang-btn" id="te-btn" aria-label="Switch to Telugu">తెలుగు</button>
+        </div>
+
+        <div class="header-content">
+            <h1 id="header-title">Annavaram</h1>
+            <p id="header-subtitle">The Divine Hill of Satyanarayana Swamy</p>
+            <div class="location-tag" id="location-tag">Kakinada District, Andhra Pradesh</div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#name" id="nav-name">Name Origin</a></li>
+            <li><a href="#history" id="nav-history">History</a></li>
+            <li><a href="#geography" id="nav-geography">Nature</a></li>
+            <li><a href="#temples" id="nav-temples">Sacred Sites</a></li>
+            <li><a href="#festivals" id="nav-festivals">Festivals</a></li>
+            <li><a href="#economy" id="nav-economy">Economy</a></li>
+            <li><a href="#facts" id="nav-facts">Facts</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Name Origin Section -->
+        <section id="name" class="name-origin">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="name-title">Why "Annavaram"?</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name1-title">"Anna" (అన్న)</h3>
+                            <p id="name1-desc">
+                                Means "food" in Telugu, symbolizing life, sustenance, and prosperity. Represents the temple's Annadanam tradition.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name2-title">"Varam" (వరం)</h3>
+                            <p id="name2-desc">
+                                Means "boon" or "gift" in Telugu. Signifies the divine blessings granted by Satyanarayana Swamy.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name3-title">Sacred Interpretation</h3>
+                            <p id="name3-desc">
+                                "The place where food is given as a boon" or "The blessed village of sustenance" reflecting the temple's traditions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="history">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="history-title">Historical Timeline</h2>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era1-title">Mythological Era</h3>
+                            <p id="era1-desc">
+                                Lord Satyanarayana Swamy manifested on Ratnagiri Hill. Sage Rishyashringa performed yagnas here.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era2-title">Ancient Period</h3>
+                            <p id="era2-desc">
+                                Small shrine existed before 12th century. Eastern Chalukyas and Reddy rulers patronized the area.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era3-title">Modern Revival (1891)</h3>
+                            <p id="era3-desc">
+                                Current temple constructed by Sri Prakasa Rao Panthulu after discovering the original deity.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era4-title">Early 1900s</h3>
+                            <p id="era4-desc">
+                                Temple gained popularity across Andhra. Satyanarayana Vratams were institutionalized.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era5-title">Post-Independence</h3>
+                            <p id="era5-desc">
+                                Became one of the richest temples in AP. Added ghat roads, complexes, and mass Annadanam centers.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nature & Wildlife Section -->
+        <section id="geography" class="geography">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="geo-title">Natural Treasures</h2>
+                </div>
+                
+                <div class="geo-features">
+                    <div class="card">
+                        <img src="images/annavaramratnagiri.jpeg" alt="Ratnagiri Hill" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo1-title">Ratnagiri Hill</h3>
+                            <p id="geo1-desc">
+                                Sacred hill resembling a conch shell when viewed from distance. Offers panoramic views of Pampa River.
+                            </p>
+                        </div>
+                    </div>
+                    
+                  
+                    
+                    <div class="card">
+                        <img src="images/annavaramlush.avif" alt="Surrounding landscape" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo3-title">Lush Surroundings</h3>
+                            <p id="geo3-desc">
+                                Paddy fields, palm groves, and mango orchards surround the hill, creating a serene environment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sacred Sites Section -->
+        <section id="temples" class="temples">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="temples-title">Sacred Sites</h2>
+                </div>
+                
+                <div class="temple-grid">
+                    <div class="card">
+                        <img src="images/annavaramtemple.jpeg" alt="Satyanarayana Swamy Temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple1-title">Satyanarayana Swamy Temple</h3>
+                            <p id="temple1-desc">
+                                Main shrine with unique Trimurti idol combining Vishnu's chakra, Shiva's trishula, and Brahma's kamandalu.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/annavaramcomplex.jpeg" alt="Annadanam complex" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple2-title">Annadanam Complex</h3>
+                            <p id="temple2-desc">
+                                Where thousands are fed daily as part of the temple's sacred food offering tradition.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/annavarammandapam.jpeg" alt="Pravachana Mandapam" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple3-title">Pravachana Mandapam</h3>
+                            <p id="temple3-desc">
+                                Foothill venue hosting year-round spiritual discourses and religious teachings.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Festivals Section -->
+        <section id="festivals" class="festivals">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="festivals-title">Major Festivals</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="images/annavaramvratam.jpeg" alt="Satyanarayana Vrata" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival1-title">Satyanarayana Vrata</h3>
+                            <p id="festival1-desc">
+                                Daily and mass vratas performed with prasadam distribution and chanting circles.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/annavaramkarthikamasam.jpeg" alt="Karthika Masam" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival2-title">Karthika Masam</h3>
+                            <p id="festival2-desc">
+                                Month-long celebrations with lamp lighting, bhajans, and deepa offerings.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/annavarambrahmotsavam.jpeg" alt="Brahmotsavams" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival3-title">Brahmotsavams</h3>
+                            <p id="festival3-desc">
+                                Annual festival with grand processions in various vahanams and cultural programs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Economy Section -->
+        <section id="economy" class="economy">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="economy-title">Local Economy</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="images/annavaramtemplestalls.jpeg" alt="Temple services" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ1-title">Temple Services</h3>
+                            <p id="econ1-desc">
+                                Supports thousands through prasadam production, lodging, and temple shops.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/annavaramprasadam.jpeg" alt="Local products" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ2-title">Local Products</h3>
+                            <p id="econ2-desc">
+                                Panchamritam bottles, temple turmeric, vermilion, and sacred rice packets.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/annavaramagri.jpeg" alt="Agriculture" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ3-title">Agriculture</h3>
+                            <p id="econ3-desc">
+                                Paddy, coconuts, and mangoes cultivated in surrounding fertile lands.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Village Profile Section -->
+        <section id="demographics" class="demographics">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="demo-title">Village Profile</h2>
+                </div>
+                
+                <table class="stats-table">
+                    <tr>
+                        <th id="stat1-label">Attribute</th>
+                        <th id="stat1-value">Data</th>
+                    </tr>
+                    <tr>
+                        <td id="stat2-label">Population</td>
+                        <td id="stat2-value">~6,800</td>
+                    </tr>
+                    <tr>
+                        <td id="stat3-label">Main Occupation</td>
+                        <td id="stat3-value">Temple services, agriculture, tourism</td>
+                    </tr>
+                    <tr>
+                        <td id="stat4-label">Literacy Rate</td>
+                        <td id="stat4-value">~78%</td>
+                    </tr>
+                    <tr>
+                        <td id="stat5-label">Languages</td>
+                        <td id="stat5-value">Telugu</td>
+                    </tr>
+                    <tr>
+                        <td id="stat6-label">PIN Code</td>
+                        <td id="stat6-value">533406</td>
+                    </tr>
+                    <tr>
+                        <td id="stat7-label">Access</td>
+                        <td id="stat7-value">Ghat road from NH-16; Annavaram railway station</td>
+                    </tr>
+                    <tr>
+                        <td id="stat8-label">Pilgrims per year</td>
+                        <td id="stat8-value">20+ lakh (approx.)</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Fascinating Facts Section -->
+        <section id="facts" class="facts">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="facts-title">Little-Known Facts</h2>
+                </div>
+                
+                <div class="facts-grid">
+                    <div class="fact-card">
+                        <h3 id="fact1-title">Unique Trimurti Idol</h3>
+                        <p id="fact1-desc">
+                            One of few temples where Vishnu is worshipped alongside Shiva and Brahma elements.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact2-title">10,000+ Vratas Monthly</h3>
+                        <p id="fact2-desc">
+                            More than 10,000 Satyanarayana Vratas are performed each month by devotees.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact3-title">Healing Prasadam</h3>
+                        <p id="fact3-desc">
+                            The temple prasadam is considered a cure for stress and negativity by devotees.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact4-title">Spiritual Discourses</h3>
+                        <p id="fact4-desc">
+                            Pravachana Mandapam hosts year-round spiritual teachings at the foothill.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact5-title">Mass Annadanam</h3>
+                        <p id="fact5-desc">
+                            Thousands are fed daily through the temple's sacred food offering tradition.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact6-title">Conch-Shaped Hill</h3>
+                        <p id="fact6-desc">
+                            Ratnagiri Hill resembles a shankha (conch) when viewed from a distance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-quote" id="footer-quote">
+                "Annavaram is more than a temple village. It is a beacon of truth (Satya), a sanctuary of abundance (Annam), and a river of faith flowing across generations."
+            </p>
+            
+            <a href="https://www.google.com/maps/place/Annavaram,+Andhra+Pradesh" class="map-btn" target="_blank" id="map-btn" aria-label="View Annavaram on Google Maps">
+                <i class="fas fa-map-marker-alt"></i> View on Google Maps
+            </a>
+            
+            
+        </div>
+    </footer>
+
+    <script>
+        
+        const translations = {
+            
+            "header-title": { 
+                en: "Annavaram", 
+                te: "అన్నవరం" 
+            },
+            "header-subtitle": { 
+                en: "The Divine Hill of Satyanarayana Swamy", 
+                te: "శ్రీ సత్యనారాయణ స్వామి దివ్య పర్వతం" 
+            },
+            "location-tag": { 
+                en: "Kakinada District, Andhra Pradesh", 
+                te: "కాకినాడ జిల్లా, ఆంధ్ర ప్రదేశ్" 
+            },
+
+            
+            "nav-name": { 
+                en: "Name Origin", 
+                te: "పేరు మూలం" 
+            },
+            "nav-history": { 
+                en: "History", 
+                te: "చరిత్ర" 
+            },
+            "nav-geography": { 
+                en: "Nature", 
+                te: "ప్రకృతి" 
+            },
+            "nav-temples": { 
+                en: "Sacred Sites", 
+                te: "పవిత్ర స్థలాలు" 
+            },
+            "nav-festivals": { 
+                en: "Festivals", 
+                te: "పండుగలు" 
+            },
+            "nav-economy": { 
+                en: "Economy", 
+                te: "ఆర్థిక వ్యవస్థ" 
+            },
+            "nav-facts": { 
+                en: "Facts", 
+                te: "విశేషాలు" 
+            },
+
+            
+            "name-title": { 
+                en: "Why \"Annavaram\"?", 
+                te: "\"అన్నవరం\" అనే పేరు ఎందుకు?" 
+            },
+            "name1-title": { 
+                en: "\"Anna\" (అన్న)", 
+                te: "\"అన్న\" (అన్న)" 
+            },
+            "name1-desc": { 
+                en: "Means \"food\" in Telugu, symbolizing life, sustenance, and prosperity. Represents the temple's Annadanam tradition.",
+                te: "తెలుగులో \"ఆహారం\" అని అర్థం, జీవితం, జీవనోపాధి మరియు సంపదను సూచిస్తుంది. దేవాలయం యొక్క అన్నదాన సంప్రదాయాన్ని ప్రతిబింబిస్తుంది."
+            },
+            "name2-title": { 
+                en: "\"Varam\" (వరం)", 
+                te: "\"వరం\" (వరం)" 
+            },
+            "name2-desc": { 
+                en: "Means \"boon\" or \"gift\" in Telugu. Signifies the divine blessings granted by Satyanarayana Swamy.",
+                te: "తెలుగులో \"వరం\" లేదా \"బహుమతి\" అని అర్థం. సత్యనారాయణ స్వామి ప్రసాదించే దైవిక ఆశీర్వాదాలను సూచిస్తుంది."
+            },
+            "name3-title": { 
+                en: "Sacred Interpretation", 
+                te: "పవిత్ర అర్థం" 
+            },
+            "name3-desc": { 
+                en: "\"The place where food is given as a boon\" or \"The blessed village of sustenance\" reflecting the temple's traditions.",
+                te: "\"ఆహారం వరంగా ఇవ్వబడే ప్రదేశం\" లేదా \"జీవనోపాధి యొక్క ఆశీర్వాదమైన గ్రామం\" దేవాలయ సంప్రదాయాలను ప్రతిబింబిస్తుంది."
+            },
+
+            
+            "history-title": { 
+                en: "Historical Timeline", 
+                te: "చారిత్రక కాలక్రమం" 
+            },
+            "era1-title": { 
+                en: "Mythological Era", 
+                te: "పురాణ యుగం" 
+            },
+            "era1-desc": { 
+                en: "Lord Satyanarayana Swamy manifested on Ratnagiri Hill. Sage Rishyashringa performed yagnas here.",
+                te: "శ్రీ సత్యనారాయణ స్వామి రత్నగిరి పర్వతంపై అవతరించారు. ఋష్యశృంగ ముని ఇక్కడ యజ్ఞాలు చేశారు."
+            },
+            "era2-title": { 
+                en: "Ancient Period", 
+                te: "ప్రాచీన కాలం" 
+            },
+            "era2-desc": { 
+                en: "Small shrine existed before 12th century. Eastern Chalukyas and Reddy rulers patronized the area.",
+                te: "12వ శతాబ్దానికి ముందు చిన్న దేవాలయం ఉంది. తూర్పు చాళుక్యులు మరియు రెడ్డి పాలకులు ఈ ప్రాంతానికి పోషకులుగా ఉన్నారు."
+            },
+            "era3-title": { 
+                en: "Modern Revival (1891)", 
+                te: "ఆధునిక పునరుద్ధరణ (1891)" 
+            },
+            "era3-desc": { 
+                en: "Current temple constructed by Sri Prakasa Rao Panthulu after discovering the original deity.",
+                te: "అసలైన దేవతను కనుగొన్న తర్వాత శ్రీ ప్రకాశా రావు పంతులు ప్రస్తుత దేవాలయాన్ని నిర్మించారు."
+            },
+            "era4-title": { 
+                en: "Early 1900s", 
+                te: "1900ల ప్రారంభం" 
+            },
+            "era4-desc": { 
+                en: "Temple gained popularity across Andhra. Satyanarayana Vratams were institutionalized.",
+                te: "దేవాలయం ఆంధ్రలో ప్రాచుర్యం పొందింది. సత్యనారాయణ వ్రతాలు సంస్థాగతం చేయబడ్డాయి."
+            },
+            "era5-title": { 
+                en: "Post-Independence", 
+                te: "స్వాతంత్ర్యానంతరం" 
+            },
+            "era5-desc": { 
+                en: "Became one of the richest temples in AP. Added ghat roads, complexes, and mass Annadanam centers.",
+                te: "ఆంధ్ర ప్రదేశ్లో అత్యంత ధనవంతమైన దేవాలయాలలో ఒకటిగా మారింది. ఘాట్ రోడ్లు, కాంప్లెక్స్లు మరియు సామూహిక అన్నదాన కేంద్రాలను జోడించారు."
+            },
+
+            "geo-title": { 
+                en: "Natural Treasures", 
+                te: "ప్రకృతి సంపద" 
+            },
+            "geo1-title": { 
+                en: "Ratnagiri Hill", 
+                te: "రత్నగిరి పర్వతం" 
+            },
+            "geo1-desc": { 
+                en: "Sacred hill resembling a conch shell when viewed from distance. Offers panoramic views of Pampa River.",
+                te: "దూరం నుండి చూస్తే శంఖం వలె కనిపించే పవిత్ర పర్వతం. పంపా నది యొక్క విస్తృత దృశ్యాలను అందిస్తుంది."
+            },
+            "geo2-title": { 
+                en: "Pampa River", 
+                te: "పంపా నది" 
+            },
+            "geo2-desc": { 
+                en: "Sacred river visible from hilltop. Pilgrims take holy dips before ascending to the temple.",
+                te: "పర్వత శిఖరం నుండి కనిపించే పవిత్ర నది. యాత్రికులు దేవాలయానికి ఎక్కే ముందు పవిత్ర స్నానం చేస్తారు."
+            },
+            "geo3-title": { 
+                en: "Lush Surroundings", 
+                te: "సమృద్ధిగా పచ్చని పరిసరాలు" 
+            },
+            "geo3-desc": { 
+                en: "Paddy fields, palm groves, and mango orchards surround the hill, creating a serene environment.",
+                te: "వరి పొలాలు, తాటి తోపులు మరియు మామిడి తోటలు పర్వతాన్ని చుట్టుముట్టాయి, ప్రశాంతమైన వాతావరణాన్ని సృష్టిస్తాయి."
+            },
+
+            
+            "temples-title": { 
+                en: "Sacred Sites", 
+                te: "పవిత్ర స్థలాలు" 
+            },
+            "temple1-title": { 
+                en: "Satyanarayana Swamy Temple", 
+                te: "సత్యనారాయణ స్వామి దేవాలయం" 
+            },
+            "temple1-desc": { 
+                en: "Main shrine with unique Trimurti idol combining Vishnu's chakra, Shiva's trishula, and Brahma's kamandalu.",
+                te: "విష్ణువు యొక్క చక్రం, శివుని త్రిశూలం మరియు బ్రహ్మ యొక్క కమండలాన్ని కలిపి ప్రత్యేకమైన త్రిమూర్తి విగ్రహంతో ప్రధాన దేవాలయం."
+            },
+            "temple2-title": { 
+                en: "Annadanam Complex", 
+                te: "అన్నదాన కాంప్లెక్స్" 
+            },
+            "temple2-desc": { 
+                en: "Where thousands are fed daily as part of the temple's sacred food offering tradition.",
+                te: "దేవాలయం యొక్క పవిత్ర ఆహార అర్పణ సంప్రదాయంలో భాగంగా ప్రతిరోజు వేలాది మందికి ఆహారం పంపిణీ చేయబడుతుంది."
+            },
+            "temple3-title": { 
+                en: "Pravachana Mandapam", 
+                te: "ప్రవచన మండపం" 
+            },
+            "temple3-desc": { 
+                en: "Foothill venue hosting year-round spiritual discourses and religious teachings.",
+                te: "సంవత్సరం పొడవునా ఆధ్యాత్మిక ప్రవచనాలు మరియు మత బోధనలను నిర్వహించే పర్వతాద్రి ప్రదేశం."
+            },
+
+            
+            "festivals-title": { 
+                en: "Major Festivals", 
+                te: "ప్రధాన పండుగలు" 
+            },
+            "festival1-title": { 
+                en: "Satyanarayana Vrata", 
+                te: "సత్యనారాయణ వ్రతం" 
+            },
+            "festival1-desc": { 
+                en: "Daily and mass vratas performed with prasadam distribution and chanting circles.",
+                te: "ప్రసాదం పంపిణీ మరియు జపం వృత్తాలతో రోజువారీ మరియు సామూహిక వ్రతాలు నిర్వహించబడతాయి."
+            },
+            "festival2-title": { 
+                en: "Karthika Masam", 
+                te: "కార్తీక మాసం" 
+            },
+            "festival2-desc": { 
+                en: "Month-long celebrations with lamp lighting, bhajans, and deepa offerings.",
+                te: "దీపాల వెలుగులు, భజనలు మరియు దీప అర్పణలతో నెలవంటి వేడుకలు."
+            },
+            "festival3-title": { 
+                en: "Brahmotsavams", 
+                te: "బ్రహ్మోత్సవాలు" 
+            },
+            "festival3-desc": { 
+                en: "Annual festival with grand processions in various vahanams and cultural programs.",
+                te: "వివిధ వాహనాలలో గొప్ప ఊరేగింపులు మరియు సాంస్కృతిక కార్యక్రమాలతో వార్షిక పండుగ."
+            },
+
+            
+            "economy-title": { 
+                en: "Local Economy", 
+                te: "స్థానిక ఆర్థిక వ్యవస్థ" 
+            },
+            "econ1-title": { 
+                en: "Temple Services", 
+                te: "దేవాలయ సేవలు" 
+            },
+            "econ1-desc": { 
+                en: "Supports thousands through prasadam production, lodging, and temple shops.",
+                te: "ప్రసాదం ఉత్పత్తి, లాడ్జింగ్ మరియు దేవాలయ దుకాణాల ద్వారా వేలాది మందికి మద్దతు ఇస్తుంది."
+            },
+            "econ2-title": { 
+                en: "Local Products", 
+                te: "స్థానిక ఉత్పత్తులు" 
+            },
+            "econ2-desc": { 
+                en: "Panchamritam bottles, temple turmeric, vermilion, and sacred rice packets.",
+                te: "పంచామృతం సీసాలు, దేవాలయ పసుపు, కుంకుమ మరియు పవిత్ర బియ్యం ప్యాకెట్లు."
+            },
+            "econ3-title": { 
+                en: "Agriculture", 
+                te: "వ్యవసాయం" 
+            },
+            "econ3-desc": { 
+                en: "Paddy, coconuts, and mangoes cultivated in surrounding fertile lands.",
+                te: "చుట్టుపక్కల ఫలవంతమైన భూములలో వరి, కొబ్బరి మరియు మామిడి పండిస్తారు."
+            },
+
+            "demo-title": { 
+                en: "Village Profile", 
+                te: "గ్రామ ప్రొఫైల్" 
+            },
+            "stat1-label": { 
+                en: "Attribute", 
+                te: "లక్షణం" 
+            },
+            "stat1-value": { 
+                en: "Data", 
+                te: "డేటా" 
+            },
+            "stat2-label": { 
+                en: "Population", 
+                te: "జనాభా" 
+            },
+            "stat2-value": { 
+                en: "~6,800", 
+                te: "~6,800" 
+            },
+            "stat3-label": { 
+                en: "Main Occupation", 
+                te: "ప్రధాన వృత్తి" 
+            },
+            "stat3-value": { 
+                en: "Temple services, agriculture, tourism", 
+                te: "దేవాలయ సేవలు, వ్యవసాయం, పర్యాటకం" 
+            },
+            "stat4-label": { 
+                en: "Literacy Rate", 
+                te: "సాక్షరత రేటు" 
+            },
+            "stat4-value": { 
+                en: "~78%", 
+                te: "~78%" 
+            },
+            "stat5-label": { 
+                en: "Languages", 
+                te: "భాషలు" 
+            },
+            "stat5-value": { 
+                en: "Telugu", 
+                te: "తెలుగు" 
+            },
+            "stat6-label": { 
+                en: "PIN Code", 
+                te: "పిన్ కోడ్" 
+            },
+            "stat6-value": { 
+                en: "533406", 
+                te: "533406" 
+            },
+            "stat7-label": { 
+                en: "Access", 
+                te: "రవాణా" 
+            },
+            "stat7-value": { 
+                en: "Ghat road from NH-16; Annavaram railway station", 
+                te: "NH-16 నుండి ఘాట్ రోడ్; అన్నవరం రైల్వే స్టేషన్" 
+            },
+            "stat8-label": { 
+                en: "Pilgrims per year", 
+                te: "సంవత్సరానికి యాత్రికులు" 
+            },
+            "stat8-value": { 
+                en: "20+ lakh (approx.)", 
+                te: "20+ లక్షలు (సుమారు)" 
+            },
+
+            
+            "facts-title": { 
+                en: "Little-Known Facts", 
+                te: "తక్కువ తెలిసిన విషయాలు" 
+            },
+            "fact1-title": { 
+                en: "Unique Trimurti Idol", 
+                te: "ప్రత్యేక త్రిమూర్తి విగ్రహం" 
+            },
+            "fact1-desc": { 
+                en: "One of few temples where Vishnu is worshipped alongside Shiva and Brahma elements.",
+                te: "విష్ణువును శివుడు మరియు బ్రహ్మ మూలకాలతో పాటు పూజించే కొన్ని దేవాలయాలలో ఒకటి."
+            },
+            "fact2-title": { 
+                en: "10,000+ Vratas Monthly", 
+                te: "నెలకు 10,000+ వ్రతాలు" 
+            },
+            "fact2-desc": { 
+                en: "More than 10,000 Satyanarayana Vratas are performed each month by devotees.",
+                te: "భక్తులు ప్రతి నెలా 10,000కి పైగా సత్యనారాయణ వ్రతాలు చేస్తారు."
+            },
+            "fact3-title": { 
+                en: "Healing Prasadam", 
+                te: "స్వస్థత కలిగించే ప్రసాదం" 
+            },
+            "fact3-desc": { 
+                en: "The temple prasadam is considered a cure for stress and negativity by devotees.",
+                te: "దేవాలయ ప్రసాదం భక్తులచే ఒత్తిడి మరియు నెగటివిటీకి నివారణగా పరిగణించబడుతుంది."
+            },
+            "fact4-title": { 
+                en: "Spiritual Discourses", 
+                te: "ఆధ్యాత్మిక ప్రవచనాలు" 
+            },
+            "fact4-desc": { 
+                en: "Pravachana Mandapam hosts year-round spiritual teachings at the foothill.",
+                te: "ప్రవచన మండపం సంవత్సరం పొడవునా పర్వతాద్రిలో ఆధ్యాత్మిక బోధనలను నిర్వహిస్తుంది."
+            },
+            "fact5-title": { 
+                en: "Mass Annadanam", 
+                te: "సామూహిక అన్నదానం" 
+            },
+            "fact5-desc": { 
+                en: "Thousands are fed daily through the temple's sacred food offering tradition.",
+                te: "దేవాలయం యొక్క పవిత్ర ఆహార అర్పణ సంప్రదాయం ద్వారా ప్రతిరోజు వేలాది మందికి ఆహారం అందించబడుతుంది."
+            },
+            "fact6-title": { 
+                en: "Conch-Shaped Hill", 
+                te: "శంఖ ఆకారపు పర్వతం" 
+            },
+            "fact6-desc": { 
+                en: "Ratnagiri Hill resembles a shankha (conch) when viewed from a distance.",
+                te: "రత్నగిరి పర్వతం దూరం నుండి చూస్తే శంఖం (శంఖం) వలె కనిపిస్తుంది."
+            },
+
+            "footer-quote": { 
+                en: "\"Annavaram is more than a temple village. It is a beacon of truth (Satya), a sanctuary of abundance (Annam), and a river of faith flowing across generations.\"", 
+                te: "\"అన్నవరం ఒక దేవాలయ గ్రామం కంటే ఎక్కువ. ఇది సత్యం యొక్క దీపస్తంభం (సత్య), సమృద్ధి యొక్క పవిత్ర స్థలం (అన్నం), మరియు తరాల నుండి ప్రవహించే విశ్వాసం యొక్క నది.\"" 
+            },
+            "map-btn": { 
+                en: "View on Google Maps", 
+                te: "గూగుల్ మ్యాప్స్‌లో వీక్షించండి" 
+            },
+            "copyright": { 
+                en: "© 2023 Annavaram Temple Heritage. All rights reserved.", 
+                te: "© 2023 అన్నవరం దేవాలయ వారసత్వం. అన్ని హక్కులు ప్రత్యేకించబడినవి." 
+            }
+        };
+
+        
+        function setLanguage(lang) {
+           
+            localStorage.setItem('preferredLanguage', lang);
+            
+            
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            document.getElementById('te-btn').classList.toggle('active', lang === 'te');
+            
+        
+            for (const [id, texts] of Object.entries(translations)) {
+                const element = document.getElementById(id);
+                if (element) element.textContent = texts[lang];
+            }
+        }
+
+      
+        function checkVisibility() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+           
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+            
+           
+            document.getElementById('en-btn').addEventListener('click', () => setLanguage('en'));
+            document.getElementById('te-btn').addEventListener('click', () => setLanguage('te'));
+            
+            
+            checkVisibility();
+        });
+
+        window.addEventListener('scroll', checkVisibility);
+    </script>
+</body>
+</html>

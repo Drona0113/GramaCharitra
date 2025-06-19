@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRAMA CHARITHRA - Explore Andhra's Sacred Villages</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --primary: #2c5e1a;  
+            --secondary: #5d1917; 
+            --accent: #e67e22;    
+            --light: #f8f5f2;     
+            --dark: #333;
+            --text: #444;
+        }
+
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+            transition: all 0.3s ease; 
+        }
+
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url("images/gramacharitra.jpg") center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: white;
+            font-family: 'Times New Roman', serif;
+            transition: all 0.3s ease;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        /*lang toggle*/
+        .lang-toggle {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /*nav buttons*/
+        nav {
+            background-color: var(--primary);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            margin: 0 0.5rem;
+            border-radius: 30px;
+            transition: all 0.3s;
+            text-transform: capitalize;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        nav a.active {
+            background: var(--accent);
+            font-weight: 600;
+        }
+
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        /*Grids*/
+        .village-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .village-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .village-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .village-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .village-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+        }
+
+        .village-card p {
+            color: var(--text);
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .explore-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            transition: all 0.3s ease;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+       
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            nav {
+                padding: 1rem 0;
+                text-align: center;
+            }
+            
+            nav a {
+                display: inline-block;
+                margin: 0.3rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.95rem;
+            }
+            
+            .village-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                height: 50vh;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .village-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+       
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .language-change {
+            animation: fadeIn 0.5s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo" id="header-title">GRAMA CHARITHRA</h1>
+        <p class="tagline" id="header-subtitle">Exploring the sacred villages and cultural heritage of Andhra Pradesh</p>
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="en-btn">English</button>
+            <button class="lang-btn" id="te-btn">తెలుగు</button>
+        </div>
+    </header>
+  
+   
+  
+    <main class="container">
+        <section id="featured-villages">
+            <div class="section-title">
+                <h2 id="villages-title">Discover Sacred Villages</h2>
+            </div>
+            
+            <div class="village-grid">
+                <!---- Annavaram Card -->
+                <div class="village-card">
+                    <img src="images/annavaram.jpg" alt="Annavaram Temple" loading="lazy">
+                    <div class="card-content">
+                        <h3 id="card-annavaram-title">Annavaram</h3>
+                        <p id="card-annavaram-desc">The Divine Hill of Satyanarayana Swamy, known for its unique temple architecture and spiritual significance.</p>
+                        <a href="annavaram.html" class="explore-btn" id="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Kottapa Konda Card -->
+                <div class="village-card">
+                    <img src="images/kotappa.jpeg" alt="Kottapa Konda" loading="lazy">
+                    <div class="card-content">
+                        <h3 id="card-kotappakonda-title">Kottapa Konda</h3>
+                        <p id="card-kotappakonda-desc">A sacred hill with ancient temples and breathtaking views of the surrounding countryside.</p>
+                        <a href="kotappakonda.html" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Bheemavaram Card -->
+                <div class="village-card">
+                    <img src="images/bheemavaram.jpg" alt="Bheemavaram" loading="lazy">
+                    <div class="card-content">
+                        <h3 id="card-bheemavaram-title">Bheemavaram</h3>
+                        <p id="card-bheemavaram-desc">Known for its historic temples and vibrant cultural traditions in the Godavari delta region.</p>
+                        <a href="bheemavaram.html" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Chennarayunipalle Card -->
+                <div class="village-card">
+                    <img src="images/chennurayuni.jpg" alt="Chennarayunipalle" loading="lazy">
+                    <div class="card-content">
+                        <h3 id="card-chennarayunipalle-title">Chennarayunipalle</h3>
+                        <p id="card-chennarayunipalle-desc">Where ancient temples whisper forgotten tales of devotion</p>
+                        <a href="chennarayunipalle.html" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Guntupalle Card -->
+                <div class="village-card">
+                    <img src="images/guntupalli.jpg" alt="Guntupalle" loading="lazy">
+                    <div class="card-content">
+                        <h3 id="card-guntupalle-title">Guntupalle</h3>
+                        <p id="card-guntupalle-desc">Guardian of 2000-year-old Buddhist heritage</p>
+                        <a href="guntupalle.html" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Kanchikacherla Card -->
+                <div class="village-card">
+                    <img src="images/kanchikacherla.jpg" alt="Kanchikacherla" loading="lazy">
+                    <div class="card-content">
+                        <h3 id="card-kanchikacherla-title">Kanchikacherla</h3>
+                        <p id="card-kanchikacherla-desc">Temple town where every stone sings devotion.</p>
+                        <a href="kanchikacherla.html" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Kanipakam Card -->
+                <div class="village-card">
+                    <img src="images/kanipakam.jpg" alt="Kanipakam" loading="lazy">
+                    <div class="card-content">
+                        <h3 id="card-kanipakam-title">Kanipakam</h3>
+                        <p id="card-kanipakam-desc">Where the self-manifested Ganesha answers prayers</p>
+                        <a href="kanipakam.html" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Kondapalli Card -->
+                <div class="village-card">
+                    <img src="images/kondapalli.jpg" alt="Kondapalli" loading="lazy">
+                    <div class="card-content">
+                        <h3 id="card-kondapalli-title">Kondapalli</h3>
+                        <p id="card-kondapalli-desc">Toy-making wonderland of colorful traditions.</p>
+                        <a href="kondapalli.html" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Machilipatnam Card -->
+                <div class="village-card">
+                    <img src="images/machilipatnam.jpg" alt="Machilipatnam" loading="lazy">
+                    <div class="card-content">
+                        <h3 id="card-machilipatnam-title">Machilipatnam</h3>
+                        <p id="card-machilipatnam-desc">Coastal queen of kalamkari and historic grandeur.</p>
+                        <a href="machilipatnam.html" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Nellipaka Card -->
+                <div class="village-card">
+                    <img src="images/nellipaka.jpg" alt="Nellipaka" loading="lazy">
+                    <div class="card-content">
+                        <h3 id="card-nellipaka-title">Nellipaka</h3>
+                        <p id="card-nellipaka-desc">The hidden gem of East Godavari's spiritual landscape.</p>
+                        <a href="nellipaka.html" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Uyyalawada Card -->
+                <div class="village-card">
+                    <img src="images/uyyalawada.jpg" alt="Uyyalawada" loading="lazy">
+                    <div class="card-content">
+                        <h3 id="card-uyyalawada-title">Uyyalawada</h3>
+                        <p id="card-uyyalawada-desc">Land of valor where revolutionaries wrote history</p>
+                        <a href="uyyalawada.html" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Hamsaladeevi Card -->
+                <div class="village-card">
+                    <img src="images/hamsaladeevi.jpg" alt="Hamsaladeevi" loading="lazy">
+                    <div class="card-content">
+                        <h3 id="card-hamsaladeevi-title">Hamsaladeevi</h3>
+                        <p id="card-hamsaladeevi-desc">Where Krishna River embraces the Bay with golden sands.</p>
+                        <a href="hamsaladeevi.html" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p class="footer-quote" id="footer-quote">
+                "Every village has a story to tell, a tradition to preserve, and a heritage to celebrate."
+            </p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p class="copyright" id="copyright">
+                &copy; 2025 Grama Charithra. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        
+        const translations = {
+           
+            "header-title": {
+                en: "GRAMA CHARITHRA",
+                te: "గ్రామ చరిత్ర"
+            },
+            "header-subtitle": {
+                en: "Exploring the sacred villages and cultural heritage of Andhra Pradesh",
+                te: "ఆంధ్ర ప్రదేశ్ యొక్క పవిత్ర గ్రామాలు మరియు సాంస్కృతిక వారసత్వాన్ని అన్వేషిస్తున్నాము"
+            },
+            
+            
+            "nav-annavaram": {
+                en: "Annavaram",
+                te: "అన్నవరం"
+            },
+            "nav-kotappakonda": {
+                en: "Kottapa Konda",
+                te: "కొట్టప్పకొండ"
+            },
+            "nav-bheemavaram": {
+                en: "Bheemavaram",
+                te: "భీమవరం"
+            },
+            "nav-chennarayunipalle": {
+                en: "Chennarayunipalle",
+                te: "చెన్నారాయునిపల్లె"
+            },
+            "nav-guntupalle": {
+                en: "Guntupalle",
+                te: "గుంటుపల్లి"
+            },
+            "nav-hamsaladeevi": {
+                en: "Hamsaladeevi",
+                te: "హంసలదీవి"
+            },
+            "nav-kanchikacherla": {
+                en: "Kanchikacherla",
+                te: "కాంచికాచెర్ల"
+            },
+            "nav-kanipakam": {
+                en: "Kanipakam",
+                te: "కానిపాకం"
+            },
+            "nav-kondapalli": {
+                en: "Kondapalli",
+                te: "కొండపల్లి"
+            },
+            "nav-machilipatnam": {
+                en: "Machilipatnam",
+                te: "మచిలీపట్నం"
+            },
+            "nav-nellipaka": {
+                en: "Nellipaka",
+                te: "నెల్లిపాక"
+            },
+            "nav-uyyalawada": {
+                en: "Uyyalawada",
+                te: "ఉయ్యలవాడ"
+            },
+            
+          
+            "villages-title": {
+                en: "Discover Sacred Villages",
+                te: "పవిత్ర గ్రామాలను అన్వేషించండి"
+            },
+            "card-annavaram-title": {
+                en: "Annavaram",
+                te: "అన్నవరం"
+            },
+            "card-annavaram-desc": {
+                en: "The Divine Hill of Satyanarayana Swamy, known for its unique temple architecture and spiritual significance.",
+                te: "సత్యనారాయణ స్వామి దివ్య పర్వతం, ప్రత్యేకమైన దేవాలయ నిర్మాణం మరియు ఆధ్యాత్మిక ప్రాముఖ్యతకు ప్రసిద్ధి చెందింది."
+            },
+            "card-kotappakonda-title": {
+                en: "Kottapa Konda",
+                te: "కొట్టప్పకొండ"
+            },
+            "card-kotappakonda-desc": {
+                en: "A sacred hill with ancient temples and breathtaking views of the surrounding countryside.",
+                te: "ప్రాచీన దేవాలయాలు మరియు చుట్టుపక్కల గ్రామీణ ప్రాంతాల అద్భుతమైన వీక్షణలతో కూడిన పవిత్ర పర్వతం."
+            },
+            "card-bheemavaram-title": {
+                en: "Bheemavaram",
+                te: "భీమవరం"
+            },
+            "card-bheemavaram-desc": {
+                en: "Known for its historic temples and vibrant cultural traditions in the Godavari delta region.",
+                te: "చారిత్రక దేవాలయాలు మరియు గోదావరి డెల్టా ప్రాంతంలో సజీవమైన సాంస్కృతిక సంప్రదాయాలకు ప్రసిద్ధి చెందింది."
+            },
+            "card-chennarayunipalle-title": {
+                en: "Chennarayunipalle",
+                te: "చెన్నారాయునిపల్లె"
+            },
+            "card-chennarayunipalle-desc": {
+                en: "Where ancient temples whisper forgotten tales of devotion",
+                te: "ప్రాచీన దేవాలయాలు భక్తి యొక్క మరచిపోయిన కథలను పెదవిగుడ్డు చేసే ప్రదేశం"
+            },
+            "card-guntupalle-title": {
+                en: "Guntupalle",
+                te: "గుంటుపల్లి"
+            },
+            "card-guntupalle-desc": {
+                en: "Guardian of 2000-year-old Buddhist heritage",
+                te: "2000 సంవత్సరాల పురాతన బౌద్ధ వారసత్వానికి కాపలాదారుడు"
+            },
+            "card-kanchikacherla-title": {
+                en: "Kanchikacherla",
+                te: "కాంచికాచెర్ల"
+            },
+            "card-kanchikacherla-desc": {
+                en: "Temple town where every stone sings devotion.",
+                te: "ప్రతి రాయి భక్తిని పాడే దేవాలయ పట్టణం."
+            },
+            "card-kanipakam-title": {
+                en: "Kanipakam",
+                te: "కానిపాకం"
+            },
+            "card-kanipakam-desc": {
+                en: "Where the self-manifested Ganesha answers prayers",
+                te: "స్వయంభూ గణేశుడు ప్రార్థనలకు స్పందించే ప్రదేశం"
+            },
+            "card-kondapalli-title": {
+                en: "Kondapalli",
+                te: "కొండపల్లి"
+            },
+            "card-kondapalli-desc": {
+                en: "Toy-making wonderland of colorful traditions.",
+                te: "రంగురంగుల సంప్రదాయాల బొమ్మల అద్భుత లోకం."
+            },
+            "card-machilipatnam-title": {
+                en: "Machilipatnam",
+                te: "మచిలీపట్నం"
+            },
+            "card-machilipatnam-desc": {
+                en: "Coastal queen of kalamkari and historic grandeur.",
+                te: "కలంకారి మరియు చారిత్రక వైభవం యొక్క తీరప్రాంత రాణి."
+            },
+            "card-nellipaka-title": {
+                en: "Nellipaka",
+                te: "నెల్లిపాక"
+            },
+            "card-nellipaka-desc": {
+                en: "The hidden gem of East Godavari's spiritual landscape.",
+                te: "తూర్పు గోదావరి యొక్క ఆధ్యాత్మిక ప్రకృతి దృశ్యంలో దాచిపెట్టిన రత్నం."
+            },
+            "card-uyyalawada-title": {
+                en: "Uyyalawada",
+                te: "ఉయ్యలవాడ"
+            },
+            "card-uyyalawada-desc": {
+                en: "Land of valor where revolutionaries wrote history",
+                te: "వీరోచితమైన విప్లవకారులు చరిత్ర రాసిన భూమి"
+            },
+            "card-hamsaladeevi-title": {
+                en: "Hamsaladeevi",
+                te: "హంసలదీవి"
+            },
+            "card-hamsaladeevi-desc": {
+                en: "Where Krishna River embraces the Bay with golden sands.",
+                te: "కృష్ణా నది బంగారు ఇసుకతో బంగాళాఖాతాన్ని కౌగలించుకునే ప్రదేశం."
+            },
+            "explore-btn": {
+                en: "Explore",
+                te: "అన్వేషించండి"
+            },
+            
+           
+            "footer-quote": {
+                en: "Every village has a story to tell, a tradition to preserve, and a heritage to celebrate.",
+                te: "ప్రతి గ్రామానికి చెప్పడానికి ఒక కథ ఉంటుంది, సంరక్షించడానికి ఒక సంప్రదాయం ఉంటుంది మరియు జరుపుకోవడానికి ఒక వారసత్వం ఉంటుంది."
+            },
+            "copyright": {
+                en: "© 2025 Grama Charithra. All rights reserved.",
+                te: "© 2025 గ్రామ చరిత్ర. అన్ని హక్కులు ప్రత్యేకించబడినవి."
+            }
+        };
+
+       
+        function setLanguage(lang) {
+            
+            document.body.classList.add('language-change');
+            
+            
+            localStorage.setItem('preferredLanguage', lang);
+            
+          
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            document.getElementById('te-btn').classList.toggle('active', lang === 'te');
+            
+            
+            for (const [id, texts] of Object.entries(translations)) {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = texts[lang];
+                    element.classList.add('language-change');
+                }
+            }
+            
+            // Removing the  animation class after transition
+            setTimeout(() => {
+                document.body.classList.remove('language-change');
+                document.querySelectorAll('.language-change').forEach(el => {
+                    el.classList.remove('language-change');
+                });
+            }, 500);
+        }
+
+        // Initializing
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+            
+            
+            document.getElementById('en-btn').addEventListener('click', () => setLanguage('en'));
+            document.getElementById('te-btn').addEventListener('click', () => setLanguage('te'));
+        });
+    </script>
+</body>
+</html>

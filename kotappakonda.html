@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kotappakonda | The Trikuta Hill of Divine Tranquility</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Earthy Color Scheme */
+        :root {
+            --primary: #8e44ad;   /* Purple for Shiva */
+            --secondary: #3498db;  /* Blue for Vishnu */
+            --accent: #f39c12;     /* Orange for Brahma */
+            --light: #f9f9f9;
+            --dark: #2c3e50;
+            --text: #555;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Skip to Content Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header with Mountain Background */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('./images/kotappa.jpeg') center/cover fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header-content {
+            width: 100%;
+            animation: fadeIn 1.5s ease;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0 auto;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+        }
+
+        /* Grid Layouts */
+        .name-breakdown,
+        .geo-features,
+        .facts-grid,
+        .temple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-content h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Stats Table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .stats-table th, .stats-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stats-table th {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .stats-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        /* Facts Cards */
+        .fact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .fact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .map-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 10px 0;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+           
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 50px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .name-breakdown,
+            .geo-features,
+            .facts-grid,
+            .temple-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to Content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="en-btn" aria-label="Switch to English">English</button>
+            <button class="lang-btn" id="te-btn" aria-label="Switch to Telugu">తెలుగు</button>
+        </div>
+
+        <div class="header-content">
+            <h1 id="header-title">Kotappakonda</h1>
+            <p id="header-subtitle">The Trikuta Hill of Divine Tranquility</p>
+            <div class="location-tag" id="location-tag">Guntur District, Andhra Pradesh</div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#name" id="nav-name">Name Origin</a></li>
+            <li><a href="#history" id="nav-history">History</a></li>
+            <li><a href="#geography" id="nav-geography">Nature</a></li>
+            <li><a href="#temples" id="nav-temples">Sacred Sites</a></li>
+            <li><a href="#festivals" id="nav-festivals">Festivals</a></li>
+            <li><a href="#economy" id="nav-economy">Economy</a></li>
+            <li><a href="#facts" id="nav-facts">Facts</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Name Origin Section -->
+        <section id="name" class="name-origin">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="name-title">Why "Kotappakonda"?</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name1-title">"Kota" (కోట)</h3>
+                            <p id="name1-desc">
+                                Telugu word meaning "fort" or "protected sacred space". Represents the hill's spiritual significance.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name2-title">"Paka" (పాక)</h3>
+                            <p id="name2-desc">
+                                Means "grove" or "flourishing vegetation area". Reflects the lush greenery surrounding the hill.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name3-title">"Konda" (కొండ)</h3>
+                            <p id="name3-desc">
+                                Common Telugu suffix meaning "hill" or "mountain". The three peaks represent Brahma, Vishnu, and Shiva.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="history">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="history-title">Historical Timeline</h2>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era1-title">Ancient Period (Pre-5th CE)</h3>
+                            <p id="era1-desc">
+                                Early tribal and Shaivite worship in the hill groves. Oral traditions indicate sacred water springs and caves.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era2-title">Chalukya Period (7th-9th CE)</h3>
+                            <p id="era2-desc">
+                                Construction of stone pathways and basic mandapas. Temple gained regional popularity in Velanadu region.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era3-title">Kakatiya Dynasty (12th-14th CE)</h3>
+                            <p id="era3-desc">
+                                Stone staircases and small Shiva shrines built on lower slopes. Land grants made to Brahmin priests.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era4-title">Vijayanagara Period (15th-16th CE)</h3>
+                            <p id="era4-desc">
+                                Grand gopuram and flagpole added. Shivaratri became major event drawing thousands annually.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era5-title">British Colonial Period</h3>
+                            <p id="era5-desc">
+                                Included in Madras Gazetteers. Jatara attracted over 50,000 people. Colonial maps mark "Trikoota Hills".
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nature & Wildlife Section -->
+        <section id="geography" class="geography">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="geo-title">Natural Treasures</h2>
+                </div>
+                
+                <div class="geo-features">
+                    <div class="card">
+                        <img src="./images/kotappakondatrikutahills.jpg" alt="Trikuta Hills" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo1-title">Trikuta Hills</h3>
+                            <p id="geo1-desc">
+                                Three sacred peaks rising to 1,600 feet: Brahma Konda (Creation), Vishnu Konda (Preservation), and Rudra Konda (Destruction).
+                            </p>
+                        </div>
+                    </div>
+                    
+                 
+                 
+                </div>
+            </div>
+        </section>
+
+        <!-- Sacred Sites Section -->
+        <section id="temples" class="temples">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="temples-title">Sacred Sites</h2>
+                </div>
+                
+                <div class="temple-grid">
+                    <div class="card">
+                        <img src="./images/kotappa.jpeg" alt="Trikoteswara Swamy Temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple1-title">Trikoteswara Swamy Temple</h3>
+                            <p id="temple1-desc">
+                                Main sanctum dedicated to Lord Shiva in his three-peaked form at the hill's summit. Features Vijayanagara-era architecture.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Nandi Mandapa" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple2-title">Nandi Mandapa</h3>
+                            <p id="temple2-desc">
+                                Pavilion with a large Nandi (Shiva's bull) facing the main sanctum. Site of special abhishekams during festivals.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Parvati Mandapam" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple3-title">Parvati Mandapam</h3>
+                            <p id="temple3-desc">
+                                Shrine dedicated to Goddess Parvati with exquisite carvings. Women perform special pujas here for family welfare.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Festivals Section -->
+        <section id="festivals" class="festivals">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="festivals-title">Major Festivals</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="./images/kotappashivarathri.avif" alt="Mahashivaratri festival" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival1-title">Mahashivaratri Jatara</h3>
+                            <p id="festival1-desc">
+                                Grand festival attracting 6-8 lakh devotees. Features mass chanting, temple chariot processions, and cultural programs.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kotappakarthika.jpeg" alt="Karthika Deepotsavam" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival2-title">Karthika Deepotsavam</h3>
+                            <p id="festival2-desc">
+                                Festival of lights with thousands of lamps illuminating the hill. Special pujas performed during Karthika month.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kotappaabhisekha.jpeg" alt="Rudrabhishekam" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival3-title">Shravana Rudrabhishekam</h3>
+                            <p id="festival3-desc">
+                                Special abhishekams performed during Shravana month. Devotees climb the hill with holy water from sacred rivers.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Economy Section -->
+        <section id="economy" class="economy">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="economy-title">Local Economy</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="./images/kotappatourism.jpg" alt="Temple tourism" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ1-title">Temple Tourism</h3>
+                            <p id="econ1-desc">
+                                Devotees buy brass lamps, rudraksha malas, hill turmeric, and coconut garlands. Supports local artisans and shops.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/annavaramagri.jpeg" alt="Agriculture" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ2-title">Agriculture</h3>
+                            <p id="econ2-desc">
+                                Mango and tamarind orchards thrive on hill slopes. Cotton, chillies, and turmeric are major cash crops.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kotappaabhisekha.jpeg" alt="Handicrafts" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ3-title">Handicrafts</h3>
+                            <p id="econ3-desc">
+                                Local artisans make clay Shiva idols, wooden walking sticks, and herbal hair oils from hill plants.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Village Profile Section -->
+        <section id="demographics" class="demographics">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="demo-title">Village Profile</h2>
+                </div>
+                
+                <table class="stats-table">
+                    <tr>
+                        <th id="stat1-label">Attribute</th>
+                        <th id="stat1-value">Data</th>
+                    </tr>
+                    <tr>
+                        <td id="stat2-label">Population</td>
+                        <td id="stat2-value">~3,700</td>
+                    </tr>
+                    <tr>
+                        <td id="stat3-label">Languages</td>
+                        <td id="stat3-value">Telugu</td>
+                    </tr>
+                    <tr>
+                        <td id="stat4-label">Primary Livelihood</td>
+                        <td id="stat4-value">Temple trade, agriculture</td>
+                    </tr>
+                    <tr>
+                        <td id="stat5-label">Literacy Rate</td>
+                        <td id="stat5-value">~69%</td>
+                    </tr>
+                    <tr>
+                        <td id="stat6-label">Nearest Town</td>
+                        <td id="stat6-value">Narasaraopet (~15 km)</td>
+                    </tr>
+                    <tr>
+                        <td id="stat7-label">Transport</td>
+                        <td id="stat7-value">Regular APSRTC buses, autos to temple base</td>
+                    </tr>
+                    <tr>
+                        <td id="stat8-label">PIN Code</td>
+                        <td id="stat8-value">522413</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Fascinating Facts Section -->
+        <section id="facts" class="facts">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="facts-title">Little-Known Facts</h2>
+                </div>
+                
+                <div class="facts-grid">
+                    <div class="fact-card">
+                        <h3 id="fact1-title">Three-Peaked Architecture</h3>
+                        <p id="fact1-desc">
+                            The temple's three-peaked design is one of the few of its kind in India, representing the Trimurti.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact2-title">Perennial Springs</h3>
+                        <p id="fact2-desc">
+                            Water springs at the hilltop never dry up - considered sacred teerthams with healing properties.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact3-title">Koti Deepotsavam</h3>
+                        <p id="fact3-desc">
+                            Devotees light one crore lamps during special festivals for family wishes and prosperity.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact4-title">Vijayanagara Shivling</h3>
+                        <p id="fact4-desc">
+                            The temple once housed a metal Shivling from the Vijayanagara era, now preserved in the temple vault.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact5-title">Pilgrimage Routes</h3>
+                        <p id="fact5-desc">
+                            Some devotees climb the hill on their knees or with special vows as acts of devotion.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact6-title">Tribal Connections</h3>
+                        <p id="fact6-desc">
+                            Early tribal communities considered the hill a spiritual zone before temple construction.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-quote" id="footer-quote">
+                "Kotappakonda is where faith climbs hills. It's where every footstep becomes a prayer, every lamp a promise, and every echo in the hills — a whisper from Shiva."
+            </p>
+            
+            <a href="https://maps.app.goo.gl/MJd8zemJ9r9PxfrP9" class="map-btn" target="_blank" id="map-btn" aria-label="View Kotappakonda on Google Maps">
+                <i class="fas fa-map-marker-alt"></i> View on Google Maps
+            </a>
+            
+            
+        </div>
+    </footer>
+
+    <script>
+        // Language Data
+        const translations = {
+            // Header
+            "header-title": { 
+                en: "Kotappakonda", 
+                te: "కోటప్పకొండ" 
+            },
+            "header-subtitle": { 
+                en: "The Trikuta Hill of Divine Tranquility", 
+                te: "దైవిక శాంతి యొక్క త్రికూట పర్వతం" 
+            },
+            "location-tag": { 
+                en: "Guntur District, Andhra Pradesh", 
+                te: "గుంటూరు జిల్లా, ఆంధ్ర ప్రదేశ్" 
+            },
+
+            // Navigation
+            "nav-name": { 
+                en: "Name Origin", 
+                te: "పేరు మూలం" 
+            },
+            "nav-history": { 
+                en: "History", 
+                te: "చరిత్ర" 
+            },
+            "nav-geography": { 
+                en: "Nature", 
+                te: "ప్రకృతి" 
+            },
+            "nav-temples": { 
+                en: "Sacred Sites", 
+                te: "పవిత్ర స్థలాలు" 
+            },
+            "nav-festivals": { 
+                en: "Festivals", 
+                te: "పండుగలు" 
+            },
+            "nav-economy": { 
+                en: "Economy", 
+                te: "ఆర్థిక వ్యవస్థ" 
+            },
+            "nav-facts": { 
+                en: "Facts", 
+                te: "విశేషాలు" 
+            },
+
+            // Name Origin
+            "name-title": { 
+                en: "Why \"Kotappakonda\"?", 
+                te: "\"కోటప్పకొండ\" అనే పేరు ఎందుకు?" 
+            },
+            "name1-title": { 
+                en: "\"Kota\" (కోట)", 
+                te: "\"కోట\" (కోట)" 
+            },
+            "name1-desc": { 
+                en: "Telugu word meaning \"fort\" or \"protected sacred space\". Represents the hill's spiritual significance.",
+                te: "\"కోట\" లేదా \"సురక్షితమైన పవిత్ర స్థలం\" అని అర్థం. కొండ యొక్క ఆధ్యాత్మిక ప్రాముఖ్యతను సూచిస్తుంది."
+            },
+            "name2-title": { 
+                en: "\"Paka\" (పాక)", 
+                te: "\"పాక\" (పాక)" 
+            },
+            "name2-desc": { 
+                en: "Means \"grove\" or \"flourishing vegetation area\". Reflects the lush greenery surrounding the hill.",
+                te: "\"చెట్ల తోట\" లేదా \"సమృద్ధిగా వృక్షసంపద ఉన్న ప్రాంతం\" అని అర్థం. కొండ చుట్టూ ఉన్న పచ్చదనాన్ని ప్రతిబింబిస్తుంది."
+            },
+            "name3-title": { 
+                en: "\"Konda\" (కొండ)", 
+                te: "\"కొండ\" (కొండ)" 
+            },
+            "name3-desc": { 
+                en: "Common Telugu suffix meaning \"hill\" or \"mountain\". The three peaks represent Brahma, Vishnu, and Shiva.",
+                te: "\"కొండ\" లేదా \"పర్వతం\" అనే తెలుగు ప్రత్యయం. మూడు శిఖరాలు బ్రహ్మ, విష్ణు మరియు శివుని సూచిస్తాయి."
+            },
+
+            // History
+            "history-title": { 
+                en: "Historical Timeline", 
+                te: "చారిత్రక కాలక్రమం" 
+            },
+            "era1-title": { 
+                en: "Ancient Period (Pre-5th CE)", 
+                te: "ప్రాచీన కాలం (5వ శతాబ్దానికి ముందు)" 
+            },
+            "era1-desc": { 
+                en: "Early tribal and Shaivite worship in the hill groves. Oral traditions indicate sacred water springs and caves.",
+                te: "కొండ చెట్ల తోటలలో ప్రారంభిక గిరిజన మరియు శైవ ఆరాధన. మౌఖిక సంప్రదాయాలు పవిత్ర నీటి ఊటలు మరియు గుహలను సూచిస్తున్నాయి."
+            },
+            "era2-title": { 
+                en: "Chalukya Period (7th-9th CE)", 
+                te: "చాళుక్య కాలం (7-9వ శతాబ్దం)" 
+            },
+            "era2-desc": { 
+                en: "Construction of stone pathways and basic mandapas. Temple gained regional popularity in Velanadu region.",
+                te: "రాతి మార్గాలు మరియు ప్రాథమిక మండపాల నిర్మాణం. వేలనాడు ప్రాంతంలో దేవాలయానికి ప్రాంతీయ ప్రజాదరణ లభించింది."
+            },
+            "era3-title": { 
+                en: "Kakatiya Dynasty (12th-14th CE)", 
+                te: "కాకతీయ రాజవంశం (12-14వ శతాబ్దం)" 
+            },
+            "era3-desc": { 
+                en: "Stone staircases and small Shiva shrines built on lower slopes. Land grants made to Brahmin priests.",
+                te: "కొండ యొక్క దిగువ వాలులపై రాతి మెట్లు మరియు చిన్న శివాలయాలు నిర్మించబడ్డాయి. బ్రాహ్మణ పూజారులకు భూమి మంజూరీలు జరిగాయి."
+            },
+            "era4-title": { 
+                en: "Vijayanagara Period (15th-16th CE)", 
+                te: "విజయనగర కాలం (15-16వ శతాబ్దం)" 
+            },
+            "era4-desc": { 
+                en: "Grand gopuram and flagpole added. Shivaratri became major event drawing thousands annually.",
+                te: "గొప్ప గోపురం మరియు జెండా స్తంభం జోడించబడ్డాయి. శివరాత్రి వేలాది మందిని ఆకర్షించే ప్రధాన సంఘటనగా మారింది."
+            },
+            "era5-title": { 
+                en: "British Colonial Period", 
+                te: "బ్రిటిష్ కాలనీ కాలం" 
+            },
+            "era5-desc": { 
+                en: "Included in Madras Gazetteers. Jatara attracted over 50,000 people. Colonial maps mark \"Trikoota Hills\".",
+                te: "మద్రాసు గెజిటీయర్లలో చేర్చబడింది. జాతర 50,000కి పైగా మందిని ఆకర్షించింది. కాలనీ మ్యాప్లు \"త్రికూట హిల్స్\"గా గుర్తించాయి."
+            },
+
+            // Geography
+            "geo-title": { 
+                en: "Natural Treasures", 
+                te: "ప్రకృతి సంపద" 
+            },
+            "geo1-title": { 
+                en: "Trikuta Hills", 
+                te: "త్రికూట కొండలు" 
+            },
+            "geo1-desc": { 
+                en: "Three sacred peaks rising to 1,600 feet: Brahma Konda (Creation), Vishnu Konda (Preservation), and Rudra Konda (Destruction).",
+                te: "1,600 అడుగుల ఎత్తుకు ఎగిరే మూడు పవిత్ర శిఖరాలు: బ్రహ్మ కొండ (సృష్టి), విష్ణు కొండ (సంరక్షణ) మరియు రుద్ర కొండ (విధ్వంసం)."
+            },
+            "geo2-title": { 
+                en: "Sacred Ponds", 
+                te: "పవిత్ర కొలనులు" 
+            },
+            "geo2-desc": { 
+                en: "Shiva Ganga and Brahma Teertham at the foothills - perennial water sources considered holy teerthams.",
+                te: "కొండ అడుగులలో శివ గంగ మరియు బ్రహ్మ తీర్థం - పవిత్ర తీర్థాలుగా పరిగణించబడే శాశ్వత నీటి వనరులు."
+            },
+            "geo3-title": { 
+                en: "Flora & Fauna", 
+                te: "వృక్షజాలం మరియు జంతుజాలం" 
+            },
+            "geo3-desc": { 
+                en: "Lush greenery with mango orchards, tamarind trees, and seasonal flowers. Home to peacocks and monkeys.",
+                te: "మామిడి తోటలు, చింత చెట్లు మరియు కాలానుగుణ పువ్వులతో సమృద్ధిగా పచ్చదనం. నెమళ్ళు మరియు కోతులకు నివాసం."
+            },
+
+            // Sacred Sites
+            "temples-title": { 
+                en: "Sacred Sites", 
+                te: "పవిత్ర స్థలాలు" 
+            },
+            "temple1-title": { 
+                en: "Trikoteswara Swamy Temple", 
+                te: "త్రికోటేశ్వర స్వామి దేవాలయం" 
+            },
+            "temple1-desc": { 
+                en: "Main sanctum dedicated to Lord Shiva in his three-peaked form at the hill's summit. Features Vijayanagara-era architecture.",
+                te: "కొండ శిఖరంలో మూడు శిఖరాల రూపంలో భగవాన్ శివునికి అంకితమైన ప్రధాన గర్భగుడి. విజయనగర యుగం నాటి నిర్మాణ శైలిని కలిగి ఉంది."
+            },
+            "temple2-title": { 
+                en: "Nandi Mandapa", 
+                te: "నంది మండపం" 
+            },
+            "temple2-desc": { 
+                en: "Pavilion with a large Nandi (Shiva's bull) facing the main sanctum. Site of special abhishekams during festivals.",
+                te: "ప్రధాన గర్భగుడిని ఎదుర్కొంటున్న పెద్ద నంది (శివుని ఎద్దు) ఉన్న మండపం. పండుగల సమయంలో ప్రత్యేక అభిషేకాల స్థలం."
+            },
+            "temple3-title": { 
+                en: "Parvati Mandapam", 
+                te: "పార్వతి మండపం" 
+            },
+            "temple3-desc": { 
+                en: "Shrine dedicated to Goddess Parvati with exquisite carvings. Women perform special pujas here for family welfare.",
+                te: "అద్భుతమైన చెక్కడాలతో కూడిన పార్వతీ దేవికి అంకితమైన దేవాలయం. మహిళలు ఇక్కడ కుటుంబ సంక్షేమం కోసం ప్రత్యేక పూజలు చేస్తారు."
+            },
+
+            // Festivals
+            "festivals-title": { 
+                en: "Major Festivals", 
+                te: "ప్రధాన పండుగలు" 
+            },
+            "festival1-title": { 
+                en: "Mahashivaratri Jatara", 
+                te: "మహాశివరాత్రి జాతర" 
+            },
+            "festival1-desc": { 
+                en: "Grand festival attracting 6-8 lakh devotees. Features mass chanting, temple chariot processions, and cultural programs.",
+                te: "6-8 లక్షల మంది భక్తులను ఆకర్షించే గొప్ప పండుగ. సామూహిక జపం, దేవాలయ రథోత్సవాలు మరియు సాంస్కృతిక కార్యక్రమాలను కలిగి ఉంటుంది."
+            },
+            "festival2-title": { 
+                en: "Karthika Deepotsavam", 
+                te: "కార్తీక దీపోత్సవం" 
+            },
+            "festival2-desc": { 
+                en: "Festival of lights with thousands of lamps illuminating the hill. Special pujas performed during Karthika month.",
+                te: "కొండను ప్రకాశింపజేసే వేలాది దీపాలతో కూడిన దీపాల పండుగ. కార్తీక మాసంలో ప్రత్యేక పూజలు నిర్వహిస్తారు."
+            },
+            "festival3-title": { 
+                en: "Shravana Rudrabhishekam", 
+                te: "శ్రావణ రుద్రాభిషేకం" 
+            },
+            "festival3-desc": { 
+                en: "Special abhishekams performed during Shravana month. Devotees climb the hill with holy water from sacred rivers.",
+                te: "శ్రావణ మాసంలో ప్రత్యేక అభిషేకాలు నిర్వహిస్తారు. భక్తులు పవిత్ర నదుల నుండి పవిత్ర జలంతో కొండ ఎక్కుతారు."
+            },
+
+            // Economy
+            "economy-title": { 
+                en: "Local Economy", 
+                te: "స్థానిక ఆర్థిక వ్యవస్థ" 
+            },
+            "econ1-title": { 
+                en: "Temple Tourism", 
+                te: "దేవాలయ పర్యాటకం" 
+            },
+            "econ1-desc": { 
+                en: "Devotees buy brass lamps, rudraksha malas, hill turmeric, and coconut garlands. Supports local artisans and shops.",
+                te: "భక్తులు పిత్తడి దీపాలు, రుద్రాక్ష మాలలు, కొండ పసుపు మరియు కొబ్బరి హారాలను కొనుగోలు చేస్తారు. స్థానిక కళాకారులు మరియు దుకాణాలకు మద్దతు ఇస్తుంది."
+            },
+            "econ2-title": { 
+                en: "Agriculture", 
+                te: "వ్యవసాయం" 
+            },
+            "econ2-desc": { 
+                en: "Mango and tamarind orchards thrive on hill slopes. Cotton, chillies, and turmeric are major cash crops.",
+                te: "కొండ వాలులపై మామిడి మరియు చింత తోటలు అభివృద్ధి చెందుతాయి. పత్తి, మిరప మరియు పసుపు ప్రధాన వాణిజ్య పంటలు."
+            },
+            "econ3-title": { 
+                en: "Handicrafts", 
+                te: "హస్తకళలు" 
+            },
+            "econ3-desc": { 
+                en: "Local artisans make clay Shiva idols, wooden walking sticks, and herbal hair oils from hill plants.",
+                te: "స్థానిక కళాకారులు మట్టి శివ విగ్రహాలు, చెక్క నడక కర్రలు మరియు కొండ మొక్కల నుండి హెర్బల్ జుట్టు నూనెలను తయారు చేస్తారు."
+            },
+
+            // Village Profile
+            "demo-title": { 
+                en: "Village Profile", 
+                te: "గ్రామ ప్రొఫైల్" 
+            },
+            "stat1-label": { 
+                en: "Attribute", 
+                te: "లక్షణం" 
+            },
+            "stat1-value": { 
+                en: "Data", 
+                te: "డేటా" 
+            },
+            "stat2-label": { 
+                en: "Population", 
+                te: "జనాభా" 
+            },
+            "stat2-value": { 
+                en: "~3,700", 
+                te: "~3,700" 
+            },
+            "stat3-label": { 
+                en: "Languages", 
+                te: "భాషలు" 
+            },
+            "stat3-value": { 
+                en: "Telugu", 
+                te: "తెలుగు" 
+            },
+            "stat4-label": { 
+                en: "Primary Livelihood", 
+                te: "ప్రాథమిక జీవనోపాధి" 
+            },
+            "stat4-value": { 
+                en: "Temple trade, agriculture", 
+                te: "దేవాలయ వాణిజ్యం, వ్యవసాయం" 
+            },
+            "stat5-label": { 
+                en: "Literacy Rate", 
+                te: "సాక్షరత రేటు" 
+            },
+            "stat5-value": { 
+                en: "~69%", 
+                te: "~69%" 
+            },
+            "stat6-label": { 
+                en: "Nearest Town", 
+                te: "సమీప పట్టణం" 
+            },
+            "stat6-value": { 
+                en: "Narasaraopet (~15 km)", 
+                te: "నరసరావుపేట (~15 కి.మీ.)" 
+            },
+            "stat7-label": { 
+                en: "Transport", 
+                te: "రవాణా" 
+            },
+            "stat7-value": { 
+                en: "Regular APSRTC buses, autos to temple base", 
+                te: "నియమిత APSRTC బస్సులు, దేవాలయ బేస్కు ఆటోలు" 
+            },
+            "stat8-label": { 
+                en: "PIN Code", 
+                te: "పిన్ కోడ్" 
+            },
+            "stat8-value": { 
+                en: "522413", 
+                te: "522413" 
+            },
+
+            // Facts
+            "facts-title": { 
+                en: "Little-Known Facts", 
+                te: "తక్కువ తెలిసిన విషయాలు" 
+            },
+            "fact1-title": { 
+                en: "Three-Peaked Architecture", 
+                te: "మూడు శిఖరాల నిర్మాణం" 
+            },
+            "fact1-desc": { 
+                en: "The temple's three-peaked design is one of the few of its kind in India, representing the Trimurti.",
+                te: "దేవాలయం యొక్క మూడు శిఖరాల డిజైన్ భారతదేశంలో దాని రకానికి చెందిన కొన్నింటిలో ఒకటి, త్రిమూర్తులను సూచిస్తుంది."
+            },
+            "fact2-title": { 
+                en: "Perennial Springs", 
+                te: "శాశ్వత ఊటలు" 
+            },
+            "fact2-desc": { 
+                en: "Water springs at the hilltop never dry up - considered sacred teerthams with healing properties.",
+                te: "కొండ శిఖరంలోని నీటి ఊటలు ఎప్పుడూ ఆరవు - నయం చేసే లక్షణాలతో కూడిన పవిత్ర తీర్థాలుగా పరిగణించబడతాయి."
+            },
+            "fact3-title": { 
+                en: "Koti Deepotsavam", 
+                te: "కోటి దీపోత్సవం" 
+            },
+            "fact3-desc": { 
+                en: "Devotees light one crore lamps during special festivals for family wishes and prosperity.",
+                te: "భక్తులు కుటుంబ కోరికలు మరియు సంపద కోసం ప్రత్యేక పండుగల సమయంలో ఒక కోటి దీపాలు వెలిగిస్తారు."
+            },
+            "fact4-title": { 
+                en: "Vijayanagara Shivling", 
+                te: "విజయనగర శివలింగం" 
+            },
+            "fact4-desc": { 
+                en: "The temple once housed a metal Shivling from the Vijayanagara era, now preserved in the temple vault.",
+                te: "దేవాలయంలో ఒకప్పుడు విజయనగర యుగం నాటి లోహ శివలింగం ఉండేది, ఇప్పుడు దేవాలయ భద్రపరచబడింది."
+            },
+            "fact5-title": { 
+                en: "Pilgrimage Routes", 
+                te: "యాత్రా మార్గాలు" 
+            },
+            "fact5-desc": { 
+                en: "Some devotees climb the hill on their knees or with special vows as acts of devotion.",
+                te: "కొంతమంది భక్తులు భక్తి చర్యలుగా మోకాళ్ళపై లేదా ప్రత్యేక ప్రతిజ్ఞలతో కొండ ఎక్కుతారు."
+            },
+            "fact6-title": { 
+                en: "Tribal Connections", 
+                te: "గిరిజన అనుబంధాలు" 
+            },
+            "fact6-desc": { 
+                en: "Early tribal communities considered the hill a spiritual zone before temple construction.",
+                te: "ప్రారంభ గిరిజన సమాజాలు దేవాలయ నిర్మాణానికి ముందు కొండను ఆధ్యాత్మిక మండలంగా భావించారు."
+            },
+
+            // Footer
+            "footer-quote": { 
+                en: "\"Kotappakonda is where faith climbs hills. It's where every footstep becomes a prayer, every lamp a promise, and every echo in the hills — a whisper from Shiva.\"", 
+                te: "\"కోటప్పకొండ విశ్వాసం కొండలు ఎక్కే చోట. ఇది ప్రతి అడుగు ప్రార్థనగా మారే చోట, ప్రతి దీపం ఒక వాగ్దానంగా మారే చోట, మరియు కొండలలో ప్రతి ప్రతిధ్వని శివుని పిలుపుగా మారే చోట.\"" 
+            },
+            "map-btn": { 
+                en: "View on Google Maps", 
+                te: "గూగుల్ మ్యాప్స్‌లో వీక్షించండి" 
+            },
+            "copyright": { 
+                en: "© 2023 Kotappakonda Temple Heritage. All rights reserved.", 
+                te: "© 2023 కోటప్పకొండ దేవాలయ వారసత్వం. అన్ని హక్కులు ప్రత్యేకించబడినవి." 
+            }
+        };
+
+        // Language Toggle Functionality
+        function setLanguage(lang) {
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update button states
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            document.getElementById('te-btn').classList.toggle('active', lang === 'te');
+            
+            // Update all translatable elements
+            for (const [id, texts] of Object.entries(translations)) {
+                const element = document.getElementById(id);
+                if (element) element.textContent = texts[lang];
+            }
+        }
+
+        // Scroll Animations for Timeline
+        function checkVisibility() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial language from localStorage or default to English
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+            
+            // Set up event listeners
+            document.getElementById('en-btn').addEventListener('click', () => setLanguage('en'));
+            document.getElementById('te-btn').addEventListener('click', () => setLanguage('te'));
+            
+            // Run initial animations
+            checkVisibility();
+        });
+
+        window.addEventListener('scroll', checkVisibility);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nellipaka | The Sacred Amla Grove by Godavari</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Earthy Color Scheme */
+        :root {
+            --primary: #4a7c59;   /* Amla Green */
+            --secondary: #6d4c3d;  /* Tribal Brown */
+            --accent: #f4a261;     /* Turmeric Yellow */
+            --light: #f9f9f9;
+            --dark: #333;
+            --text: #555;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Skip to Content Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header with Forest Background */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('./images/nellipaka.jpg') center/cover fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header-content {
+            width: 100%;
+            animation: fadeIn 1.5s ease;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0 auto;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+        }
+
+        /* Grid Layouts */
+        .name-breakdown,
+        .geo-features,
+        .facts-grid,
+        .temple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-content h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Stats Table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .stats-table th, .stats-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stats-table th {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .stats-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        /* Facts Cards */
+        .fact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .fact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .map-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 10px 0;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+          
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 50px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .name-breakdown,
+            .geo-features,
+            .facts-grid,
+            .temple-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to Content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="en-btn" aria-label="Switch to English">English</button>
+            <button class="lang-btn" id="te-btn" aria-label="Switch to Telugu">తెలుగు</button>
+        </div>
+
+        <div class="header-content">
+            <h1 id="header-title">Nellipaka</h1>
+            <p id="header-subtitle">The Sacred Amla Grove by Godavari</p>
+            <div class="location-tag" id="location-tag">Alluri Sitharama Raju District, Andhra Pradesh</div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#name" id="nav-name">Name Origin</a></li>
+            <li><a href="#history" id="nav-history">History</a></li>
+            <li><a href="#geography" id="nav-geography">Nature</a></li>
+            <li><a href="#temples" id="nav-temples">Sacred Sites</a></li>
+            <li><a href="#festivals" id="nav-festivals">Festivals</a></li>
+            <li><a href="#economy" id="nav-economy">Economy</a></li>
+            <li><a href="#facts" id="nav-facts">Facts</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Name Origin Section -->
+        <section id="name" class="name-origin">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="name-title">Why "Nellipaka"?</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name1-title">"Nelli" (నెల్లి)</h3>
+                            <p id="name1-desc">
+                                Telugu word for Indian Gooseberry (Amla), a sacred medicinal fruit revered in Ayurveda and tribal medicine.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name2-title">"Paka" (పాక)</h3>
+                            <p id="name2-desc">
+                                Means "grove", "zone", or "spreading area of flora". Found in ancient settlements with botanical significance.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name3-title">Sacred Interpretation</h3>
+                            <p id="name3-desc">
+                                "Nellipaka" translates to "The Amla Grove" or "Region of Gooseberries", reflecting its historic forest cover of sacred Amla trees.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="history">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="history-title">Historical Timeline</h2>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era1-title">Prehistoric Times</h3>
+                            <p id="era1-desc">
+                                Part of the ancient forest belt of Dandakaranya. Rock shelters and cave engravings found nearby.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era2-title">Ramayana Era</h3>
+                            <p id="era2-desc">
+                                Believed to have been crossed by Rama and Sita during exile. Tribal communities worship trees associated with Sita.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era3-title">Kakatiya Rule (12th-14th CE)</h3>
+                            <p id="era3-desc">
+                                Area used for timber and medicinal collection, guarded by Koya and Konda Reddy tribal clans.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era4-title">British Colonial Period</h3>
+                            <p id="era4-desc">
+                                Came under Agency Tracts; forest guesthouses built for British officials during inspections.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era5-title">Post-Independence</h3>
+                            <p id="era5-desc">
+                                Hub of tribal land movements in 1980s-90s. Now peaceful with eco-focused development initiatives.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nature & Wildlife Section -->
+        <section id="geography" class="geography">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="geo-title">Natural Treasures</h2>
+                </div>
+                
+                <div class="geo-features">
+                    <div class="card">
+                        <img src="images/godavari-river.jpg" alt="Godavari River near Nellipaka" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo1-title">Godavari River</h3>
+                            <p id="geo1-desc">
+                                The village lies along the sacred Godavari's edge, with lush riverbanks used for rituals and farming.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/amla-grove.jpg" alt="Sacred Amla groves" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo2-title">Amla Groves</h3>
+                            <p id="geo2-desc">
+                                Once covered with dense Amla trees, these sacred groves are central to tribal medicine and rituals.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/forest-wildlife.jpg" alt="Forest wildlife" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo3-title">Forest Wildlife</h3>
+                            <p id="geo3-desc">
+                                Home to peacocks, wild boars, monkeys, and revered snakes worshipped during Nagula Chavithi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sacred Sites Section -->
+        <section id="temples" class="temples">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="temples-title">Sacred Sites</h2>
+                </div>
+                
+                <div class="temple-grid">
+                    <div class="card">
+                        <img src="images/seetha-rama-temple.jpg" alt="Sri Seetha Ramachandra Swamy Temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple1-title">Sri Seetha Ramachandra Swamy</h3>
+                            <p id="temple1-desc">
+                                Located by the Godavari riverbank, built where Sita rested under an Amla tree. Major celebrations during Sri Rama Navami.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/nagula-banda.jpg" alt="Nagula Banda serpent rock" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple2-title">Nagula Banda</h3>
+                            <p id="temple2-desc">
+                                Natural serpent-shaped rock worshipped with turmeric and milk. Women pray here for childbirth and protection.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/tribal-altar.jpg" alt="Tribal grove altars" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple3-title">Tribal Grove Altars</h3>
+                            <p id="temple3-desc">
+                                Forest shrines marked by stone circles and bamboo poles, worshipped by Koya and Konda Reddy tribes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Festivals Section -->
+        <section id="festivals" class="festivals">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="festivals-title">Tribal Festivals</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="images/amla-jatara.jpg" alt="Amla Jatara festival" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival1-title">Amla Jatara</h3>
+                            <p id="festival1-desc">
+                                Celebration of the sacred Nelli (Amla) tree with offerings, dances, and herbal medicine demonstrations.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/nagula-chavithi.jpg" alt="Nagula Chavithi snake worship" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival2-title">Nagula Chavithi</h3>
+                            <p id="festival2-desc">
+                                Snake worship festival with turmeric snake art, rangoli, and milk offerings at Nagula Banda.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/koya-festival.jpg" alt="Koya Harvest Festival" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival3-title">Koya Harvest Festival</h3>
+                            <p id="festival3-desc">
+                                Tribal drumming, storytelling, seed rituals, and bamboo craft exhibitions celebrating the harvest.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Economy Section -->
+        <section id="economy" class="economy">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="economy-title">Village Economy</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="images/banana-plantation.jpg" alt="Nellipaka banana plantations" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ1-title">Banana Farming</h3>
+                            <p id="econ1-desc">
+                                Special Nellipaka banana variety (under GI tag application) exported to Hyderabad and Vijayawada.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/turmeric-farming.jpg" alt="Turmeric farming" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ2-title">Turmeric Cultivation</h3>
+                            <p id="econ2-desc">
+                                Grown on forest fringes using traditional methods. Used in rituals and local medicine.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/forest-products.jpg" alt="Forest products collection" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ3-title">Forest Economy</h3>
+                            <p id="econ3-desc">
+                                Collection of wild honey, neem fruits, tulasi, and bamboo for crafts and construction.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Village Profile Section -->
+        <section id="demographics" class="demographics">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="demo-title">Village Profile</h2>
+                </div>
+                
+                <table class="stats-table">
+                    <tr>
+                        <th id="stat1-label">Attribute</th>
+                        <th id="stat1-value">Data</th>
+                    </tr>
+                    <tr>
+                        <td id="stat2-label">Population</td>
+                        <td id="stat2-value">~6,100</td>
+                    </tr>
+                    <tr>
+                        <td id="stat3-label">Major Tribes</td>
+                        <td id="stat3-value">Koya, Konda Reddy</td>
+                    </tr>
+                    <tr>
+                        <td id="stat4-label">Languages</td>
+                        <td id="stat4-value">Telugu, Koya dialect</td>
+                    </tr>
+                    <tr>
+                        <td id="stat5-label">Literacy Rate</td>
+                        <td id="stat5-value">~58%</td>
+                    </tr>
+                    <tr>
+                        <td id="stat6-label">Nearest Town</td>
+                        <td id="stat6-value">Bhadrachalam (~15 km)</td>
+                    </tr>
+                    <tr>
+                        <td id="stat7-label">Transport</td>
+                        <td id="stat7-value">Buses via NH-30; railway at Kothagudem</td>
+                    </tr>
+                    <tr>
+                        <td id="stat8-label">PIN Code</td>
+                        <td id="stat8-value">507114</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Fascinating Facts Section -->
+        <section id="facts" class="facts">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="facts-title">Little-Known Facts</h2>
+                </div>
+                
+                <div class="facts-grid">
+                    <div class="fact-card">
+                        <h3 id="fact1-title">British-Era Guesthouse</h3>
+                        <p id="fact1-desc">
+                            A colonial forest guesthouse still stands, now used as a government outpost.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact2-title">GI-Tag Bananas</h3>
+                        <p id="fact2-desc">
+                            Nellipaka bananas are under GI tag application due to unique taste and shelf life.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact3-title">Sita Vanam</h3>
+                        <p id="fact3-desc">
+                            A forest path where villagers claim ancient trees "talk at night" with rustling sounds.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact4-title">Tribal Resistance</h3>
+                        <p id="fact4-desc">
+                            Strategic location in 1980s tribal land movements against exploitation.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact5-title">Sacred Snakes</h3>
+                        <p id="fact5-desc">
+                            Snakes are never harmed; worshipped as guardians during Nagula Chavithi.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact6-title">Herbal Wisdom</h3>
+                        <p id="fact6-desc">
+                            Elder women pass down herbal healing chants using Amla, turmeric, and wild tulasi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-quote" id="footer-quote">
+                "Nellipaka is more than a village — it's a forest memory. Where rivers narrate mythology, trees bless the soil, and people live in harmony with the green gods around them."
+            </p>
+            
+            <a href="https://www.google.com/maps/place/Nellipaka,+Andhra+Pradesh" class="map-btn" target="_blank" id="map-btn" aria-label="View Nellipaka on Google Maps">
+                <i class="fas fa-map-marker-alt"></i> View on Google Maps
+            </a>
+            
+            
+        </div>
+    </footer>
+
+    <script>
+        // Language Data
+        const translations = {
+            // Header
+            "header-title": { 
+                en: "Nellipaka", 
+                te: "నెల్లిపాక" 
+            },
+            "header-subtitle": { 
+                en: "The Sacred Amla Grove by Godavari", 
+                te: "గోదావరి ఒడ్డున పవిత్ర ఆమ్లక గుల్మం" 
+            },
+            "location-tag": { 
+                en: "Alluri Sitharama Raju District, Andhra Pradesh", 
+                te: "అల్లూరి సీతారామ రాజు జిల్లా, ఆంధ్రప్రదేశ్" 
+            },
+
+            // Navigation
+            "nav-name": { 
+                en: "Name Origin", 
+                te: "పేరు మూలం" 
+            },
+            "nav-history": { 
+                en: "History", 
+                te: "చరిత్ర" 
+            },
+            "nav-geography": { 
+                en: "Nature", 
+                te: "ప్రకృతి" 
+            },
+            "nav-temples": { 
+                en: "Sacred Sites", 
+                te: "పవిత్ర స్థలాలు" 
+            },
+            "nav-festivals": { 
+                en: "Festivals", 
+                te: "పండుగలు" 
+            },
+            "nav-economy": { 
+                en: "Economy", 
+                te: "ఆర్థిక వ్యవస్థ" 
+            },
+            "nav-facts": { 
+                en: "Facts", 
+                te: "విశేషాలు" 
+            },
+
+            // Name Origin
+            "name-title": { 
+                en: "Why \"Nellipaka\"?", 
+                te: "\"నెల్లిపాక\" అనే పేరు ఎందుకు?" 
+            },
+            "name1-title": { 
+                en: "\"Nelli\" (నెల్లి)", 
+                te: "\"నెల్లి\" (నెల్లి)" 
+            },
+            "name1-desc": { 
+                en: "Telugu word for Indian Gooseberry (Amla), a sacred medicinal fruit revered in Ayurveda and tribal medicine.",
+                te: "ఆయుర్వేదం మరియు గిరిజన వైద్యంలో పవిత్రమైన ఔషధ పండు అయిన ఆమ్లక (ఉసిరి) కు తెలుగు పదం."
+            },
+            "name2-title": { 
+                en: "\"Paka\" (పాక)", 
+                te: "\"పాక\" (పాక)" 
+            },
+            "name2-desc": { 
+                en: "Means \"grove\", \"zone\", or \"spreading area of flora\". Found in ancient settlements with botanical significance.",
+                te: "\"గుల్మం\", \"మండలం\" లేదా \"సస్యవర్గం వ్యాప్తి ప్రాంతం\" అని అర్థం. వృక్షశాస్త్ర ప్రాముఖ్యత ఉన్న ప్రాచీన స్థావరాలలో కనిపిస్తుంది."
+            },
+            "name3-title": { 
+                en: "Sacred Interpretation", 
+                te: "పవిత్ర అర్థం" 
+            },
+            "name3-desc": { 
+                en: "\"Nellipaka\" translates to \"The Amla Grove\" or \"Region of Gooseberries\", reflecting its historic forest cover of sacred Amla trees.",
+                te: "\"నెల్లిపాక\" అనగా \"ఆమ్లక గుల్మం\" లేదా \"ఉసిరి పండ్ల ప్రాంతం\", పవిత్ర ఆమ్లక చెట్ల చారిత్రక అడవి ఆవరణను ప్రతిబింబిస్తుంది."
+            },
+
+            // History
+            "history-title": { 
+                en: "Historical Timeline", 
+                te: "చారిత్రక కాలక్రమం" 
+            },
+            "era1-title": { 
+                en: "Prehistoric Times", 
+                te: "ప్రాచీన కాలం" 
+            },
+            "era1-desc": { 
+                en: "Part of the ancient forest belt of Dandakaranya. Rock shelters and cave engravings found nearby.",
+                te: "పురాతన దండకారణ్య అడవి పట్టీలో భాగం. సమీపంలో రాతి ఆశ్రయాలు మరియు గుహలో చెక్కిన చిత్రాలు కనుగొనబడ్డాయి."
+            },
+            "era2-title": { 
+                en: "Ramayana Era", 
+                te: "రామాయణ యుగం" 
+            },
+            "era2-desc": { 
+                en: "Believed to have been crossed by Rama and Sita during exile. Tribal communities worship trees associated with Sita.",
+                te: "రాముడు మరియు సీత వనవాస సమయంలో ఇక్కడికి వచ్చినట్లు నమ్మకం. గిరిజన సమాజాలు సీతాదేవికి సంబంధించిన చెట్లను పూజిస్తారు."
+            },
+            "era3-title": { 
+                en: "Kakatiya Rule (12th-14th CE)", 
+                te: "కాకతీయ పాలన (12-14వ శతాబ్దం)" 
+            },
+            "era3-desc": { 
+                en: "Area used for timber and medicinal collection, guarded by Koya and Konda Reddy tribal clans.",
+                te: "కోయ మరియు కొండ రెడ్డి గిరిజన వంశాలు కాపలా కాస్తూ, కలప మరియు ఔషధ సేకరణకు ఉపయోగించే ప్రాంతం."
+            },
+            "era4-title": { 
+                en: "British Colonial Period", 
+                te: "బ్రిటిష్ కాలనీ కాలం" 
+            },
+            "era4-desc": { 
+                en: "Came under Agency Tracts; forest guesthouses built for British officials during inspections.",
+                te: "ఏజెన్సీ ట్రాక్ట్స్ కిందకు వచ్చింది; బ్రిటిష్ అధికారుల కోసం తనిఖీల సమయంలో అడవి గెస్ట్ హౌస్లు నిర్మించబడ్డాయి."
+            },
+            "era5-title": { 
+                en: "Post-Independence", 
+                te: "స్వాతంత్ర్యానంతరం" 
+            },
+            "era5-desc": { 
+                en: "Hub of tribal land movements in 1980s-90s. Now peaceful with eco-focused development initiatives.",
+                te: "1980-90లలో గిరిజన భూమి ఉద్యమాల కేంద్రం. ఇప్పుడు పర్యావరణ-కేంద్రీకృత అభివృద్ధి కార్యక్రమాలతో ప్రశాంతమైనది."
+            },
+
+            // Geography
+            "geo-title": { 
+                en: "Natural Treasures", 
+                te: "ప్రకృతి సంపద" 
+            },
+            "geo1-title": { 
+                en: "Godavari River", 
+                te: "గోదావరి నది" 
+            },
+            "geo1-desc": { 
+                en: "The village lies along the sacred Godavari's edge, with lush riverbanks used for rituals and farming.",
+                te: "గ్రామం పవిత్రమైన గోదావరి ఒడ్డున ఉంది, ఆరాధనలు మరియు వ్యవసాయానికి ఉపయోగించే సమృద్ధిగా ఉన్న నది ఒడ్డులతో."
+            },
+            "geo2-title": { 
+                en: "Amla Groves", 
+                te: "ఆమ్లక గుల్మాలు" 
+            },
+            "geo2-desc": { 
+                en: "Once covered with dense Amla trees, these sacred groves are central to tribal medicine and rituals.",
+                te: "ఒకప్పుడు దట్టమైన ఆమ్లక చెట్లతో కప్పబడి ఉండే ఈ పవిత్ర గుల్మాలు గిరిజన వైద్యం మరియు ఆచారాలకు కేంద్రంగా ఉన్నాయి."
+            },
+            "geo3-title": { 
+                en: "Forest Wildlife", 
+                te: "అడవి వన్యజీవులు" 
+            },
+            "geo3-desc": { 
+                en: "Home to peacocks, wild boars, monkeys, and revered snakes worshipped during Nagula Chavithi.",
+                te: "నెమళ్ళు, అడవి పందులు, కోతులు మరియు నాగుల చవితి సమయంలో పూజించే పవిత్ర సర్పాలకు నివాసం."
+            },
+
+            // Sacred Sites
+            "temples-title": { 
+                en: "Sacred Sites", 
+                te: "పవిత్ర స్థలాలు" 
+            },
+            "temple1-title": { 
+                en: "Sri Seetha Ramachandra Swamy", 
+                te: "శ్రీ సీతా రామచంద్ర స్వామి" 
+            },
+            "temple1-desc": { 
+                en: "Located by the Godavari riverbank, built where Sita rested under an Amla tree. Major celebrations during Sri Rama Navami.",
+                te: "గోదావరి ఒడ్డున ఉంది, సీత ఒక ఆమ్లక చెట్టు కింద విశ్రాంతి తీసుకున్న ప్రదేశంలో నిర్మించబడింది. శ్రీ రామ నవమి సమయంలో ప్రధాన వేడుకలు."
+            },
+            "temple2-title": { 
+                en: "Nagula Banda", 
+                te: "నాగుల బండ" 
+            },
+            "temple2-desc": { 
+                en: "Natural serpent-shaped rock worshipped with turmeric and milk. Women pray here for childbirth and protection.",
+                te: "పసుపు మరియు పాలు తో పూజించే సహజ సర్ప ఆకారపు రాయి. స్త్రీలు ఇక్కడ ప్రసవం మరియు రక్షణ కోసం ప్రార్థిస్తారు."
+            },
+            "temple3-title": { 
+                en: "Tribal Grove Altars", 
+                te: "గిరిజన గుల్మ బలిపీఠాలు" 
+            },
+            "temple3-desc": { 
+                en: "Forest shrines marked by stone circles and bamboo poles, worshipped by Koya and Konda Reddy tribes.",
+                te: "రాళ్ళ వృత్తాలు మరియు బాంబు స్తంభాలతో గుర్తించబడిన అడవి దేవాలయాలు, కోయ మరియు కొండ రెడ్డి గిరిజనులు పూజిస్తారు."
+            },
+
+            // Festivals
+            "festivals-title": { 
+                en: "Tribal Festivals", 
+                te: "గిరిజన పండుగలు" 
+            },
+            "festival1-title": { 
+                en: "Amla Jatara", 
+                te: "ఆమ్లక జాతర" 
+            },
+            "festival1-desc": { 
+                en: "Celebration of the sacred Nelli (Amla) tree with offerings, dances, and herbal medicine demonstrations.",
+                te: "పవిత్ర ఆమ్లక చెట్టు యొక్క వేడుక, నైవేద్యాలు, నృత్యాలు మరియు ఔషధ ప్రదర్శనలతో."
+            },
+            "festival2-title": { 
+                en: "Nagula Chavithi", 
+                te: "నాగుల చవితి" 
+            },
+            "festival2-desc": { 
+                en: "Snake worship festival with turmeric snake art, rangoli, and milk offerings at Nagula Banda.",
+                te: "పసుపు సర్ప కళ, రంగోలి మరియు నాగుల బండ వద్ద పాలు నైవేద్యాలతో సర్ప ఆరాధన పండుగ."
+            },
+            "festival3-title": { 
+                en: "Koya Harvest Festival", 
+                te: "కోయ పంట పండుగ" 
+            },
+            "festival3-desc": { 
+                en: "Tribal drumming, storytelling, seed rituals, and bamboo craft exhibitions celebrating the harvest.",
+                te: "గిరిజన డ్రమ్మింగ్, కథనం, విత్తన ఆచారాలు మరియు పంటను జరుపుకునే బాంబు క్రాఫ్ట్ ప్రదర్శనలు."
+            },
+
+            // Economy
+            "economy-title": { 
+                en: "Village Economy", 
+                te: "గ్రామ ఆర్థిక వ్యవస్థ" 
+            },
+            "econ1-title": { 
+                en: "Banana Farming", 
+                te: "అరటి సాగు" 
+            },
+            "econ1-desc": { 
+                en: "Special Nellipaka banana variety (under GI tag application) exported to Hyderabad and Vijayawada.",
+                te: "ప్రత్యేక నెల్లిపాక అరటి రకం (జీఐ ట్యాగ్ దరఖాస్తు క్రింద) హైదరాబాద్ మరియు విజయవాడకు ఎగుమతి చేయబడుతుంది."
+            },
+            "econ2-title": { 
+                en: "Turmeric Cultivation", 
+                te: "పసుపు సాగు" 
+            },
+            "econ2-desc": { 
+                en: "Grown on forest fringes using traditional methods. Used in rituals and local medicine.",
+                te: "సాంప్రదాయ పద్ధతులను ఉపయోగించి అడవి అంచులలో పండిస్తారు. ఆచారాలు మరియు స్థానిక వైద్యంలో ఉపయోగిస్తారు."
+            },
+            "econ3-title": { 
+                en: "Forest Economy", 
+                te: "అడవి ఆర్థిక వ్యవస్థ" 
+            },
+            "econ3-desc": { 
+                en: "Collection of wild honey, neem fruits, tulasi, and bamboo for crafts and construction.",
+                te: "వన్య తేనె, వేప పండ్లు, తులసి మరియు కర్మాగారాలు మరియు నిర్మాణం కోసం బాంబు సేకరణ."
+            },
+
+            // Village Profile
+            "demo-title": { 
+                en: "Village Profile", 
+                te: "గ్రామ ప్రొఫైల్" 
+            },
+            "stat1-label": { 
+                en: "Attribute", 
+                te: "లక్షణం" 
+            },
+            "stat1-value": { 
+                en: "Data", 
+                te: "డేటా" 
+            },
+            "stat2-label": { 
+                en: "Population", 
+                te: "జనాభా" 
+            },
+            "stat2-value": { 
+                en: "~6,100", 
+                te: "~6,100" 
+            },
+            "stat3-label": { 
+                en: "Major Tribes", 
+                te: "ప్రధాన గిరిజనులు" 
+            },
+            "stat3-value": { 
+                en: "Koya, Konda Reddy", 
+                te: "కోయ, కొండ రెడ్డి" 
+            },
+            "stat4-label": { 
+                en: "Languages", 
+                te: "భాషలు" 
+            },
+            "stat4-value": { 
+                en: "Telugu, Koya dialect", 
+                te: "తెలుగు, కోయ మాండలికం" 
+            },
+            "stat5-label": { 
+                en: "Literacy Rate", 
+                te: "సాక్షరత రేటు" 
+            },
+            "stat5-value": { 
+                en: "~58%", 
+                te: "~58%" 
+            },
+            "stat6-label": { 
+                en: "Nearest Town", 
+                te: "సమీప పట్టణం" 
+            },
+            "stat6-value": { 
+                en: "Bhadrachalam (~15 km)", 
+                te: "భద్రాచలం (~15 కి.మీ.)" 
+            },
+            "stat7-label": { 
+                en: "Transport", 
+                te: "రవాణా" 
+            },
+            "stat7-value": { 
+                en: "Buses via NH-30; railway at Kothagudem", 
+                te: "NH-30 ద్వారా బస్సులు; కోథగూడంలో రైల్వే" 
+            },
+            "stat8-label": { 
+                en: "PIN Code", 
+                te: "పిన్ కోడ్" 
+            },
+            "stat8-value": { 
+                en: "507114", 
+                te: "507114" 
+            },
+
+            // Facts
+            "facts-title": { 
+                en: "Little-Known Facts", 
+                te: "తక్కువ తెలిసిన విషయాలు" 
+            },
+            "fact1-title": { 
+                en: "British-Era Guesthouse", 
+                te: "బ్రిటిష్-యుగ గెస్ట్ హౌస్" 
+            },
+            "fact1-desc": { 
+                en: "A colonial forest guesthouse still stands, now used as a government outpost.",
+                te: "ఒక కాలనీ కాలపు అడవి గెస్ట్ హౌస్ ఇప్పటికీ నిలిచి ఉంది, ఇప్పుడు ప్రభుత్వ అవుట్పోస్ట్గా ఉపయోగించబడుతుంది."
+            },
+            "fact2-title": { 
+                en: "GI-Tag Bananas", 
+                te: "జీఐ-ట్యాగ్ అరటులు" 
+            },
+            "fact2-desc": { 
+                en: "Nellipaka bananas are under GI tag application due to unique taste and shelf life.",
+                te: "నెల్లిపాక అరటులు ప్రత్యేక రుచి మరియు షెల్ఫ్ లైఫ్ కారణంగా జీఐ ట్యాగ్ దరఖాస్తు క్రింద ఉన్నాయి."
+            },
+            "fact3-title": { 
+                en: "Sita Vanam", 
+                te: "సీతా వనం" 
+            },
+            "fact3-desc": { 
+                en: "A forest path where villagers claim ancient trees \"talk at night\" with rustling sounds.",
+                te: "ఒక అడవి మార్గం, గ్రామస్తులు ప్రాచీన చెట్లు \"రాత్రిపూట మాట్లాడతాయి\" అని చెప్పే గుసగుసలు శబ్దాలతో."
+            },
+            "fact4-title": { 
+                en: "Tribal Resistance", 
+                te: "గిరిజన ప్రతిఘటన" 
+            },
+            "fact4-desc": { 
+                en: "Strategic location in 1980s tribal land movements against exploitation.",
+                te: "1980లలో శోషణకు వ్యతిరేకంగా గిరిజన భూమి ఉద్యమాలలో వ్యూహాత్మక స్థానం."
+            },
+            "fact5-title": { 
+                en: "Sacred Snakes", 
+                te: "పవిత్ర సర్పాలు" 
+            },
+            "fact5-desc": { 
+                en: "Snakes are never harmed; worshipped as guardians during Nagula Chavithi.",
+                te: "సర్పాలను ఎప్పుడూ హాని చేయరు; నాగుల చవితి సమయంలో రక్షకులుగా పూజిస్తారు."
+            },
+            "fact6-title": { 
+                en: "Herbal Wisdom", 
+                te: "ఔషధ జ్ఞానం" 
+            },
+            "fact6-desc": { 
+                en: "Elder women pass down herbal healing chants using Amla, turmeric, and wild tulasi.",
+                te: "ముసలివారు ఆమ్లక, పసుపు మరియు అడవి తులసిని ఉపయోగించి ఔషధ గారడీలను తర్వాత తరానికి అందిస్తారు."
+            },
+
+            // Footer
+            "footer-quote": { 
+                en: "\"Nellipaka is more than a village — it's a forest memory. Where rivers narrate mythology, trees bless the soil, and people live in harmony with the green gods around them.\"", 
+                te: "\"నెల్లిపాక ఒక గ్రామం కంటే ఎక్కువ — ఇది ఒక అడవి జ్ఞాపకం. నదులు పురాణాలను చెప్పే, చెట్లు నేలను ఆశీర్వదించే మరియు ప్రజలు వారి చుట్టూ ఉన్న ఆకుపచ్చ దేవతలతో సామరస్యంగా జీవించే ప్రదేశం.\"" 
+            },
+            "map-btn": { 
+                en: "View on Google Maps", 
+                te: "గూగుల్ మ్యాప్స్‌లో వీక్షించండి" 
+            },
+            "copyright": { 
+                en: "© 2023 Nellipaka Village Heritage Project. All rights reserved.", 
+                te: "© 2023 నెల్లిపాక గ్రామ వారసత్వ ప్రాజెక్ట్. అన్ని హక్కులు ప్రత్యేకించబడినవి." 
+            }
+        };
+
+        // Language Toggle Functionality
+        function setLanguage(lang) {
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update button states
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            document.getElementById('te-btn').classList.toggle('active', lang === 'te');
+            
+            // Update all translatable elements
+            for (const [id, texts] of Object.entries(translations)) {
+                const element = document.getElementById(id);
+                if (element) element.textContent = texts[lang];
+            }
+        }
+
+        // Scroll Animations for Timeline
+        function checkVisibility() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial language from localStorage or default to English
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+            
+            // Set up event listeners
+            document.getElementById('en-btn').addEventListener('click', () => setLanguage('en'));
+            document.getElementById('te-btn').addEventListener('click', () => setLanguage('te'));
+            
+            // Run initial animations
+            checkVisibility();
+        });
+
+        window.addEventListener('scroll', checkVisibility);
+    </script>
+</body>
+</html>

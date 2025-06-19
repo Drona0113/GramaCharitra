@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machilipatnam | The Ancient Port of Pearls, Power, and Prayer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Color Scheme */
+        :root {
+            --primary: #1a5276;   /* Navy blue for the sea */
+            --secondary: #d35400;  /* Orange for vibrancy */
+            --accent: #f39c12;     /* Gold for pearls */
+            --light: #f9f9f9;
+            --dark: #333;
+            --text: #555;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Skip to Content Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header with Coastal Background */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('./images/machilipatnam.jpg') center/cover fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header-content {
+            width: 100%;
+            animation: fadeIn 1.5s ease;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0 auto;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+        }
+
+        /* Grid Layouts */
+        .name-breakdown,
+        .geo-features,
+        .facts-grid,
+        .temple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-content h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Stats Table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .stats-table th, .stats-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stats-table th {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .stats-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        /* Facts Cards */
+        .fact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .fact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .map-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 10px 0;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 50px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .name-breakdown,
+            .geo-features,
+            .facts-grid,
+            .temple-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to Content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="en-btn" aria-label="Switch to English">English</button>
+            <button class="lang-btn" id="te-btn" aria-label="Switch to Telugu">తెలుగు</button>
+        </div>
+
+        <div class="header-content">
+            <h1 id="header-title">Machilipatnam</h1>
+            <p id="header-subtitle">The Ancient Port of Pearls, Power, and Prayer</p>
+            <div class="location-tag" id="location-tag">Krishna District, Andhra Pradesh</div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#name" id="nav-name">Name Origin</a></li>
+            <li><a href="#history" id="nav-history">History</a></li>
+            <li><a href="#geography" id="nav-geography">Port & Coast</a></li>
+            <li><a href="#culture" id="nav-culture">Culture</a></li>
+            <li><a href="#attractions" id="nav-attractions">Attractions</a></li>
+            <li><a href="#economy" id="nav-economy">Economy</a></li>
+            <li><a href="#facts" id="nav-facts">Facts</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Name Origin Section -->
+        <section id="name" class="name-origin">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="name-title">Why "Machilipatnam"?</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name1-title">"Machili" (మఛిలి)</h3>
+                            <p id="name1-desc">
+                                From Sanskrit "Matsya" meaning fish. Refers to the fishing communities living in the delta region.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name2-title">"Patnam" (పట్నం)</h3>
+                            <p id="name2-desc">
+                                A suffix meaning port town, city, or market hub in both Telugu and Tamil.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name3-title">Sacred Interpretation</h3>
+                            <p id="name3-desc">
+                                "Fish City" or "Port Town of Fishermen" reflecting its ancient identity as a trading port and fish landing center.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="history">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="history-title">Historical Timeline</h2>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era1-title">Ancient Times (3rd Century BCE - 10th Century CE)</h3>
+                            <p id="era1-desc">
+                                Known as Maisolos or Maesolia in Greek/Roman texts. Flourishing Indo-Roman port exporting spices, cotton, pearls, and gems.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era2-title">Medieval & Sultanate Period (12th-16th Century)</h3>
+                            <p id="era2-desc">
+                                Ruled by Kakatiyas, later seized by Delhi Sultanate and Bahmani Sultans. Arab traders called it "Masulipatnam".
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era3-title">Colonial Era (17th-19th Century)</h3>
+                            <p id="era3-desc">
+                                Dutch, British, French, and Portuguese rivalry. Known for Kalamkari textiles, shipbuilding, and pearl trade. Suffered cyclone damage in 1864.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era4-title">Modern Period (20th Century - Present)</h3>
+                            <p id="era4-desc">
+                                Cultural hub with Kalamkari revival, port revitalization projects, and development of marine biotech parks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Port & Coastal Features Section -->
+        <section id="geography" class="geography">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="geo-title">Port & Coastal Identity</h2>
+                </div>
+                
+                <div class="geo-features">
+                    <div class="card">
+                        <img src="" alt="Machilipatnam Port" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo1-title">Krishna River Delta</h3>
+                            <p id="geo1-desc">
+                                Lies at the mouth of the Krishna River delta with access to Bay of Bengal. Has natural sandbanks and coral reefs.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Machilipatnam Beach" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo2-title">Machilipatnam Beach</h3>
+                            <p id="geo2-desc">
+                                Famous for sunrise views, salt pans, and fishing harbors. Features a historic lighthouse.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Port Development" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo3-title">Port Revitalization</h3>
+                            <p id="geo3-desc">
+                                Ongoing Machilipatnam Port Revitalization Project aims to restore its historical significance.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Culture Section -->
+        <section id="culture" class="temples">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="culture-title">Cultural Heritage</h2>
+                </div>
+                
+                <div class="temple-grid">
+                    <div class="card">
+                        <img src="" alt="Kalamkari Art" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="culture1-title">Kalamkari Art</h3>
+                            <p id="culture1-desc">
+                                Originated in Machilipatnam. Hand-drawn cotton textiles using natural dyes and pen-work, depicting mythological scenes.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Religious Harmony" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="culture2-title">Religious Harmony</h3>
+                            <p id="culture2-desc">
+                                Temples, mosques, and churches coexist reflecting the town's diverse cultural heritage.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Festivals" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="culture3-title">Festivals</h3>
+                            <p id="culture3-desc">
+                                Masi Magham Beach Festival, Ganesh Visarjan Processions, Ramzan Bazaars & Christmas Fairs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Attractions Section -->
+        <section id="attractions" class="festivals">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="attractions-title">Key Attractions</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="" alt="Panduranga Swamy Temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="attraction1-title">Panduranga Swamy Temple</h3>
+                            <p id="attraction1-desc">
+                                Built in Maharashtra style architecture, one of the prominent temples in the region.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Dutch Cemetery" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="attraction2-title">Dutch Cemetery & Fort Ruins</h3>
+                            <p id="attraction2-desc">
+                                Remnants of colonial era with weathered bell tower from the Dutch factory.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Kalamkari Centers" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="attraction3-title">Kalamkari Craft Centers</h3>
+                            <p id="attraction3-desc">
+                                Visit workshops to see the traditional art form being created with natural dyes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Economy Section -->
+        <section id="economy" class="economy">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="economy-title">Local Economy</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="" alt="Textiles" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ1-title">Textiles</h3>
+                            <p id="econ1-desc">
+                                Kalamkari textiles with GI tag, traditional handloom products, and modern textile units.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Fishing" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ2-title">Fishing Industry</h3>
+                            <p id="econ2-desc">
+                                Major fish landing center with active fishing harbors and seafood processing units.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="" alt="Salt Pans" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ3-title">Salt Production</h3>
+                            <p id="econ3-desc">
+                                Solar salt fields producing high-quality salt for domestic and industrial use.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- City Profile Section -->
+        <section id="demographics" class="demographics">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="demo-title">City Profile</h2>
+                </div>
+                
+                <table class="stats-table">
+                    <tr>
+                        <th id="stat1-label">Attribute</th>
+                        <th id="stat1-value">Data</th>
+                    </tr>
+                    <tr>
+                        <td id="stat2-label">Population</td>
+                        <td id="stat2-value">~1.7 lakh</td>
+                    </tr>
+                    <tr>
+                        <td id="stat3-label">Main Languages</td>
+                        <td id="stat3-value">Telugu, Urdu, English</td>
+                    </tr>
+                    <tr>
+                        <td id="stat4-label">PIN Code</td>
+                        <td id="stat4-value">521001</td>
+                    </tr>
+                    <tr>
+                        <td id="stat5-label">Nearest Cities</td>
+                        <td id="stat5-value">Vijayawada (~65 km), Avanigadda</td>
+                    </tr>
+                    <tr>
+                        <td id="stat6-label">Railway</td>
+                        <td id="stat6-value">Machilipatnam Railway Station</td>
+                    </tr>
+                    <tr>
+                        <td id="stat7-label">Main Economy</td>
+                        <td id="stat7-value">Textiles, salt, seafood, tourism, temple trade</td>
+                    </tr>
+                    <tr>
+                        <td id="stat8-label">Port Status</td>
+                        <td id="stat8-value">Under construction for full modernization</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Fascinating Facts Section -->
+        <section id="facts" class="facts">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="facts-title">Fascinating Facts</h2>
+                </div>
+                
+                <div class="facts-grid">
+                    <div class="fact-card">
+                        <h3 id="fact1-title">Gateway of Andhra</h3>
+                        <p id="fact1-desc">
+                            Called "Gateway of Andhra" by British seafarers during colonial times.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact2-title">Kalamkari Technique</h3>
+                        <p id="fact2-desc">
+                            Uses vegetable dye + buffalo milk mix as fixative in the traditional art.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact3-title">Dutch Legacy</h3>
+                        <p id="fact3-desc">
+                            Dutch East India Company set up their first Indian factory here in early 1600s.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact4-title">Krishna Legend</h3>
+                        <p id="fact4-desc">
+                            Local legend says Lord Krishna bathed at this shore during his coastal visit with Arjuna.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact5-title">Colonial Rivalry</h3>
+                        <p id="fact5-desc">
+                            Hotbed of European maritime rivalry between Dutch, British, French, and Portuguese.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact6-title">Pearl Trade</h3>
+                        <p id="fact6-desc">
+                            Was a major center for pearl and spice trade for over 2,000 years.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-quote" id="footer-quote">
+                "Machilipatnam is not just a town — it's a tide. A tide that brought coins, cultures, cloth, and compassion ashore. Here, every grain of sand carries the scent of ships, saints, and swans from distant worlds."
+            </p>
+            
+            <a href="https://www.google.com/maps/place/Machilipatnam,+Andhra+Pradesh" class="map-btn" target="_blank" id="map-btn" aria-label="View Machilipatnam on Google Maps">
+                <i class="fas fa-map-marker-alt"></i> View on Google Maps
+            </a>
+            
+       
+        </div>
+    </footer>
+
+    <script>
+        // Language Data
+        const translations = {
+            // Header
+            "header-title": { 
+                en: "Machilipatnam", 
+                te: "మచిలీపట్నం" 
+            },
+            "header-subtitle": { 
+                en: "The Ancient Port of Pearls, Power, and Prayer", 
+                te: "ముత్యాలు, శక్తి మరియు ప్రార్థన యొక్క ప్రాచీన ఓడరేవు" 
+            },
+            "location-tag": { 
+                en: "Krishna District, Andhra Pradesh", 
+                te: "కృష్ణా జిల్లా, ఆంధ్ర ప్రదేశ్" 
+            },
+
+            // Navigation
+            "nav-name": { 
+                en: "Name Origin", 
+                te: "పేరు మూలం" 
+            },
+            "nav-history": { 
+                en: "History", 
+                te: "చరిత్ర" 
+            },
+            "nav-geography": { 
+                en: "Port & Coast", 
+                te: "ఓడరేవు & తీరం" 
+            },
+            "nav-culture": { 
+                en: "Culture", 
+                te: "సంస్కృతి" 
+            },
+            "nav-attractions": { 
+                en: "Attractions", 
+                te: "ఆకర్షణలు" 
+            },
+            "nav-economy": { 
+                en: "Economy", 
+                te: "ఆర్థిక వ్యవస్థ" 
+            },
+            "nav-facts": { 
+                en: "Facts", 
+                te: "విశేషాలు" 
+            },
+
+            // Name Origin
+            "name-title": { 
+                en: "Why \"Machilipatnam\"?", 
+                te: "\"మచిలీపట్నం\" అనే పేరు ఎందుకు?" 
+            },
+            "name1-title": { 
+                en: "\"Machili\" (మఛిలి)", 
+                te: "\"మచిలి\" (మఛిలి)" 
+            },
+            "name1-desc": { 
+                en: "From Sanskrit \"Matsya\" meaning fish. Refers to the fishing communities living in the delta region.",
+                te: "సంస్కృతం \"మత్స్య\" అంటే చేప. డెల్టా ప్రాంతంలో నివసించే మత్స్యకార సమాజాలను సూచిస్తుంది."
+            },
+            "name2-title": { 
+                en: "\"Patnam\" (పట్నం)", 
+                te: "\"పట్నం\" (పట్నం)" 
+            },
+            "name2-desc": { 
+                en: "A suffix meaning port town, city, or market hub in both Telugu and Tamil.",
+                te: "తెలుగు మరియు తమిళంలో ఓడరేవు పట్టణం, నగరం లేదా మార్కెట్ హబ్ అని అర్థం."
+            },
+            "name3-title": { 
+                en: "Sacred Interpretation", 
+                te: "పవిత్ర అర్థం" 
+            },
+            "name3-desc": { 
+                en: "\"Fish City\" or \"Port Town of Fishermen\" reflecting its ancient identity as a trading port and fish landing center.",
+                te: "\"ఫిష్ సిటీ\" లేదా \"మత్స్యకారుల ఓడరేవు పట్టణం\" ఇది వాణిజ్య ఓడరేవు మరియు చేపలు దిగే కేంద్రంగా దాని ప్రాచీన గుర్తింపును ప్రతిబింబిస్తుంది."
+            },
+
+            // History
+            "history-title": { 
+                en: "Historical Timeline", 
+                te: "చారిత్రక కాలక్రమం" 
+            },
+            "era1-title": { 
+                en: "Ancient Times (3rd Century BCE - 10th Century CE)", 
+                te: "ప్రాచీన కాలం (క్రీ.పూ. 3వ శతాబ్దం - క్రీ.శ. 10వ శతాబ్దం)" 
+            },
+            "era1-desc": { 
+                en: "Known as Maisolos or Maesolia in Greek/Roman texts. Flourishing Indo-Roman port exporting spices, cotton, pearls, and gems.",
+                te: "గ్రీకు/రోమన్ గ్రంథాలలో మైసోలోస్ లేదా మైసోలియా అని పిలువబడింది. సుగంధ ద్రవ్యాలు, పత్తి, ముత్యాలు మరియు రత్నాలను ఎగుమతి చేసే ఇండో-రోమన్ ఓడరేవు."
+            },
+            "era2-title": { 
+                en: "Medieval & Sultanate Period (12th-16th Century)", 
+                te: "మధ్యయుగ & సుల్తానేట్ కాలం (12-16వ శతాబ్దం)" 
+            },
+            "era2-desc": { 
+                en: "Ruled by Kakatiyas, later seized by Delhi Sultanate and Bahmani Sultans. Arab traders called it \"Masulipatnam\".",
+                te: "కాకతీయులచే పాలించబడింది, తర్వాత ఢిల్లీ సుల్తానేట్ మరియు బహమనీ సుల్తానులచే స్వాధీనం చేసుకోబడింది. అరబ్ వ్యాపారులు దీనిని \"మసూలిపట్నం\" అని పిలిచారు."
+            },
+            "era3-title": { 
+                en: "Colonial Era (17th-19th Century)", 
+                te: "కాలనీల కాలం (17-19వ శతాబ్దం)" 
+            },
+            "era3-desc": { 
+                en: "Dutch, British, French, and Portuguese rivalry. Known for Kalamkari textiles, shipbuilding, and pearl trade. Suffered cyclone damage in 1864.",
+                te: "డచ్, బ్రిటిష్, ఫ్రెంచ్ మరియు పోర్చుగీస్ పోటీ. కలంకారి టెక్స్టైల్స్, షిప్ బిల్డింగ్ మరియు ముత్యాల వాణిజ్యంకు ప్రసిద్ధి చెందింది. 1864లో సైక్లోన్ నష్టాన్ని ఎదుర్కొంది."
+            },
+            "era4-title": { 
+                en: "Modern Period (20th Century - Present)", 
+                te: "ఆధునిక కాలం (20వ శతాబ్దం - ప్రస్తుతం)" 
+            },
+            "era4-desc": { 
+                en: "Cultural hub with Kalamkari revival, port revitalization projects, and development of marine biotech parks.",
+                te: "కలంకారి పునరుద్ధరణ, ఓడరేవు పునరుద్ధరణ ప్రాజెక్టులు మరియు మెరైన్ బయోటెక్ పార్కుల అభివృద్ధితో సాంస్కృతిక కేంద్రం."
+            },
+
+            // Geography
+            "geo-title": { 
+                en: "Port & Coastal Identity", 
+                te: "ఓడరేవు & తీర గుర్తింపు" 
+            },
+            "geo1-title": { 
+                en: "Krishna River Delta", 
+                te: "కృష్ణా నది డెల్టా" 
+            },
+            "geo1-desc": { 
+                en: "Lies at the mouth of the Krishna River delta with access to Bay of Bengal. Has natural sandbanks and coral reefs.",
+                te: "కృష్ణా నది డెల్టా ముఖద్వారంలో బంగాళాఖాతానికి ప్రవేశం కలిగి ఉంది. సహజ ఇసుక తిన్నెలు మరియు ప్రవాళ శిలలను కలిగి ఉంది."
+            },
+            "geo2-title": { 
+                en: "Machilipatnam Beach", 
+                te: "మచిలీపట్నం బీచ్" 
+            },
+            "geo2-desc": { 
+                en: "Famous for sunrise views, salt pans, and fishing harbors. Features a historic lighthouse.",
+                te: "సూర్యోదయ దృశ్యాలు, ఉప్పు పాన్స్ మరియు మత్స్యకారుల రేవులకు ప్రసిద్ధి చెందింది. చారిత్రక లైట్హౌస్ను కలిగి ఉంది."
+            },
+            "geo3-title": { 
+                en: "Port Revitalization", 
+                te: "ఓడరేవు పునరుద్ధరణ" 
+            },
+            "geo3-desc": { 
+                en: "Ongoing Machilipatnam Port Revitalization Project aims to restore its historical significance.",
+                te: "కొనసాగుతున్న మచిలీపట్నం ఓడరేవు పునరుద్ధరణ ప్రాజెక్ట్ దాని చారిత్రక ప్రాముఖ్యతను పునరుద్ధరించడానికి లక్ష్యంగా పెట్టుకుంది."
+            },
+
+            // Culture
+            "culture-title": { 
+                en: "Cultural Heritage", 
+                te: "సాంస్కృతిక వారసత్వం" 
+            },
+            "culture1-title": { 
+                en: "Kalamkari Art", 
+                te: "కలంకారి కళ" 
+            },
+            "culture1-desc": { 
+                en: "Originated in Machilipatnam. Hand-drawn cotton textiles using natural dyes and pen-work, depicting mythological scenes.",
+                te: "మచిలీపట్నంలో ఉద్భవించింది. సహజ రంగులు మరియు పెన్-వర్క్ ఉపయోగించి చేతితో గీసిన పత్తి టెక్స్టైల్స్, పురాణ దృశ్యాలను వర్ణిస్తుంది."
+            },
+            "culture2-title": { 
+                en: "Religious Harmony", 
+                te: "మత సామరస్యం" 
+            },
+            "culture2-desc": { 
+                en: "Temples, mosques, and churches coexist reflecting the town's diverse cultural heritage.",
+                te: "దేవాలయాలు, మసీదులు మరియు చర్చిలు పట్టణం యొక్క వివిధ సాంస్కృతిక వారసత్వాన్ని ప్రతిబింబిస్తాయి."
+            },
+            "culture3-title": { 
+                en: "Festivals", 
+                te: "పండుగలు" 
+            },
+            "culture3-desc": { 
+                en: "Masi Magham Beach Festival, Ganesh Visarjan Processions, Ramzan Bazaars & Christmas Fairs.",
+                te: "మాసి మాఘం బీచ్ ఫెస్టివల్, గణేష్ విసర్జన ప్రాసెషన్లు, రంజాన్ బజార్లు & క్రిస్మస్ ఫెయిర్లు."
+            },
+
+            // Attractions
+            "attractions-title": { 
+                en: "Key Attractions", 
+                te: "ప్రధాన ఆకర్షణలు" 
+            },
+            "attraction1-title": { 
+                en: "Panduranga Swamy Temple", 
+                te: "పాండురంగ స్వామి దేవాలయం" 
+            },
+            "attraction1-desc": { 
+                en: "Built in Maharashtra style architecture, one of the prominent temples in the region.",
+                te: "మహారాష్ట్ర శైలి నిర్మాణంతో నిర్మించబడింది, ఈ ప్రాంతంలోని ప్రముఖ దేవాలయాలలో ఒకటి."
+            },
+            "attraction2-title": { 
+                en: "Dutch Cemetery & Fort Ruins", 
+                te: "డచ్ స్మశానవాటిక & కోట శిధిలాలు" 
+            },
+            "attraction2-desc": { 
+                en: "Remnants of colonial era with weathered bell tower from the Dutch factory.",
+                te: "డచ్ ఫ్యాక్టరీ నుండి కాలంతో క్రుంగిన బెల్ టవర్తో కాలనీల యుగం యొక్క అవశేషాలు."
+            },
+            "attraction3-title": { 
+                en: "Kalamkari Craft Centers", 
+                te: "కలంకారి క్రాఫ్ట్ సెంటర్లు" 
+            },
+            "attraction3-desc": { 
+                en: "Visit workshops to see the traditional art form being created with natural dyes.",
+                te: "సహజ రంగులతో సాంప్రదాయ కళా రూపం సృష్టించబడుతున్నట్లు చూడటానికి వర్క్షాప్లను సందర్శించండి."
+            },
+
+            // Economy
+            "economy-title": { 
+                en: "Local Economy", 
+                te: "స్థానిక ఆర్థిక వ్యవస్థ" 
+            },
+            "econ1-title": { 
+                en: "Textiles", 
+                te: "టెక్స్టైల్స్" 
+            },
+            "econ1-desc": { 
+                en: "Kalamkari textiles with GI tag, traditional handloom products, and modern textile units.",
+                te: "జీఐ ట్యాగ్ ఉన్న కలంకారి టెక్స్టైల్స్, సాంప్రదాయ హ్యాండ్లూమ్ ఉత్పత్తులు మరియు ఆధునిక టెక్స్టైల్ యూనిట్లు."
+            },
+            "econ2-title": { 
+                en: "Fishing Industry", 
+                te: "మత్స్య పరిశ్రమ" 
+            },
+            "econ2-desc": { 
+                en: "Major fish landing center with active fishing harbors and seafood processing units.",
+                te: "క్రియాశీల మత్స్యకారుల రేవులు మరియు సీఫుడ్ ప్రాసెసింగ్ యూనిట్లతో ప్రధాన చేపలు దిగే కేంద్రం."
+            },
+            "econ3-title": { 
+                en: "Salt Production", 
+                te: "ఉప్పు ఉత్పత్తి" 
+            },
+            "econ3-desc": { 
+                en: "Solar salt fields producing high-quality salt for domestic and industrial use.",
+                te: "గృహ మరియు పారిశ్రామిక ఉపయోగం కోసం అధిక నాణ్యత గల ఉప్పును ఉత్పత్తి చేసే సౌర ఉప్పు ఫీల్డ్స్."
+            },
+
+            // City Profile
+            "demo-title": { 
+                en: "City Profile", 
+                te: "నగర ప్రొఫైల్" 
+            },
+            "stat1-label": { 
+                en: "Attribute", 
+                te: "లక్షణం" 
+            },
+            "stat1-value": { 
+                en: "Data", 
+                te: "డేటా" 
+            },
+            "stat2-label": { 
+                en: "Population", 
+                te: "జనాభా" 
+            },
+            "stat2-value": { 
+                en: "~1.7 lakh", 
+                te: "~1.7 లక్షలు" 
+            },
+            "stat3-label": { 
+                en: "Main Languages", 
+                te: "ప్రధాన భాషలు" 
+            },
+            "stat3-value": { 
+                en: "Telugu, Urdu, English", 
+                te: "తెలుగు, ఉర్దూ, ఆంగ్లం" 
+            },
+            "stat4-label": { 
+                en: "PIN Code", 
+                te: "పిన్ కోడ్" 
+            },
+            "stat4-value": { 
+                en: "521001", 
+                te: "521001" 
+            },
+            "stat5-label": { 
+                en: "Nearest Cities", 
+                te: "సమీప నగరాలు" 
+            },
+            "stat5-value": { 
+                en: "Vijayawada (~65 km), Avanigadda", 
+                te: "విజయవాడ (~65 కి.మీ.), అవనిగడ్డ" 
+            },
+            "stat6-label": { 
+                en: "Railway", 
+                te: "రైల్వే" 
+            },
+            "stat6-value": { 
+                en: "Machilipatnam Railway Station", 
+                te: "మచిలీపట్నం రైల్వే స్టేషన్" 
+            },
+            "stat7-label": { 
+                en: "Main Economy", 
+                te: "ప్రధాన ఆర్థిక వ్యవస్థ" 
+            },
+            "stat7-value": { 
+                en: "Textiles, salt, seafood, tourism, temple trade", 
+                te: "టెక్స్టైల్స్, ఉప్పు, సీఫుడ్, పర్యాటకం, దేవాలయ వాణిజ్యం" 
+            },
+            "stat8-label": { 
+                en: "Port Status", 
+                te: "ఓడరేవు స్థితి" 
+            },
+            "stat8-value": { 
+                en: "Under construction for full modernization", 
+                te: "పూర్తి ఆధునికీకరణ కోసం నిర్మాణంలో ఉంది" 
+            },
+
+            // Facts
+            "facts-title": { 
+                en: "Fascinating Facts", 
+                te: "ఆసక్తికర వాస్తవాలు" 
+            },
+            "fact1-title": { 
+                en: "Gateway of Andhra", 
+                te: "ఆంధ్రప్రదేశ్ యొక్క ద్వారం" 
+            },
+            "fact1-desc": { 
+                en: "Called \"Gateway of Andhra\" by British seafarers during colonial times.",
+                te: "కాలనీల కాలంలో బ్రిటిష్ నావికులు \"ఆంధ్రప్రదేశ్ యొక్క ద్వారం\" అని పిలిచారు."
+            },
+            "fact2-title": { 
+                en: "Kalamkari Technique", 
+                te: "కలంకారి టెక్నిక్" 
+            },
+            "fact2-desc": { 
+                en: "Uses vegetable dye + buffalo milk mix as fixative in the traditional art.",
+                te: "సాంప్రదాయ కళలో ఫిక్సేటివ్గా కూరగాయల రంగు + ఎర్రటి పాల మిశ్రమాన్ని ఉపయోగిస్తుంది."
+            },
+            "fact3-title": { 
+                en: "Dutch Legacy", 
+                te: "డచ్ వారసత్వం" 
+            },
+            "fact3-desc": { 
+                en: "Dutch East India Company set up their first Indian factory here in early 1600s.",
+                te: "డచ్ ఈస్ట్ ఇండియా కంపెనీ 1600ల ప్రారంభంలో ఇక్కడ తమ మొదటి భారతీయ ఫ్యాక్టరీని ఏర్పాటు చేసింది."
+            },
+            "fact4-title": { 
+                en: "Krishna Legend", 
+                te: "కృష్ణ లెజెండ్" 
+            },
+            "fact4-desc": { 
+                en: "Local legend says Lord Krishna bathed at this shore during his coastal visit with Arjuna.",
+                te: "స్థానిక పురాణం ప్రకారం లార్డ్ కృష్ణ అర్జునుతో తీర ప్రయాణంలో ఈ తీరంలో స్నానం చేశాడు."
+            },
+            "fact5-title": { 
+                en: "Colonial Rivalry", 
+                te: "కాలనీల పోటీ" 
+            },
+            "fact5-desc": { 
+                en: "Hotbed of European maritime rivalry between Dutch, British, French, and Portuguese.",
+                te: "డచ్, బ్రిటిష్, ఫ్రెంచ్ మరియు పోర్చుగీస్ మధ్య యూరోపియన్ నౌకా పోటీకి కేంద్రం."
+            },
+            "fact6-title": { 
+                en: "Pearl Trade", 
+                te: "ముత్యాల వాణిజ్యం" 
+            },
+            "fact6-desc": { 
+                en: "Was a major center for pearl and spice trade for over 2,000 years.",
+                te: "2,000 సంవత్సరాలకు పైగా ముత్యాలు మరియు సుగంధ ద్రవ్యాల వాణిజ్యానికి ప్రధాన కేంద్రంగా ఉంది."
+            },
+
+            // Footer
+            "footer-quote": { 
+                en: "\"Machilipatnam is not just a town — it's a tide. A tide that brought coins, cultures, cloth, and compassion ashore. Here, every grain of sand carries the scent of ships, saints, and swans from distant worlds.\"", 
+                te: "\"మచిలీపట్నం కేవలం ఒక పట్టణం కాదు — ఇది ఒక ఓడరేవు. నాణేలు, సంస్కృతులు, వస్త్రాలు మరియు కరుణను తీరానికి తీసుకువచ్చిన ఓడరేవు. ఇక్కడ, ప్రతి ఇసుక రేణువు ఓడలు, సాధువులు మరియు దూరపు ప్రపంచాల నుండి హంసల వాసనను కలిగి ఉంటుంది.\"" 
+            },
+            "map-btn": { 
+                en: "View on Google Maps", 
+                te: "గూగుల్ మ్యాప్స్‌లో వీక్షించండి" 
+            },
+            "copyright": { 
+                en: "© 2023 Machilipatnam Tourism. All rights reserved.", 
+                te: "© 2023 మచిలీపట్నం టూరిజం. అన్ని హక్కులు ప్రత్యేకించబడినవి." 
+            }
+        };
+
+        // Language Toggle Functionality
+        function setLanguage(lang) {
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update button states
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            document.getElementById('te-btn').classList.toggle('active', lang === 'te');
+            
+            // Update all translatable elements
+            for (const [id, texts] of Object.entries(translations)) {
+                const element = document.getElementById(id);
+                if (element) element.textContent = texts[lang];
+            }
+        }
+
+        // Scroll Animations for Timeline
+        function checkVisibility() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial language from localStorage or default to English
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+            
+            // Set up event listeners
+            document.getElementById('en-btn').addEventListener('click', () => setLanguage('en'));
+            document.getElementById('te-btn').addEventListener('click', () => setLanguage('te'));
+            
+            // Run initial animations
+            checkVisibility();
+        });
+
+        window.addEventListener('scroll', checkVisibility);
+    </script>
+</body>
+</html>

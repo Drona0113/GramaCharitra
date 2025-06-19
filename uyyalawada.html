@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uyyalawada | The Homeland of India's First Rebel Hero</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --primary: #8e0000;   
+            --secondary: #5d4037;  
+            --accent: #ffab00;     
+            --light: #f9f9f9;
+            --dark: #333;
+            --text: #555;
+        }
+
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+       
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+      
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('./images/uyyalawada.jpg') center/cover fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header-content {
+            width: 100%;
+            animation: fadeIn 1.5s ease;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        
+        nav {
+            background: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0 auto;
+        }
+
+    
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+        }
+
+        .name-breakdown,
+        .geo-features,
+        .facts-grid,
+        .temple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+      
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-content h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Stats Table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .stats-table th, .stats-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stats-table th {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .stats-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        /* Facts Cards */
+        .fact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .fact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .map-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 10px 0;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+          
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 50px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .name-breakdown,
+            .geo-features,
+            .facts-grid,
+            .temple-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to Content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="en-btn" aria-label="Switch to English">English</button>
+            <button class="lang-btn" id="te-btn" aria-label="Switch to Telugu">తెలుగు</button>
+        </div>
+
+        <div class="header-content">
+            <h1 id="header-title">Uyyalawada</h1>
+            <p id="header-subtitle">The Homeland of India's First Rebel Hero</p>
+            <div class="location-tag" id="location-tag">Nandyal District, Andhra Pradesh</div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#name" id="nav-name">Name Origin</a></li>
+            <li><a href="#history" id="nav-history">History</a></li>
+            <li><a href="#geography" id="nav-geography">Village Life</a></li>
+            <li><a href="#culture" id="nav-culture">Culture</a></li>
+            <li><a href="#attractions" id="nav-attractions">Attractions</a></li>
+            <li><a href="#economy" id="nav-economy">Economy</a></li>
+            <li><a href="#facts" id="nav-facts">Facts</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Name Origin Section -->
+        <section id="name" class="name-origin">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="name-title">Why "Uyyalawada"?</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name1-title">"Uyyala" (ఉయ్యాల)</h3>
+                            <p id="name1-desc">
+                                Means "swing" in Telugu, often symbolizing balance, rhythm, and nurturing.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name2-title">"Wada" (వాడ)</h3>
+                            <p id="name2-desc">
+                                A suffix used for settlements or hamlets, especially ones established by feudal lineages.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name3-title">Symbolic Interpretation</h3>
+                            <p id="name3-desc">
+                                "Settlement of the Uyyala family" or "Swing of power" representing its revolutionary past.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="history">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="history-title">Historical Timeline</h2>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era1-title">Early Origins (Pre-Colonial Era)</h3>
+                            <p id="era1-desc">
+                                Feudal hamlet home to palegarlu (local chieftains) managing agricultural lands and irrigation systems.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era2-title">The Rise of Narasimha Reddy (1806-1847)</h3>
+                            <p id="era2-desc">
+                                Born to a zamindari family, trained in warfare and angered by British oppressive policies.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era3-title">The 1846-47 Revolt</h3>
+                            <p id="era3-desc">
+                                Led a rebellion of 5,000+ fighters against British rule, years before the 1857 Revolt.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era4-title">Martyrdom (Feb 22, 1847)</h3>
+                            <p id="era4-desc">
+                                Captured due to betrayal and publicly executed. His head displayed for 30 years as warning.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era5-title">Post-Independence Recognition</h3>
+                            <p id="era5-desc">
+                                Honored as "First Freedom Fighter of India" with memorials, Jayanti celebrations, and curriculum inclusion.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Village Life Section -->
+        <section id="geography" class="geography">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="geo-title">Village Life</h2>
+                </div>
+                
+                <div class="geo-features">
+                    <div class="card">
+                        <img src="./images/uyyalawadakunduriver.jpeg" alt="Kundu River" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo1-title">Kundu River Basin</h3>
+                            <p id="geo1-desc">
+                                Located in the Rayalaseema dry plains with red loamy and black regur soils.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/uyyalawadaagri.jpeg" alt="Agriculture" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo2-title">Agriculture</h3>
+                            <p id="geo2-desc">
+                                Tank-based irrigation supports crops like groundnut, bajra, cotton, and sunflower.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/uyyalawadaeconomy.avif" alt="Rural Economy" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo3-title">Rural Economy</h3>
+                            <p id="geo3-desc">
+                                Small cattle herding, goat rearing, pottery and hand-weaving supplement agriculture.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Culture Section -->
+        <section id="culture" class="temples">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="culture-title">Cultural Heritage</h2>
+                </div>
+                
+                <div class="temple-grid">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1601758003837-ec9a0b8bf360?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Veerabhadra Swamy Temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="culture1-title">Veerabhadra Swamy Temple</h3>
+                            <p id="culture1-desc">
+                                Guardian deity of warriors worshipped especially during Uyyalawada Utsavams.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/uyyalawadajayanti.jpeg" alt="Uyyalawada Jayanti" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="culture2-title">Uyyalawada Jayanti</h3>
+                            <p id="culture2-desc">
+                                Annual celebration on Feb 22 with flag marches, plays, and freedom pledge ceremonies.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/uyyalawadacultural.jpeg" alt="Cultural Performances" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="culture3-title">Cultural Performances</h3>
+                            <p id="culture3-desc">
+                                Burra Katha, Veeranatyam, and Paata katha performances keep the revolutionary spirit alive.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Attractions Section -->
+        <section id="attractions" class="festivals">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="attractions-title">Key Attractions</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="./images/uyylawadastatue.jpeg" alt="Narasimha Reddy Statue" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="attraction1-title">Narasimha Reddy Statue</h3>
+                            <p id="attraction1-desc">
+                                Heroic statue depicting the freedom fighter mounted on horseback, sword raised.
+                            </p>
+                        </div>
+                    </div>
+                    
+                 
+                    
+                    <div class="card">
+                        <img src="./images/uyyalawadafort.jpeg" alt="Revolutionary Trail" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="attraction3-title">Revolutionary Trail</h3>
+                            <p id="attraction3-desc">
+                                Sites connected to the 1846-47 rebellion including hideouts and battle locations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Economy Section -->
+        <section id="economy" class="economy">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="economy-title">Local Economy</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="./images/uyyalawadadrylands.jpeg" alt="Agriculture" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ1-title">Dryland Farming</h3>
+                            <p id="econ1-desc">
+                                Major crops include groundnut, bajra (pearl millet), cotton, sunflower, and red gram.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/uyyalawadalivestock.png" alt="Livestock" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ2-title">Livestock Rearing</h3>
+                            <p id="econ2-desc">
+                                Small cattle herding and goat rearing supplement agricultural income.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/uyyalawadahandweaves.jpeg" alt="Handicrafts" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ3-title">Handicrafts</h3>
+                            <p id="econ3-desc">
+                                Seasonal pottery and hand-weaving provide additional livelihood options.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Village Profile Section -->
+        <section id="demographics" class="demographics">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="demo-title">Village Profile</h2>
+                </div>
+                
+                <table class="stats-table">
+                    <tr>
+                        <th id="stat1-label">Attribute</th>
+                        <th id="stat1-value">Data</th>
+                    </tr>
+                    <tr>
+                        <td id="stat2-label">Population</td>
+                        <td id="stat2-value">~4,300</td>
+                    </tr>
+                    <tr>
+                        <td id="stat3-label">Primary Language</td>
+                        <td id="stat3-value">Telugu</td>
+                    </tr>
+                    <tr>
+                        <td id="stat4-label">Literacy Rate</td>
+                        <td id="stat4-value">~66%</td>
+                    </tr>
+                    <tr>
+                        <td id="stat5-label">PIN Code</td>
+                        <td id="stat5-value">518155</td>
+                    </tr>
+                    <tr>
+                        <td id="stat6-label">Nearest Town</td>
+                        <td id="stat6-value">Koilkuntla (~12 km)</td>
+                    </tr>
+                    <tr>
+                        <td id="stat7-label">Access</td>
+                        <td id="stat7-value">Rural road from Nandyal-Kadapa Highway</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Fascinating Facts Section -->
+        <section id="facts" class="facts">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="facts-title">Fascinating Facts</h2>
+                </div>
+                
+                <div class="facts-grid">
+                    <div class="fact-card">
+                        <h3 id="fact1-title">First Freedom Fighter</h3>
+                        <p id="fact1-desc">
+                            Narasimha Reddy's rebellion predated the 1857 Revolt by a decade.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact2-title">Preserved Artifacts</h3>
+                        <p id="fact2-desc">
+                            His sword and armor are preserved in a private zamindar family museum.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact3-title">Cultural Legacy</h3>
+                        <p id="fact3-desc">
+                            Mentioned in freedom struggle ballads sung during Telangana and Andhra protests.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact4-title">Airport Naming</h3>
+                        <p id="fact4-desc">
+                            Kurnool Airport was renamed Uyyalawada Narasimha Reddy Airport in 2021.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact5-title">Brutal Aftermath</h3>
+                        <p id="fact5-desc">
+                            His head was displayed on a pole for 30 years as a British warning.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact6-title">Pop Culture</h3>
+                        <p id="fact6-desc">
+                            Featured in the 2019 biopic "Sye Raa Narasimha Reddy" starring Chiranjeevi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-quote" id="footer-quote">
+                "Uyyalawada is not just a village — it is a battlefield of spirit. A land where a man stood before an empire, a farmer became a general, and a village gave India its first flame of freedom."
+            </p>
+            
+            <a href="https://www.google.com/maps/place/Uyyalawada,+Andhra+Pradesh" class="map-btn" target="_blank" id="map-btn" aria-label="View Uyyalawada on Google Maps">
+                <i class="fas fa-map-marker-alt"></i> View on Google Maps
+            </a>
+            
+           
+        </div>
+    </footer>
+
+    <script>
+        // Language Data
+        const translations = {
+            // Header
+            "header-title": { 
+                en: "Uyyalawada", 
+                te: "ఉయ్యాలవాడ" 
+            },
+            "header-subtitle": { 
+                en: "The Homeland of India's First Rebel Hero", 
+                te: "భారతదేశం యొక్క మొదటి తిరుగుబాటు హీరో స్వదేశం" 
+            },
+            "location-tag": { 
+                en: "Nandyal District, Andhra Pradesh", 
+                te: "నంద్యాల జిల్లా, ఆంధ్ర ప్రదేశ్" 
+            },
+
+            // Navigation
+            "nav-name": { 
+                en: "Name Origin", 
+                te: "పేరు మూలం" 
+            },
+            "nav-history": { 
+                en: "History", 
+                te: "చరిత్ర" 
+            },
+            "nav-geography": { 
+                en: "Village Life", 
+                te: "గ్రామ జీవితం" 
+            },
+            "nav-culture": { 
+                en: "Culture", 
+                te: "సంస్కృతి" 
+            },
+            "nav-attractions": { 
+                en: "Attractions", 
+                te: "ఆకర్షణలు" 
+            },
+            "nav-economy": { 
+                en: "Economy", 
+                te: "ఆర్థిక వ్యవస్థ" 
+            },
+            "nav-facts": { 
+                en: "Facts", 
+                te: "విశేషాలు" 
+            },
+
+            // Name Origin
+            "name-title": { 
+                en: "Why \"Uyyalawada\"?", 
+                te: "\"ఉయ్యాలవాడ\" అనే పేరు ఎందుకు?" 
+            },
+            "name1-title": { 
+                en: "\"Uyyala\" (ఉయ్యాల)", 
+                te: "\"ఉయ్యాల\" (ఉయ్యాల)" 
+            },
+            "name1-desc": { 
+                en: "Means \"swing\" in Telugu, often symbolizing balance, rhythm, and nurturing.",
+                te: "తెలుగులో \"ఉయ్యాల\" అని అర్థం, తరచుగా సమతుల్యత, లయ మరియు పోషణను సూచిస్తుంది."
+            },
+            "name2-title": { 
+                en: "\"Wada\" (వాడ)", 
+                te: "\"వాడ\" (వాడ)" 
+            },
+            "name2-desc": { 
+                en: "A suffix used for settlements or hamlets, especially ones established by feudal lineages.",
+                te: "స్థావరాలు లేదా గ్రామాల కోసం ఉపయోగించే ప్రత్యయం, ముఖ్యంగా సామంత వంశాలచే స్థాపించబడినవి."
+            },
+            "name3-title": { 
+                en: "Symbolic Interpretation", 
+                te: "ప్రతీకాత్మక అర్థం" 
+            },
+            "name3-desc": { 
+                en: "\"Settlement of the Uyyala family\" or \"Swing of power\" representing its revolutionary past.",
+                te: "\"ఉయ్యాల కుటుంబం యొక్క స్థావరం\" లేదా \"శక్తి యొక్క ఊయల\" దాని విప్లవాత్మక గతాన్ని సూచిస్తుంది."
+            },
+
+            // History
+            "history-title": { 
+                en: "Historical Timeline", 
+                te: "చారిత్రక కాలక్రమం" 
+            },
+            "era1-title": { 
+                en: "Early Origins (Pre-Colonial Era)", 
+                te: "ప్రారంభ మూలాలు (కాలనీల పూర్వ యుగం)" 
+            },
+            "era1-desc": { 
+                en: "Feudal hamlet home to palegarlu (local chieftains) managing agricultural lands and irrigation systems.",
+                te: "వ్యవసాయ భూములు మరియు నీటిపారుదల వ్యవస్థలను నిర్వహించే పాలేగార్లు (స్థానిక సరదారులు) ఇంటి సామంత గ్రామం."
+            },
+            "era2-title": { 
+                en: "The Rise of Narasimha Reddy (1806-1847)", 
+                te: "నరసింహ రెడ్డి యొక్క ఉదయం (1806-1847)" 
+            },
+            "era2-desc": { 
+                en: "Born to a zamindari family, trained in warfare and angered by British oppressive policies.",
+                te: "జమీందార కుటుంబంలో జన్మించారు, యుద్ధ శిక్షణ పొందారు మరియు బ్రిటిష్ అణచివేత విధానాలతో కోపంగా ఉన్నారు."
+            },
+            "era3-title": { 
+                en: "The 1846-47 Revolt", 
+                te: "1846-47 తిరుగుబాటు" 
+            },
+            "era3-desc": { 
+                en: "Led a rebellion of 5,000+ fighters against British rule, years before the 1857 Revolt.",
+                te: "1857 తిరుగుబాటుకు సంవత్సరాల ముందు బ్రిటిష్ పాలనకు వ్యతిరేకంగా 5,000+ యోధుల తిరుగుబాటుకు నాయకత్వం వహించారు."
+            },
+            "era4-title": { 
+                en: "Martyrdom (Feb 22, 1847)", 
+                te: "బలిపీఠం (ఫిబ్రవరి 22, 1847)" 
+            },
+            "era4-desc": { 
+                en: "Captured due to betrayal and publicly executed. His head displayed for 30 years as warning.",
+                te: "ద్రోహం కారణంగా సంగ్రహించబడి బహిరంగంగా ఉరితీయబడ్డారు. హెచ్చరికగా 30 సంవత్సరాలు అతని తల ప్రదర్శించబడింది."
+            },
+            "era5-title": { 
+                en: "Post-Independence Recognition", 
+                te: "స్వాతంత్ర్యానంతర గుర్తింపు" 
+            },
+            "era5-desc": { 
+                en: "Honored as \"First Freedom Fighter of India\" with memorials, Jayanti celebrations, and curriculum inclusion.",
+                te: "\"భారతదేశం యొక్క మొదటి స్వాతంత్ర్య సమరయోధుడు\"గా గౌరవించబడ్డారు, స్మారక చిహ్నాలు, జయంతి వేడుకలు మరియు పాఠ్యాంశాలలో చేర్చడం."
+            },
+
+            // Geography
+            "geo-title": { 
+                en: "Village Life", 
+                te: "గ్రామ జీవితం" 
+            },
+            "geo1-title": { 
+                en: "Kundu River Basin", 
+                te: "కుండు నది బేసిన్" 
+            },
+            "geo1-desc": { 
+                en: "Located in the Rayalaseema dry plains with red loamy and black regur soils.",
+                te: "రాయలసీమ ఎడారి మైదానాలలో ఎర్ర లోమీ మరియు నల్ల రెగూర్ నేలలతో ఉంది."
+            },
+            "geo2-title": { 
+                en: "Agriculture", 
+                te: "వ్యవసాయం" 
+            },
+            "geo2-desc": { 
+                en: "Tank-based irrigation supports crops like groundnut, bajra (pearl millet), cotton, and sunflower.",
+                te: "ట్యాంక్-ఆధారిత నీటిపారుదల వేరుశనగ, బజ్రా (సజ్జ), పత్తి మరియు పొద్దుతిరుగుడు వంటి పంటలకు మద్దతు ఇస్తుంది."
+            },
+            "geo3-title": { 
+                en: "Rural Economy", 
+                te: "గ్రామీణ ఆర్థిక వ్యవస్థ" 
+            },
+            "geo3-desc": { 
+                en: "Small cattle herding and goat rearing supplement agricultural income.",
+                te: "చిన్న పశువుల పెంపకం మరియు మేకల పెంపకం వ్యవసాయ ఆదాయానికి అదనపు మద్దతు ఇస్తుంది."
+            },
+
+            // Culture
+            "culture-title": { 
+                en: "Cultural Heritage", 
+                te: "సాంస్కృతిక వారసత్వం" 
+            },
+            "culture1-title": { 
+                en: "Veerabhadra Swamy Temple", 
+                te: "వీరభద్ర స్వామి దేవాలయం" 
+            },
+            "culture1-desc": { 
+                en: "Guardian deity of warriors worshipped especially during Uyyalawada Utsavams.",
+                te: "యోధుల సంరక్షక దేవత, ముఖ్యంగా ఉయ్యాలవాడ ఉత్సవాలలో పూజించబడతారు."
+            },
+            "culture2-title": { 
+                en: "Uyyalawada Jayanti", 
+                te: "ఉయ్యాలవాడ జయంతి" 
+            },
+            "culture2-desc": { 
+                en: "Annual celebration on Feb 22 with flag marches, plays, and freedom pledge ceremonies.",
+                te: "ఫిబ్రవరి 22న జరిగే వార్షిక వేడుకలు, జెండా మార్చులు, నాటకాలు మరియు స్వాతంత్ర్య ప్రతిజ్ఞా సమారాధనలు."
+            },
+            "culture3-title": { 
+                en: "Cultural Performances", 
+                te: "సాంస్కృతిక ప్రదర్శనలు" 
+            },
+            "culture3-desc": { 
+                en: "Burra Katha, Veeranatyam, and Paata katha performances keep the revolutionary spirit alive.",
+                te: "బుర్ర కథ, వీరనాట్యం మరియు పాట కథ ప్రదర్శనలు విప్లవాత్మక ఆత్మను సజీవంగా ఉంచుతాయి."
+            },
+
+            // Attractions
+            "attractions-title": { 
+                en: "Key Attractions", 
+                te: "ప్రధాన ఆకర్షణలు" 
+            },
+            "attraction1-title": { 
+                en: "Narasimha Reddy Statue", 
+                te: "నరసింహ రెడ్డి విగ్రహం" 
+            },
+            "attraction1-desc": { 
+                en: "Heroic statue depicting the freedom fighter mounted on horseback, sword raised.",
+                te: "స్వాతంత్ర్య సమరయోధుడిని గుర్రం మీద, కత్తి ఎత్తినట్లు వర్ణించే వీర విగ్రహం."
+            },
+            "attraction2-title": { 
+                en: "Martyr Pillar", 
+                te: "శహీద్ స్తంభం" 
+            },
+            "attraction2-desc": { 
+                en: "Memorial site honoring Uyyalawada Narasimha Reddy's sacrifice for Indian freedom.",
+                te: "భారత స్వాతంత్ర్యం కోసం ఉయ్యాలవాడ నరసింహ రెడ్డి త్యాగాన్ని గౌరవించే స్మారక స్థలం."
+            },
+            "attraction3-title": { 
+                en: "Revolutionary Trail", 
+                te: "విప్లవ మార్గం" 
+            },
+            "attraction3-desc": { 
+                en: "Sites connected to the 1846-47 rebellion including hideouts and battle locations.",
+                te: "1846-47 తిరుగుబాటుతో అనుబంధించిన స్థలాలు, దాక్కునే ప్రదేశాలు మరియు యుద్ధ ప్రదేశాలు ఉన్నాయి."
+            },
+
+            // Economy
+            "economy-title": { 
+                en: "Local Economy", 
+                te: "స్థానిక ఆర్థిక వ్యవస్థ" 
+            },
+            "econ1-title": { 
+                en: "Dryland Farming", 
+                te: "వర్షాధార వ్యవసాయం" 
+            },
+            "econ1-desc": { 
+                en: "Major crops include groundnut, bajra (pearl millet), cotton, sunflower, and red gram.",
+                te: "ప్రధాన పంటలలో వేరుశనగ, బజ్రా (సజ్జ), పత్తి, పొద్దుతిరుగుడు మరియు కంది పప్పు ఉన్నాయి."
+            },
+            "econ2-title": { 
+                en: "Livestock Rearing", 
+                te: "పశుపోషణ" 
+            },
+            "econ2-desc": { 
+                en: "Small cattle herding and goat rearing supplement agricultural income.",
+                te: "చిన్న పశువుల పెంపకం మరియు మేకల పెంపకం వ్యవసాయ ఆదాయానికి అదనపు మద్దతు ఇస్తుంది."
+            },
+            "econ3-title": { 
+                en: "Handicrafts", 
+                te: "హస్తకళలు" 
+            },
+            "econ3-desc": { 
+                en: "Seasonal pottery and hand-weaving provide additional livelihood options.",
+                te: "కాలానుగుణ కుమ్మరి మరియు చేతి నేత అదనపు జీవనోపాధి ఎంపికలను అందిస్తాయి."
+            },
+
+            // Village Profile
+            "demo-title": { 
+                en: "Village Profile", 
+                te: "గ్రామ ప్రొఫైల్" 
+            },
+            "stat1-label": { 
+                en: "Attribute", 
+                te: "లక్షణం" 
+            },
+            "stat1-value": { 
+                en: "Data", 
+                te: "డేటా" 
+            },
+            "stat2-label": { 
+                en: "Population", 
+                te: "జనాభా" 
+            },
+            "stat2-value": { 
+                en: "~4,300", 
+                te: "~4,300" 
+            },
+            "stat3-label": { 
+                en: "Primary Language", 
+                te: "ప్రాథమిక భాష" 
+            },
+            "stat3-value": { 
+                en: "Telugu", 
+                te: "తెలుగు" 
+            },
+            "stat4-label": { 
+                en: "Literacy Rate", 
+                te: "సాక్షరత రేటు" 
+            },
+            "stat4-value": { 
+                en: "~66%", 
+                te: "~66%" 
+            },
+            "stat5-label": { 
+                en: "PIN Code", 
+                te: "పిన్ కోడ్" 
+            },
+            "stat5-value": { 
+                en: "518155", 
+                te: "518155" 
+            },
+            "stat6-label": { 
+                en: "Nearest Town", 
+                te: "సమీప పట్టణం" 
+            },
+            "stat6-value": { 
+                en: "Koilkuntla (~12 km)", 
+                te: "కోయిలకుంట్ల (~12 కి.మీ.)" 
+            },
+            "stat7-label": { 
+                en: "Access", 
+                te: "రవాణా" 
+            },
+            "stat7-value": { 
+                en: "Rural road from Nandyal-Kadapa Highway", 
+                te: "నంద్యాల-కడప హైవే నుండి గ్రామీణ రోడ్" 
+            },
+
+            // Facts
+            "facts-title": { 
+                en: "Fascinating Facts", 
+                te: "ఆసక్తికర వాస్తవాలు" 
+            },
+            "fact1-title": { 
+                en: "First Freedom Fighter", 
+                te: "మొదటి స్వాతంత్ర్య సమరయోధుడు" 
+            },
+            "fact1-desc": { 
+                en: "Narasimha Reddy's rebellion predated the 1857 Revolt by a decade.",
+                te: "నరసింహ రెడ్డి తిరుగుబాటు 1857 తిరుగుబాటుకు ఒక దశాబ్దం ముందు జరిగింది."
+            },
+            "fact2-title": { 
+                en: "Preserved Artifacts", 
+                te: "సంరక్షించబడిన కళాఖండాలు" 
+            },
+            "fact2-desc": { 
+                en: "His sword and armor are preserved in a private zamindar family museum.",
+                te: "అతని కత్తి మరియు కవచం ఒక ప్రైవేట్ జమీందార కుటుంబ మ్యూజియంలో సంరక్షించబడ్డాయి."
+            },
+            "fact3-title": { 
+                en: "Cultural Legacy", 
+                te: "సాంస్కృతిక వారసత్వం" 
+            },
+            "fact3-desc": { 
+                en: "Mentioned in freedom struggle ballads sung during Telangana and Andhra protests.",
+                te: "తెలంగాణ మరియు ఆంధ్ర ప్రదేశ్ నిరసనల సమయంలో పాడిన స్వాతంత్ర్య సమర గేయాలలో ప్రస్తావించబడింది."
+            },
+            "fact4-title": { 
+                en: "Airport Naming", 
+                te: "విమానాశ్రయం పేరు" 
+            },
+            "fact4-desc": { 
+                en: "Kurnool Airport was renamed Uyyalawada Narasimha Reddy Airport in 2021.",
+                te: "కర్నూలు విమానాశ్రయానికి 2021లో ఉయ్యాలవాడ నరసింహ రెడ్డి విమానాశ్రయం అని పేరు మార్చారు."
+            },
+            "fact5-title": { 
+                en: "Brutal Aftermath", 
+                te: "క్రూరమైన తరువాత" 
+            },
+            "fact5-desc": { 
+                en: "His head was displayed on a pole for 30 years as a British warning.",
+                te: "బ్రిటిష్ హెచ్చరికగా 30 సంవత్సరాలు అతని తలను స్తంభంపై ప్రదర్శించారు."
+            },
+            "fact6-title": { 
+                en: "Pop Culture", 
+                te: "పాప్ సంస్కృతి" 
+            },
+            "fact6-desc": { 
+                en: "Featured in the 2019 biopic \"Sye Raa Narasimha Reddy\" starring Chiranjeevi.",
+                te: "చిరంజీవి నటించిన 2019 బయోపిక్ \"సై రా నరసింహ రెడ్డి\"లో చిత్రీకరించబడింది."
+            },
+
+            // Footer
+            "footer-quote": { 
+                en: "\"Uyyalawada is not just a village — it is a battlefield of spirit. A land where a man stood before an empire, a farmer became a general, and a village gave India its first flame of freedom.\"", 
+                te: "\"ఉయ్యాలవాడ కేవలం ఒక గ్రామం కాదు — ఇది ఆత్మ యొక్క యుద్ధభూమి. ఒక మనిషి సామ్రాజ్యం ముందు నిలిచిన భూమి, ఒక రైతు జనరల్గా మారిన భూమి మరియు ఒక గ్రామం భారతదేశానికి దాని మొదటి స్వాతంత్ర్య జ్వాలను ఇచ్చింది.\"" 
+            },
+            "map-btn": { 
+                en: "View on Google Maps", 
+                te: "గూగుల్ మ్యాప్స్‌లో వీక్షించండి" 
+            },
+            "copyright": { 
+                en: "© 2023 Uyyalawada Heritage. All rights reserved.", 
+                te: "© 2023 ఉయ్యాలవాడ వారసత్వం. అన్ని హక్కులు ప్రత్యేకించబడినవి." 
+            }
+        };
+
+        // Language Toggle Functionality
+        function setLanguage(lang) {
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update button states
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            document.getElementById('te-btn').classList.toggle('active', lang === 'te');
+            
+            // Update all translatable elements
+            for (const [id, texts] of Object.entries(translations)) {
+                const element = document.getElementById(id);
+                if (element) element.textContent = texts[lang];
+            }
+        }
+
+        // Scroll Animations for Timeline
+        function checkVisibility() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial language from localStorage or default to English
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+            
+            // Set up event listeners
+            document.getElementById('en-btn').addEventListener('click', () => setLanguage('en'));
+            document.getElementById('te-btn').addEventListener('click', () => setLanguage('te'));
+            
+            // Run initial animations
+            checkVisibility();
+        });
+
+        window.addEventListener('scroll', checkVisibility);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanipakam | The Village of Self-Manifested Deity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Divine Color Scheme */
+        :root {
+            --primary: #9b59b6;   /* Sacred Purple */
+            --secondary: #2c3e50;  /* Deep Blue */
+            --accent: #8e44ad;     /* Royal Purple */
+            --light: #f9f9f9;
+            --dark: #333;
+            --text: #555;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Skip to Content Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header with Divine Background */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('./images/kanipakamganeshchavithi.jpeg') center/cover fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header-content {
+            width: 100%;
+            animation: fadeIn 1.5s ease;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0 auto;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+        }
+
+        /* Grid Layouts */
+        .name-breakdown,
+        .geo-features,
+        .facts-grid,
+        .temple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-content h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Stats Table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .stats-table th, .stats-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stats-table th {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .stats-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        /* Facts Cards */
+        .fact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .fact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .map-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 10px 0;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            header {
+                background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)),
+                            url('images/kanipakam-temple-mobile.jpg') center/cover;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 50px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .name-breakdown,
+            .geo-features,
+            .facts-grid,
+            .temple-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to Content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="en-btn" aria-label="Switch to English">English</button>
+            <button class="lang-btn" id="te-btn" aria-label="Switch to Telugu">తెలుగు</button>
+        </div>
+
+        <div class="header-content">
+            <h1 id="header-title">Kanipakam</h1>
+            <p id="header-subtitle">The Village of the Self-Manifested Deity</p>
+            <div class="location-tag" id="location-tag">Chittoor District, Andhra Pradesh</div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#name" id="nav-name">Name Origin</a></li>
+            <li><a href="#history" id="nav-history">History</a></li>
+            <li><a href="#geography" id="nav-geography">Geography</a></li>
+            <li><a href="#temples" id="nav-temples">Temples</a></li>
+            <li><a href="#festivals" id="nav-festivals">Festivals</a></li>
+            <li><a href="#economy" id="nav-economy">Economy</a></li>
+            <li><a href="#facts" id="nav-facts">Facts</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Name Origin Section -->
+        <section id="name" class="name-origin">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="name-title">Why "Kanipakam"?</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name1-title">"Kani" (కని)</h3>
+                            <p id="name1-desc">
+                                From Telugu word meaning "wetland", "well", or "spring". It can also refer to sacred water used in rituals.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name2-title">"Pakam" (పాకం)</h3>
+                            <p id="name2-desc">
+                                A term that means "flow", "distribution", or a "place where water spreads". Represents divine manifestation.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name3-title">Divine Interpretation</h3>
+                            <p id="name3-desc">
+                                "Kanipakam" translates to "the place where sacred water flows" or "a holy well of divine manifestation", 
+                                based on the legend of the self-manifested Ganesha idol.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="history">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="history-title">Sacred Timeline</h2>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era1-title">11th Century CE</h3>
+                            <p id="era1-desc">
+                                The original Ganesha idol was discovered by three differently abled brothers in a field while digging a well.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era2-title">Early Chola Period</h3>
+                            <p id="era2-desc">
+                                The temple was built and maintained by Kulothunga Chola I, establishing Kanipakam as a pilgrimage site.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era3-title">Vijayanagara Era</h3>
+                            <p id="era3-desc">
+                                Temple renovated and expanded with rich architecture and rituals. Became a major spiritual center.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era4-title">Modern Era</h3>
+                            <p id="era4-desc">
+                                Managed by Andhra Pradesh Endowments Department. The temple now draws millions of pilgrims yearly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Geography & Environment Section -->
+        <section id="geography" class="geography">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="geo-title">Divine Geography</h2>
+                </div>
+                
+                <div class="geo-features">
+                    <div class="card">
+                        <img src="./images/kanipakambahuda.jpeg" alt="Bahuda River near Kanipakam" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo1-title">Sacred River</h3>
+                            <p id="geo1-desc">
+                                Located along the Bahuda River, a tributary that adds lush fertility to the surroundings. 
+                                Used for ritual bathing during festivals.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kanipakamwell.jpeg" alt="Miraculous temple well" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo2-title">Miraculous Well</h3>
+                            <p id="geo2-desc">
+                                The temple well never dries, even in harsh summers. Considered sacred and miraculous by devotees.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kanipakamagri.jpeg" alt="Kanipakam village landscape" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo3-title">Agricultural Land</h3>
+                            <p id="geo3-desc">
+                                Red loamy soil supports banana plantations, coconut farms, and sacred groves surrounding the temple.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Temples Section -->
+        <section id="temples" class="temples">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="temples-title">Sacred Structures</h2>
+                </div>
+                
+                <div class="temple-grid">
+                    <div class="card">
+                        <img src="./images/kanipakamganeshchavithi.jpeg" alt="Sri Varasiddhi Vinayaka Temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple1-title">Sri Varasiddhi Vinayaka</h3>
+                            <p id="temple1-desc">
+                                Home to the Swayambhu (self-manifested) Ganesha idol submerged in water. 
+                                The idol is said to grow in size, with only parts visible today.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kanipakambahudaghat.jpg" alt="Bahuda River Ghat" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple2-title">Bahuda River Ghat</h3>
+                            <p id="temple2-desc">
+                                Sacred bathing spot used during Ganesh Chaturthi and Karthika Masam. 
+                                Pilgrims perform rituals here before temple darshan.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kanipakamsubcomplex.jpeg" alt="Sub-temples of Kanipakam" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple3-title">Sub-temples Complex</h3>
+                            <p id="temple3-desc">
+                                Shrines dedicated to Shiva, Kasi Viswanatha, and Subrahmanya Swamy. 
+                                Known for iconic chariot processions during festivals.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Festivals Section -->
+        <section id="festivals" class="festivals">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="festivals-title">Divine Festivals</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="./images/kanipakamganeshbrahmostam.jpeg" alt="Ganesh Brahmotsavam festival" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival1-title">Ganesh Brahmotsavam</h3>
+                            <p id="festival1-desc">
+                                21-day festival (August-September) featuring massive chariot processions, 
+                                cultural programs, and devotional concerts.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kanipakamganeshswamy.jpeg" alt="Karthika Deepotsavam lamps" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival2-title">Karthika Deepotsavam</h3>
+                            <p id="festival2-desc">
+                                Festival of lights where lamps are floated in the temple tank. 
+                                Women fast and pray for family well-being and prosperity.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kanipakamganeshchavithi.jpeg" alt="Vinayaka Chavithi celebrations" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="festival3-title">Vinayaka Chavithi</h3>
+                            <p id="festival3-desc">
+                                State-wide significant festival with special midnight abhishekas 
+                                and thousands of devotees queuing for blessings.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Economy Section -->
+        <section id="economy" class="economy">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="economy-title">Village Economy</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="./images/kanipakambanana.jpeg" alt="Banana plantations" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ1-title">Agriculture</h3>
+                            <p id="econ1-desc">
+                                Banana plantations (main economic crop), coconut and palm oil farming, 
+                                with paddy, sugarcane and turmeric as secondary crops.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kanipakamtemplestalls.jpeg" alt="Temple market stalls" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ2-title">Temple Economy</h3>
+                            <p id="econ2-desc">
+                                Prasadam stalls, puja shops, and cottage industries selling Ganesha idols, 
+                                brass puja items, and herbal oils.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kanipakamarts.jpeg" alt="Village artisans at work" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="econ3-title">Artisans</h3>
+                            <p id="econ3-desc">
+                                Bronze idol makers, garland weavers, and Kalamkari cloth sellers 
+                                form the traditional artisan community.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Village Profile Section -->
+        <section id="demographics" class="demographics">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="demo-title">Village Profile</h2>
+                </div>
+                
+                <table class="stats-table">
+                    <tr>
+                        <th id="stat1-label">Field</th>
+                        <th id="stat1-value">Data</th>
+                    </tr>
+                    <tr>
+                        <td id="stat2-label">Population</td>
+                        <td id="stat2-value">~5,500</td>
+                    </tr>
+                    <tr>
+                        <td id="stat3-label">Languages</td>
+                        <td id="stat3-value">Telugu, Tamil</td>
+                    </tr>
+                    <tr>
+                        <td id="stat4-label">Literacy</td>
+                        <td id="stat4-value">~70%</td>
+                    </tr>
+                    <tr>
+                        <td id="stat5-label">Occupation</td>
+                        <td id="stat5-value">Agriculture, temple trade, tourism</td>
+                    </tr>
+                    <tr>
+                        <td id="stat6-label">Nearest Town</td>
+                        <td id="stat6-value">Chittoor (~12 km)</td>
+                    </tr>
+                    <tr>
+                        <td id="stat7-label">Transport</td>
+                        <td id="stat7-value">Buses from Tirupati, Chittoor, Vellore</td>
+                    </tr>
+                    <tr>
+                        <td id="stat8-label">PIN Code</td>
+                        <td id="stat8-value">517131</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Fascinating Facts Section -->
+        <section id="facts" class="facts">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="facts-title">Divine Miracles & Facts</h2>
+                </div>
+                
+                <div class="facts-grid">
+                    <div class="fact-card">
+                        <h3 id="fact1-title">Perpetual Water</h3>
+                        <p id="fact1-desc">
+                            The idol is submerged in holy water, and the water level remains constant — even in severe droughts.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact2-title">Mysterious Drainage</h3>
+                        <p id="fact2-desc">
+                            The temple doesn't have any visible drain, yet never floods during heavy rains.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact3-title">Growing Idol</h3>
+                        <p id="fact3-desc">
+                            The idol is believed to grow in size — today only parts like the face are visible above water.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact4-title">Mokku Rituals</h3>
+                        <p id="fact4-desc">
+                            Pilgrims perform vows like tonsuring, walking barefoot from Chittoor (~12 km), or donating gold coins.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact5-title">Three Brothers' Discovery</h3>
+                        <p id="fact5-desc">
+                            The idol was discovered by three differently abled brothers (blind, deaf, and mute) while digging a well.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact6-title">Chola Connection</h3>
+                        <p id="fact6-desc">
+                            Kulothunga Chola I built the original temple after witnessing the idol's miracles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-quote" id="footer-quote">
+                "Kanipakam is not just a village; it's an eternal miracle in stone, water, and devotion. Here, Ganesha doesn't just reside — he reveals."
+            </p>
+            
+            <a href="https://www.google.com/maps/place/Kanipakam,+Chittoor,+Andhra+Pradesh" class="map-btn" target="_blank" id="map-btn" aria-label="View Kanipakam on Google Maps">
+                <i class="fas fa-map-marker-alt"></i> View on Google Maps
+            </a>
+            
+            
+        </div>
+    </footer>
+
+    <script>
+        // Language Data
+        const translations = {
+            // Header
+            "header-title": { 
+                en: "Kanipakam", 
+                te: "కానిపాకం" 
+            },
+            "header-subtitle": { 
+                en: "The Village of the Self-Manifested Deity", 
+                te: "స్వయంభూ దైవం గ్రామం" 
+            },
+            "location-tag": { 
+                en: "Chittoor District, Andhra Pradesh", 
+                te: "చిత్తూరు జిల్లా, ఆంధ్రప్రదేశ్" 
+            },
+
+            // Navigation
+            "nav-name": { 
+                en: "Name Origin", 
+                te: "పేరు మూలం" 
+            },
+            "nav-history": { 
+                en: "History", 
+                te: "చరిత్ర" 
+            },
+            "nav-geography": { 
+                en: "Geography", 
+                te: "భౌగోళికం" 
+            },
+            "nav-temples": { 
+                en: "Temples", 
+                te: "దేవాలయాలు" 
+            },
+            "nav-festivals": { 
+                en: "Festivals", 
+                te: "పండుగలు" 
+            },
+            "nav-economy": { 
+                en: "Economy", 
+                te: "ఆర్థిక వ్యవస్థ" 
+            },
+            "nav-facts": { 
+                en: "Facts", 
+                te: "విశేషాలు" 
+            },
+
+            // Name Origin
+            "name-title": { 
+                en: "Why \"Kanipakam\"?", 
+                te: "\"కానిపాకం\" అనే పేరు ఎందుకు?" 
+            },
+            "name1-title": { 
+                en: "\"Kani\" (కని)", 
+                te: "\"కని\" (కని)" 
+            },
+            "name1-desc": { 
+                en: "From Telugu word meaning \"wetland\", \"well\", or \"spring\". It can also refer to sacred water used in rituals.",
+                te: "తెలుగు పదం \"నీటి ప్రదేశం\", \"బావి\" లేదా \"నీటి ఊట\" అని అర్థం. ఆచారాలలో ఉపయోగించే పవిత్ర నీటిని కూడా సూచిస్తుంది."
+            },
+            "name2-title": { 
+                en: "\"Pakam\" (పాకం)", 
+                te: "\"పాకం\" (పాకం)" 
+            },
+            "name2-desc": { 
+                en: "A term that means \"flow\", \"distribution\", or a \"place where water spreads\". Represents divine manifestation.",
+                te: "\"ప్రవాహం\", \"పంపిణీ\" లేదా \"నీరు వ్యాపించే ప్రదేశం\" అని అర్థం. దైవిక అవతారాన్ని సూచిస్తుంది."
+            },
+            "name3-title": { 
+                en: "Divine Interpretation", 
+                te: "దైవిక అర్థం" 
+            },
+            "name3-desc": { 
+                en: "\"Kanipakam\" translates to \"the place where sacred water flows\" or \"a holy well of divine manifestation\", based on the legend of the self-manifested Ganesha idol.",
+                te: "\"కానిపాకం\" అనగా \"పవిత్ర నీరు ప్రవహించే ప్రదేశం\" లేదా \"దైవిక అవతారం యొక్క పవిత్ర బావి\", స్వయంభూ వినాయక విగ్రహం పురాణం ఆధారంగా."
+            },
+
+            // History
+            "history-title": { 
+                en: "Sacred Timeline", 
+                te: "పవిత్ర కాలక్రమం" 
+            },
+            "era1-title": { 
+                en: "11th Century CE", 
+                te: "11వ శతాబ్దం" 
+            },
+            "era1-desc": { 
+                en: "The original Ganesha idol was discovered by three differently abled brothers in a field while digging a well.",
+                te: "వినాయక విగ్రహం మూడు వైకల్యాలు ఉన్న సోదరులు బావి త్రవ్వేటప్పుడు కనుగొన్నారు."
+            },
+            "era2-title": { 
+                en: "Early Chola Period", 
+                te: "ప్రారంభ చోళ కాలం" 
+            },
+            "era2-desc": { 
+                en: "The temple was built and maintained by Kulothunga Chola I, establishing Kanipakam as a pilgrimage site.",
+                te: "కులోత్తుంగ చోళ I దేవాలయాన్ని నిర్మించి నిర్వహించాడు, కానిపాకాన్ని యాత్రా కేంద్రంగా స్థాపించాడు."
+            },
+            "era3-title": { 
+                en: "Vijayanagara Era", 
+                te: "విజయనగర యుగం" 
+            },
+            "era3-desc": { 
+                en: "Temple renovated and expanded with rich architecture and rituals. Became a major spiritual center.",
+                te: "దేవాలయం పునరుద్ధరించబడి విస్తరించబడింది, గొప్ప నిర్మాణ శైలి మరియు ఆచారాలతో. ప్రధాన ఆధ్యాత్మిక కేంద్రంగా మారింది."
+            },
+            "era4-title": { 
+                en: "Modern Era", 
+                te: "ఆధునిక యుగం" 
+            },
+            "era4-desc": { 
+                en: "Managed by Andhra Pradesh Endowments Department. The temple now draws millions of pilgrims yearly.",
+                te: "ఆంధ్రప్రదేశ్ ఎండోమెంట్స్ శాఖ నిర్వహిస్తుంది. ఇప్పుడు ప్రతి సంవత్సరం మిలియన్ల మంది యాత్రికులను ఆకర్షిస్తుంది."
+            },
+
+            // Geography
+            "geo-title": { 
+                en: "Divine Geography", 
+                te: "దైవిక భౌగోళికం" 
+            },
+            "geo1-title": { 
+                en: "Sacred River", 
+                te: "పవిత్ర నది" 
+            },
+            "geo1-desc": { 
+                en: "Located along the Bahuda River, a tributary that adds lush fertility to the surroundings. Used for ritual bathing during festivals.",
+                te: "బహుదా నది ఒడ్డున ఉంది, ఇది పరిసర ప్రాంతాలకు సారవంతమైన సారాన్ని ఇస్తుంది. పండుగల సమయంలో ఆచార స్నానాలకు ఉపయోగిస్తారు."
+            },
+            "geo2-title": { 
+                en: "Miraculous Well", 
+                te: "అద్భుత బావి" 
+            },
+            "geo2-desc": { 
+                en: "The temple well never dries, even in harsh summers. Considered sacred and miraculous by devotees.",
+                te: "దేవాలయ బావి తీవ్రమైన వేసవిలో కూడా ఎండిపోదు. భక్తులచే పవిత్రమైనది మరియు అద్భుతమైనదిగా పరిగణించబడుతుంది."
+            },
+            "geo3-title": { 
+                en: "Agricultural Land", 
+                te: "వ్యవసాయ భూమి" 
+            },
+            "geo3-desc": { 
+                en: "Red loamy soil supports banana plantations, coconut farms, and sacred groves surrounding the temple.",
+                te: "ఎరుపు బంకమట్టి అరటి తోటలు, కొబ్బరి పొలాలు మరియు దేవాలయాన్ని చుట్టుముట్టిన పవిత్ర తోపులకు అనుకూలంగా ఉంటుంది."
+            },
+
+            // Temples
+            "temples-title": { 
+                en: "Sacred Structures", 
+                te: "పవిత్ర నిర్మాణాలు" 
+            },
+            "temple1-title": { 
+                en: "Sri Varasiddhi Vinayaka", 
+                te: "శ్రీ వరసిద్ధి వినాయక" 
+            },
+            "temple1-desc": { 
+                en: "Home to the Swayambhu (self-manifested) Ganesha idol submerged in water. The idol is said to grow in size, with only parts visible today.",
+                te: "నీటిలో మునిగిన స్వయంభూ (స్వయంగా అవతరించిన) వినాయక విగ్రహం నివాసం. విగ్రహం పరిమాణంలో పెరుగుతుందని చెప్పబడుతుంది, ఈ రోజు కొంత భాగమే కనిపిస్తుంది."
+            },
+            "temple2-title": { 
+                en: "Bahuda River Ghat", 
+                te: "బహుదా నది ఘాట్" 
+            },
+            "temple2-desc": { 
+                en: "Sacred bathing spot used during Ganesh Chaturthi and Karthika Masam. Pilgrims perform rituals here before temple darshan.",
+                te: "వినాయక చవితి మరియు కార్తీక మాసం సమయంలో ఉపయోగించే పవిత్ర స్నాన స్థలం. యాత్రికులు దేవాలయ దర్శనానికి ముందు ఇక్కడ ఆచారాలు నిర్వహిస్తారు."
+            },
+            "temple3-title": { 
+                en: "Sub-temples Complex", 
+                te: "ఉప-దేవాలయాల సముదాయం" 
+            },
+            "temple3-desc": { 
+                en: "Shrines dedicated to Shiva, Kasi Viswanatha, and Subrahmanya Swamy. Known for iconic chariot processions during festivals.",
+                te: "శివ, కాశీ విశ్వనాథ మరియు సుబ్రహ్మణ్య స్వామికి అంకితమైన దేవాలయాలు. పండుగల సమయంలో ప్రసిద్ధ రథోత్సవాలకు ప్రసిద్ధి చెందింది."
+            },
+
+            // Festivals
+            "festivals-title": { 
+                en: "Divine Festivals", 
+                te: "దైవిక పండుగలు" 
+            },
+            "festival1-title": { 
+                en: "Ganesh Brahmotsavam", 
+                te: "వినాయక బ్రహ్మోత్సవం" 
+            },
+            "festival1-desc": { 
+                en: "21-day festival (August-September) featuring massive chariot processions, cultural programs, and devotional concerts.",
+                te: "21-రోజుల పండుగ (ఆగస్టు-సెప్టెంబర్), భారీ రథోత్సవాలు, సాంస్కృతిక కార్యక్రమాలు మరియు భక్తి గీతాల కచేరీలతో నిండి ఉంటుంది."
+            },
+            "festival2-title": { 
+                en: "Karthika Deepotsavam", 
+                te: "కార్తీక దీపోత్సవం" 
+            },
+            "festival2-desc": { 
+                en: "Festival of lights where lamps are floated in the temple tank. Women fast and pray for family well-being and prosperity.",
+                te: "దీపాల పండుగ, దీపాలను దేవాలయ తటాకంలో తేలుతారు. మహిళలు కుటుంబ సుఖసంతోషాలు మరియు సంపద కోసం ఉపవాసం ఉంటారు మరియు ప్రార్థిస్తారు."
+            },
+            "festival3-title": { 
+                en: "Vinayaka Chavithi", 
+                te: "వినాయక చవితి" 
+            },
+            "festival3-desc": { 
+                en: "State-wide significant festival with special midnight abhishekas and thousands of devotees queuing for blessings.",
+                te: "ప్రత్యేక మధ్యరాత్రి అభిషేకాలు మరియు ఆశీర్వాదాల కోసం వేలాది భక్తుల క్యూ తో రాష్ట్రవ్యాప్తంగా ముఖ్యమైన పండుగ."
+            },
+
+            // Economy
+            "economy-title": { 
+                en: "Village Economy", 
+                te: "గ్రామ ఆర్థిక వ్యవస్థ" 
+            },
+            "econ1-title": { 
+                en: "Agriculture", 
+                te: "వ్యవసాయం" 
+            },
+            "econ1-desc": { 
+                en: "Banana plantations (main economic crop), coconut and palm oil farming, with paddy, sugarcane and turmeric as secondary crops.",
+                te: "అరటి తోటలు (ప్రధాన ఆర్థిక పంట), కొబ్బరి మరియు తాటి నూనె సాగు, వరి, చెరకు మరియు పసుపు ద్వితీయ పంటలుగా."
+            },
+            "econ2-title": { 
+                en: "Temple Economy", 
+                te: "దేవాలయ ఆర్థిక వ్యవస్థ" 
+            },
+            "econ2-desc": { 
+                en: "Prasadam stalls, puja shops, and cottage industries selling Ganesha idols, brass puja items, and herbal oils.",
+                te: "ప్రసాదం స్టాల్స్, పూజా దుకాణాలు మరియు కుటీర పరిశ్రమలు వినాయక విగ్రహాలు, పిత్తడి పూజా వస్తువులు మరియు మూలికా నూనెలను విక్రయిస్తాయి."
+            },
+            "econ3-title": { 
+                en: "Artisans", 
+                te: "కళాకారులు" 
+            },
+            "econ3-desc": { 
+                en: "Bronze idol makers, garland weavers, and Kalamkari cloth sellers form the traditional artisan community.",
+                te: "వంగర విగ్రహాల తయారీదారులు, పూలమాలలు ణేతలు మరియు కలంకారి వస్త్రాలు అమ్మేవారు సాంప్రదాయ కళాకారుల సమాజాన్ని ఏర్పరుస్తారు."
+            },
+
+            // Village Profile
+            "demo-title": { 
+                en: "Village Profile", 
+                te: "గ్రామ ప్రొఫైల్" 
+            },
+            "stat1-label": { 
+                en: "Field", 
+                te: "రంగం" 
+            },
+            "stat1-value": { 
+                en: "Data", 
+                te: "డేటా" 
+            },
+            "stat2-label": { 
+                en: "Population", 
+                te: "జనాభా" 
+            },
+            "stat2-value": { 
+                en: "~5,500", 
+                te: "~5,500" 
+            },
+            "stat3-label": { 
+                en: "Languages", 
+                te: "భాషలు" 
+            },
+            "stat3-value": { 
+                en: "Telugu, Tamil", 
+                te: "తెలుగు, తమిళం" 
+            },
+            "stat4-label": { 
+                en: "Literacy", 
+                te: "సాక్షరత" 
+            },
+            "stat4-value": { 
+                en: "~70%", 
+                te: "~70%" 
+            },
+            "stat5-label": { 
+                en: "Occupation", 
+                te: "వృత్తి" 
+            },
+            "stat5-value": { 
+                en: "Agriculture, temple trade, tourism", 
+                te: "వ్యవసాయం, దేవాలయ వాణిజ్యం, పర్యాటకం" 
+            },
+            "stat6-label": { 
+                en: "Nearest Town", 
+                te: "సమీప పట్టణం" 
+            },
+            "stat6-value": { 
+                en: "Chittoor (~12 km)", 
+                te: "చిత్తూరు (~12 కి.మీ.)" 
+            },
+            "stat7-label": { 
+                en: "Transport", 
+                te: "రవాణా" 
+            },
+            "stat7-value": { 
+                en: "Buses from Tirupati, Chittoor, Vellore", 
+                te: "తిరుపతి, చిత్తూరు, వెల్లూరు నుండి బస్సులు" 
+            },
+            "stat8-label": { 
+                en: "PIN Code", 
+                te: "పిన్ కోడ్" 
+            },
+            "stat8-value": { 
+                en: "517131", 
+                te: "517131" 
+            },
+
+            // Facts
+            "facts-title": { 
+                en: "Divine Miracles & Facts", 
+                te: "దైవిక అద్భుతాలు & విశేషాలు" 
+            },
+            "fact1-title": { 
+                en: "Perpetual Water", 
+                te: "శాశ్వత నీరు" 
+            },
+            "fact1-desc": { 
+                en: "The idol is submerged in holy water, and the water level remains constant — even in severe droughts.",
+                te: "విగ్రహం పవిత్ర నీటిలో మునిగి ఉంటుంది, మరియు నీటి స్థాయి స్థిరంగా ఉంటుంది — తీవ్రమైన కరువులలో కూడా."
+            },
+            "fact2-title": { 
+                en: "Mysterious Drainage", 
+                te: "మర్మమైన నీటి వ్యవస్థ" 
+            },
+            "fact2-desc": { 
+                en: "The temple doesn't have any visible drain, yet never floods during heavy rains.",
+                te: "దేవాలయానికి ఏదైనా కనిపించే నీటి కాలువ లేదు, అయినా భారీ వర్షాల సమయంలో కూడా వరదలు రావు."
+            },
+            "fact3-title": { 
+                en: "Growing Idol", 
+                te: "పెరిగే విగ్రహం" 
+            },
+            "fact3-desc": { 
+                en: "The idol is believed to grow in size — today only parts like the face are visible above water.",
+                te: "విగ్రహం పరిమాణంలో పెరుగుతుందని నమ్ముతారు — ఈ రోజు ముఖం వంటి భాగాలు మాత్రమే నీటి పైన కనిపిస్తాయి."
+            },
+            "fact4-title": { 
+                en: "Mokku Rituals", 
+                te: "మొక్కు ఆచారాలు" 
+            },
+            "fact4-desc": { 
+                en: "Pilgrims perform vows like tonsuring, walking barefoot from Chittoor (~12 km), or donating gold coins.",
+                te: "యాత్రికులు మొండి కత్తిరించుకోవడం, చిత్తూరు నుండి (~12 కి.మీ.) పాదరక్షలు లేకుండా నడవడం లేదా బంగారు నాణేలు దానం చేయడం వంటి మొక్కులు నిర్వహిస్తారు."
+            },
+            "fact5-title": { 
+                en: "Three Brothers' Discovery", 
+                te: "ముగ్దురు సోదరుల కనుగోలు" 
+            },
+            "fact5-desc": { 
+                en: "The idol was discovered by three differently abled brothers (blind, deaf, and mute) while digging a well.",
+                te: "విగ్రహం ముగ్దురు వైకల్యాలు ఉన్న సోదరులు (గుడ్డి, చెవిటి మరియు మూగ) బావి త్రవ్వేటప్పుడు కనుగొన్నారు."
+            },
+            "fact6-title": { 
+                en: "Chola Connection", 
+                te: "చోళ సంబంధం" 
+            },
+            "fact6-desc": { 
+                en: "Kulothunga Chola I built the original temple after witnessing the idol's miracles.",
+                te: "విగ్రహం యొక్క అద్భుతాలను చూసిన తర్వాత కులోత్తుంగ చోళ I అసలు దేవాలయాన్ని నిర్మించాడు."
+            },
+
+            // Footer
+            "footer-quote": { 
+                en: "\"Kanipakam is not just a village; it's an eternal miracle in stone, water, and devotion. Here, Ganesha doesn't just reside — he reveals.\"", 
+                te: "\"కానిపాకం కేవలం ఒక గ్రామం కాదు; ఇది రాతి, నీరు మరియు భక్తిలో శాశ్వతమైన అద్భుతం. ఇక్కడ, వినాయకుడు కేవలం నివసించడమే కాదు — అతను బయటపడతాడు.\"" 
+            },
+            "map-btn": { 
+                en: "View on Google Maps", 
+                te: "గూగుల్ మ్యాప్స్‌లో వీక్షించండి" 
+            },
+            "copyright": { 
+                en: "© 2023 Kanipakam Divine Heritage Project. All rights reserved.", 
+                te: "© 2023 కానిపాకం దైవిక వారసత్వ ప్రాజెక్ట్. అన్ని హక్కులు ప్రత్యేకించబడినవి." 
+            }
+        };
+
+        // Language Toggle Functionality
+        function setLanguage(lang) {
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update button states
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            document.getElementById('te-btn').classList.toggle('active', lang === 'te');
+            
+            // Update all translatable elements
+            for (const [id, texts] of Object.entries(translations)) {
+                const element = document.getElementById(id);
+                if (element) element.textContent = texts[lang];
+            }
+        }
+
+        // Scroll Animations for Timeline
+        function checkVisibility() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial language from localStorage or default to English
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+            
+            // Set up event listeners
+            document.getElementById('en-btn').addEventListener('click', () => setLanguage('en'));
+            document.getElementById('te-btn').addEventListener('click', () => setLanguage('te'));
+            
+            // Run initial animations
+            checkVisibility();
+        });
+
+        window.addEventListener('scroll', checkVisibility);
+    </script>
+</body>
+</html>

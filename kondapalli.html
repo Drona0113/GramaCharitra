@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kondapalli | Fort of Kings, Toys of Culture</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Royal Color Scheme (Fort/Artisan Theme) */
+        :root {
+            --primary: #8b4513;   /* SaddleBrown (Wood/Toy Theme) */
+            --secondary: #5d4037;  /* Deep Brown (Fort Walls) */
+            --accent: #d2691e;     /* Chocolate (Artisan Accent) */
+            --light: #f9f9f9;
+            --dark: #333;
+            --text: #555;
+        }
+
+        /* Base Styles (Same as Kanchikacherla) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Skip to Content Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header with Fort Background */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('./images/kondapalli.jpg') center/cover fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header-content {
+            width: 100%;
+            animation: fadeIn 1.5s ease;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0 auto;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+        }
+
+        /* Grid Layouts */
+        .name-breakdown,
+        .geo-features,
+        .facts-grid,
+        .temple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-content h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Stats Table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .stats-table th, .stats-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stats-table th {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .stats-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        /* Facts Cards */
+        .fact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .fact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .map-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 10px 0;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            header {
+                background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)),
+                            url('images/kondapalli-fort-mobile.jpg') center/cover;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 50px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .name-breakdown,
+            .geo-features,
+            .facts-grid,
+            .temple-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to Content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="en-btn" aria-label="Switch to English">English</button>
+            <button class="lang-btn" id="te-btn" aria-label="Switch to Telugu">తెలుగు</button>
+        </div>
+
+        <div class="header-content">
+            <h1 id="header-title">Kondapalli</h1>
+            <p id="header-subtitle">Fort of Kings, Toys of Culture, Heart of Heritage</p>
+            <div class="location-tag" id="location-tag">NTR District, Andhra Pradesh</div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#name" id="nav-name">Name Origin</a></li>
+            <li><a href="#history" id="nav-history">History</a></li>
+            <li><a href="#fort" id="nav-fort">Kondapalli Fort</a></li>
+            <li><a href="#toys" id="nav-toys">Kondapalli Toys</a></li>
+            <li><a href="#temples" id="nav-temples">Temples</a></li>
+            <li><a href="#festivals" id="nav-festivals">Festivals</a></li>
+            <li><a href="#facts" id="nav-facts">Facts</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Name Origin Section -->
+        <section id="name" class="name-origin">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="name-title">Why "Kondapalli"?</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name1-title">"Konda" (కొండ)</h3>
+                            <p id="name1-desc">
+                                Telugu for "hill" or "mountain", reflecting the village's elevated terrain near Kondapalli Reserve Forest.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name2-title">"Palli" (పల్లి)</h3>
+                            <p id="name2-desc">
+                                A rural suffix meaning "village" or "settlement", common in Andhra's hilly regions.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name3-title">Cultural Interpretation</h3>
+                            <p id="name3-desc">
+                                "Kondapalli" translates to "The hill village", crowned by its iconic 14th-century fort and toy-making legacy.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="history">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="history-title">Historical Timeline</h2>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era1-title">Ancient Period</h3>
+                            <p id="era1-desc">
+                                Rock carvings suggest Stone Age presence. Folklore links the hills to sage Valmiki and mythical Yaksha kingdoms.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era2-title">14th Century</h3>
+                            <p id="era2-desc">
+                                Kondapalli Fort built by Prolaya Vema Reddy of the Reddi Kingdom as a military outpost and summer retreat.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era3-title">15th-17th Century</h3>
+                            <p id="era3-desc">
+                                Ruled by Gajapatis, Vijayanagara Empire, and Qutb Shahis. Fort expanded with Islamic arches and granaries.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era4-title">British Era</h3>
+                            <p id="era4-desc">
+                                Became a military training center. Kondapalli Toys gained global fame through London exhibitions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kondapalli Fort Section -->
+        <section id="fort" class="fort">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="fort-title">Kondapalli Fort</h2>
+                </div>
+                
+                <div class="geo-features">
+                    <div class="card">
+                        <img src="./images/kondapalli-gate.jpg" alt="Dargha Darwaza gate" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="fort1-title">Dargha Darwaza</h3>
+                            <p id="fort1-desc">
+                                The 15-foot main gate carved from a single granite block, designed to deflect elephant charges.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kondapalli-palace.jpg" alt="Tanisha Mahal" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="fort2-title">Tanisha Mahal</h3>
+                            <p id="fort2-desc">
+                                King's palace at the summit with cooling chambers and watch windows for royal summer retreats.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kondapalli-tunnel.jpg" alt="Secret tunnel" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="fort3-title">Secret Tunnel</h3>
+                            <p id="fort3-desc">
+                                Escape route connecting the fort to Kondapalli Forest floor, used during sieges.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kondapalli Toys Section -->
+        <section id="toys" class="toys">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="toys-title">Kondapalli Bommalu (Toys)</h2>
+                </div>
+                
+                <div class="temple-grid">
+                    <div class="card">
+                        <img src="./images/kondapalli-toymaking.jpg" alt="Artisan carving toys" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="toy1-title">Artisan Heritage</h3>
+                            <p id="toy1-desc">
+                                Made by Arya Kshatriya ("Nakarshalu") families using Tella Poniki wood, with skills passed down for 12+ generations.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kondapalli-toys.jpg" alt="Kondapalli toys display" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="toy2-title">GI-Tagged Craft</h3>
+                            <p id="toy2-desc">
+                                Hand-carved and painted with natural dyes. Themes include village life, Krishna Leela, and festivals.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kondapalli-festival.jpg" alt="Bommalu Festival" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="toy3-title">Bommalu Festival</h3>
+                            <p id="toy3-desc">
+                                Annual December event with toy-making competitions, folk dramas, and storytelling exhibitions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Temples Section -->
+        <section id="temples" class="temples">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="temples-title">Sacred Landmarks</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="./images/kondapalli-raghunatha.jpg" alt="Sri Raghunatha Swamy Temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple1-title">Sri Raghunatha Swamy</h3>
+                            <p id="temple1-desc">
+                                Ancient hill temple with Rama-Lakshmana-Sita idols. Hosts grand Rama Navami celebrations.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kondapalli-narasimha.jpg" alt="Narasimha Swamy Temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple2-title">Narasimha Swamy</h3>
+                            <p id="temple2-desc">
+                                Carved into the hillside, believed to protect the forest. Features unique cave-like architecture.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./images/kondapalli-poleramma.jpg" alt="Poleramma Temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple3-title">Poleramma Temple</h3>
+                            <p id="temple3-desc">
+                                Village goddess worshipped for monsoon blessings. Annual firewalking rituals during Jatara.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Festivals Section -->
+        <section id="festivals" class="festivals">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="festivals-title">Vibrant Festivals</h2>
+                </div>
+                
+                <div class="facts-grid">
+                    <div class="fact-card">
+                        <h3 id="festival1-title">Bommala Koluvu</h3>
+                        <p id="festival1-desc">
+                            During Dasara, Kondapalli dolls are arranged in elaborate displays depicting mythological scenes.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="festival2-title">Sankranti</h3>
+                        <p id="festival2-desc">
+                            Decorated bull toys and rangoli competitions showcase the village's agricultural roots.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="festival3-title">Vinayaka Chavithi</h3>
+                        <p id="festival3-desc">
+                            Artisans mass-produce wooden Ganesha idols, each hand-painted with vegetable colors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Village Profile Section -->
+        <section id="demographics" class="demographics">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="demo-title">Village Profile</h2>
+                </div>
+                
+                <table class="stats-table">
+                    <tr>
+                        <th id="stat1-label">Field</th>
+                        <th id="stat1-value">Data</th>
+                    </tr>
+                    <tr>
+                        <td id="stat2-label">Population</td>
+                        <td id="stat2-value">~6,500</td>
+                    </tr>
+                    <tr>
+                        <td id="stat3-label">Languages</td>
+                        <td id="stat3-value">Telugu</td>
+                    </tr>
+                    <tr>
+                        <td id="stat4-label">Literacy</td>
+                        <td id="stat4-value">~75%</td>
+                    </tr>
+                    <tr>
+                        <td id="stat5-label">Occupation</td>
+                        <td id="stat5-value">Toy-making, agriculture</td>
+                    </tr>
+                    <tr>
+                        <td id="stat6-label">Nearest City</td>
+                        <td id="stat6-value">Vijayawada (~18 km)</td>
+                    </tr>
+                    <tr>
+                        <td id="stat7-label">Transport</td>
+                        <td id="stat7-value">APSRTC buses, Kondapalli railway</td>
+                    </tr>
+                    <tr>
+                        <td id="stat8-label">Specialty</td>
+                        <td id="stat8-value">GI-tagged Kondapalli Toys</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Fascinating Facts Section -->
+        <section id="facts" class="facts">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="facts-title">Cultural Gems & Facts</h2>
+                </div>
+                
+                <div class="facts-grid">
+                    <div class="fact-card">
+                        <h3 id="fact1-title">Royal Retreat</h3>
+                        <p id="fact1-desc">
+                            The fort was a summer palace called "Darbar Hill", with cooling chambers for royalty.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact2-title">Global Toys</h3>
+                        <p id="fact2-desc">
+                            Kondapalli Bommalu are exported to the USA, UK, and Japan via artisan cooperatives.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact3-title">Unique Wood</h3>
+                        <p id="fact3-desc">
+                            Tella Poniki wood grows only in these hills and is government-protected.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact4-title">Earthquake-Proof</h3>
+                        <p id="fact4-desc">
+                            The fort's main gate has withstood earthquakes for 650+ years without damage.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact5-title">Ghost Lore</h3>
+                        <p id="fact5-desc">
+                            Locals believe the fort's prison cellars are haunted by a rebel commander's spirit.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact6-title">Endangered Art</h3>
+                        <p id="fact6-desc">
+                            Only ~30 traditional families still practice toy-making, prompting preservation efforts.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-quote" id="footer-quote">
+                "Kondapalli is where warriors built walls, and artisans carved stories. A living museum guarded by a fort and blessed by the forest."
+            </p>
+            
+            <a href="https://www.google.com/maps/place/Kondapalli,+Andhra+Pradesh" class="map-btn" target="_blank" id="map-btn" aria-label="View Kondapalli on Google Maps">
+                <i class="fas fa-map-marker-alt"></i> View on Google Maps
+            </a>
+            
+            <p class="copyright" id="copyright">
+                © 2023 Kondapalli Heritage Project. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Language Data (English & Telugu)
+        const translations = {
+            // Header
+            "header-title": { 
+                en: "Kondapalli", 
+                te: "కొండపల్లి" 
+            },
+            "header-subtitle": { 
+                en: "Fort of Kings, Toys of Culture, Heart of Heritage", 
+                te: "రాజుల కోట, సంస్కృతి బొమ్మలు, వారసత్వ హృదయం" 
+            },
+            "location-tag": { 
+                en: "NTR District, Andhra Pradesh", 
+                te: "ఎన్టీఆర్ జిల్లా, ఆంధ్రప్రదేశ్" 
+            },
+
+            // Navigation
+            "nav-name": { 
+                en: "Name Origin", 
+                te: "పేరు మూలం" 
+            },
+            "nav-history": { 
+                en: "History", 
+                te: "చరిత్ర" 
+            },
+            "nav-fort": { 
+                en: "Kondapalli Fort", 
+                te: "కొండపల్లి కోట" 
+            },
+            "nav-toys": { 
+                en: "Kondapalli Toys", 
+                te: "కొండపల్లి బొమ్మలు" 
+            },
+            "nav-temples": { 
+                en: "Temples", 
+                te: "దేవాలయాలు" 
+            },
+            "nav-festivals": { 
+                en: "Festivals", 
+                te: "పండుగలు" 
+            },
+            "nav-facts": { 
+                en: "Facts", 
+                te: "విశేషాలు" 
+            },
+
+            // Name Origin
+            "name-title": { 
+                en: "Why \"Kondapalli\"?", 
+                te: "\"కొండపల్లి\" అనే పేరు ఎందుకు?" 
+            },
+            "name1-title": { 
+                en: "\"Konda\" (కొండ)", 
+                te: "\"కొండ\" (కొండ)" 
+            },
+            "name1-desc": { 
+                en: "Telugu for \"hill\" or \"mountain\", reflecting the village's elevated terrain near Kondapalli Reserve Forest.",
+                te: "తెలుగులో \"కొండ\" లేదా \"పర్వతం\", కొండపల్లి రిజర్వ్ ఫారెస్ట్ సమీపంలో గ్రామం యొక్క ఎత్తైన భూభాగాన్ని ప్రతిబింబిస్తుంది."
+            },
+            "name2-title": { 
+                en: "\"Palli\" (పల్లి)", 
+                te: "\"పల్లి\" (పల్లి)" 
+            },
+            "name2-desc": { 
+                en: "A rural suffix meaning \"village\" or \"settlement\", common in Andhra's hilly regions.",
+                te: "\"గ్రామం\" లేదా \"వాసస్థలం\" అని అర్థం వచ్చే గ్రామీణ ప్రత్యయం, ఆంధ్రప్రదేశ్ కొండ ప్రాంతాలలో సాధారణం."
+            },
+            "name3-title": { 
+                en: "Cultural Interpretation", 
+                te: "సాంస్కృతిక అర్థం" 
+            },
+            "name3-desc": { 
+                en: "\"Kondapalli\" translates to \"The hill village\", crowned by its iconic 14th-century fort and toy-making legacy.",
+                te: "\"కొండపల్లి\" అనగా \"కొండ గ్రామం\", దీని ప్రతీకాత్మకమైన 14వ శతాబ్దపు కోట మరియు బొమ్మల తయారీ వారసత్వంతో ముడిపడి ఉంది."
+            },
+
+            // History
+            "history-title": { 
+                en: "Historical Timeline", 
+                te: "చారిత్రక కాలక్రమం" 
+            },
+            "era1-title": { 
+                en: "Ancient Period", 
+                te: "ప్రాచీన కాలం" 
+            },
+            "era1-desc": { 
+                en: "Rock carvings suggest Stone Age presence. Folklore links the hills to sage Valmiki and mythical Yaksha kingdoms.",
+                te: "రాతి కోతలు శిలాయుగ ఉనికిని సూచిస్తాయి. జానపద కథలు ఈ కొండలను ముని వాల్మీకి మరియు పురాణ యక్ష రాజ్యాలతో అనుసంధానిస్తాయి."
+            },
+            "era2-title": { 
+                en: "14th Century", 
+                te: "14వ శతాబ్దం" 
+            },
+            "era2-desc": { 
+                en: "Kondapalli Fort built by Prolaya Vema Reddy of the Reddi Kingdom as a military outpost and summer retreat.",
+                te: "రెడ్డి రాజ్యం యొక్క ప్రోలయ వేమ రెడ్డి చేత కొండపల్లి కోట సైనిక ఔట్‌పోస్ట్‌గా మరియు వేసవి విశ్రాంతి స్థలంగా నిర్మించబడింది."
+            },
+            "era3-title": { 
+                en: "15th-17th Century", 
+                te: "15-17వ శతాబ్దాలు" 
+            },
+            "era3-desc": { 
+                en: "Ruled by Gajapatis, Vijayanagara Empire, and Qutb Shahis. Fort expanded with Islamic arches and granaries.",
+                te: "గజపతులు, విజయనగర సామ్రాజ్యం మరియు కుతుబ్ షాహీలు పాలించారు. ఇస్లామిక్ కమానులు మరియు ధాన్యాగారాలతో కోట విస్తరించబడింది."
+            },
+            "era4-title": { 
+                en: "British Era", 
+                te: "బ్రిటిష్ యుగం" 
+            },
+            "era4-desc": { 
+                en: "Became a military training center. Kondapalli Toys gained global fame through London exhibitions.",
+                te: "సైనిక శిక్షణ కేంద్రంగా మారింది. కొండపల్లి బొమ్మలు లండన్ ప్రదర్శనల ద్వారా ప్రపంచ ప్రసిద్ధి పొందాయి."
+            },
+
+            // Fort
+            "fort-title": { 
+                en: "Kondapalli Fort", 
+                te: "కొండపల్లి కోట" 
+            },
+            "fort1-title": { 
+                en: "Dargha Darwaza", 
+                te: "దర్గా దర్వాజా" 
+            },
+            "fort1-desc": { 
+                en: "The 15-foot main gate carved from a single granite block, designed to deflect elephant charges.",
+                te: "ఒకే గ్రానైట్ బ్లాక్‌తో చెక్కిన 15 అడుగుల ప్రధాన ద్వారం, ఏనుగుల దాడులను తిప్పికొట్టడానికి రూపొందించబడింది."
+            },
+            "fort2-title": { 
+                en: "Tanisha Mahal", 
+                te: "తానీషా మహల్" 
+            },
+            "fort2-desc": { 
+                en: "King's palace at the summit with cooling chambers and watch windows for royal summer retreats.",
+                te: "రాజుల వేసవి విశ్రాంతి కోసం శీతలీకరణ గదులు మరియు వాచ్ విండోలతో సముద్రమట్టానికి 1,000 అడుగుల ఎత్తులో ఉన్న రాజభవనం."
+            },
+            "fort3-title": { 
+                en: "Secret Tunnel", 
+                te: "రహస్య సొరంగం" 
+            },
+            "fort3-desc": { 
+                en: "Escape route connecting the fort to Kondapalli Forest floor, used during sieges.",
+                te: "కోటను కొండపల్లి అటవీ ప్రాంతంతో కలిపే తప్పించుకునే మార్గం, ముట్టడి సమయంలో ఉపయోగించబడింది."
+            },
+
+            // Toys
+            "toys-title": { 
+                en: "Kondapalli Bommalu (Toys)", 
+                te: "కొండపల్లి బొమ్మలు" 
+            },
+            "toy1-title": { 
+                en: "Artisan Heritage", 
+                te: "కళాకారుల వారసత్వం" 
+            },
+            "toy1-desc": { 
+                en: "Made by Arya Kshatriya (\"Nakarshalu\") families using Tella Poniki wood, with skills passed down for 12+ generations.",
+                te: "ఆర్య క్షత్రియ (\"నకర్షలు\") కుటుంబాలు తెల్ల పోనికి కలపతో తయారు చేస్తారు, 12 కంటే ఎక్కువ తరాలుగా నైపుణ్యాలు అందించబడ్డాయి."
+            },
+            "toy2-title": { 
+                en: "GI-Tagged Craft", 
+                te: "జీఐ ట్యాగ్ చేయబడిన కళ" 
+            },
+            "toy2-desc": { 
+                en: "Hand-carved and painted with natural dyes. Themes include village life, Krishna Leela, and festivals.",
+                te: "సహజ రంగులతో చేతితో చెక్కి, పెయింట్ చేయబడింది. గ్రామ జీవితం, కృష్ణ లీలా మరియు పండుగలు ఇందులో ఉన్నాయి."
+            },
+            "toy3-title": { 
+                en: "Bommalu Festival", 
+                te: "బొమ్మలు ఫెస్టివల్" 
+            },
+            "toy3-desc": { 
+                en: "Annual December event with toy-making competitions, folk dramas, and storytelling exhibitions.",
+                te: "సంవత్సరం డిసెంబర్‌లో జరిగే బొమ్మల తయారీ పోటీలు, జానపద నాటకాలు మరియు కథన ప్రదర్శనలు."
+            },
+
+            // Temples
+            "temples-title": { 
+                en: "Sacred Landmarks", 
+                te: "పవిత్ర స్థలాలు" 
+            },
+            "temple1-title": { 
+                en: "Sri Raghunatha Swamy", 
+                te: "శ్రీ రఘునాథ స్వామి" 
+            },
+            "temple1-desc": { 
+                en: "Ancient hill temple with Rama-Lakshmana-Sita idols. Hosts grand Rama Navami celebrations.",
+                te: "రామ-లక్ష్మణ-సీత విగ్రహాలతో ప్రాచీన కొండ దేవాలయం. గ్రాండ్ రామ నవమి వేడుకలను నిర్వహిస్తుంది."
+            },
+            "temple2-title": { 
+                en: "Narasimha Swamy", 
+                te: "నరసింహ స్వామి" 
+            },
+            "temple2-desc": { 
+                en: "Carved into the hillside, believed to protect the forest. Features unique cave-like architecture.",
+                te: "కొండ వైపు చెక్కబడింది, అడవిని రక్షిస్తుందని నమ్ముతారు. ప్రత్యేకమైన గుహా వంటి నిర్మాణ శైలిని కలిగి ఉంది."
+            },
+            "temple3-title": { 
+                en: "Poleramma Temple", 
+                te: "పోలేరమ్మ దేవాలయం" 
+            },
+            "temple3-desc": { 
+                en: "Village goddess worshipped for monsoon blessings. Annual firewalking rituals during Jatara.",
+                te: "వర్షాకాలం ఆశీర్వాదాల కోసం గ్రామ దేవతను పూజిస్తారు. జాతర సమయంలో వార్షిక అగ్ని నడక ఆచారాలు."
+            },
+
+            // Festivals
+            "festivals-title": { 
+                en: "Vibrant Festivals", 
+                te: "సజీవమైన పండుగలు" 
+            },
+            "festival1-title": { 
+                en: "Bommala Koluvu", 
+                te: "బొమ్మల కొలువు" 
+            },
+            "festival1-desc": { 
+                en: "During Dasara, Kondapalli dolls are arranged in elaborate displays depicting mythological scenes.",
+                te: "దసరా సమయంలో, కొండపల్లి బొమ్మలు పురాణ దృశ్యాలను వర్ణించే విస్తృతమైన ప్రదర్శనలలో అమర్చబడతాయి."
+            },
+            "festival2-title": { 
+                en: "Sankranti", 
+                te: "సంక్రాంతి" 
+            },
+            "festival2-desc": { 
+                en: "Decorated bull toys and rangoli competitions showcase the village's agricultural roots.",
+                te: "అలంకరించిన ఎద్దు బొమ్మలు మరియు రంగులి పోటీలు గ్రామం యొక్క వ్యవసాయ మూలాలను ప్రదర్శిస్తాయి."
+            },
+            "festival3-title": { 
+                en: "Vinayaka Chavithi", 
+                te: "వినాయక చవితి" 
+            },
+            "festival3-desc": { 
+                en: "Artisans mass-produce wooden Ganesha idols, each hand-painted with vegetable colors.",
+                te: "కళాకారులు చెక్కిన వినాయక విగ్రహాలను ఉత్పత్తి చేస్తారు, ప్రతి ఒక్కటి కూరగాయల రంగులతో చేతితో పెయింట్ చేయబడింది."
+            },
+
+            // Village Profile
+            "demo-title": { 
+                en: "Village Profile", 
+                te: "గ్రామ ప్రొఫైల్" 
+            },
+            "stat1-label": { 
+                en: "Field", 
+                te: "రంగం" 
+            },
+            "stat1-value": { 
+                en: "Data", 
+                te: "డేటా" 
+            },
+            "stat2-label": { 
+                en: "Population", 
+                te: "జనాభా" 
+            },
+            "stat2-value": { 
+                en: "~6,500", 
+                te: "~6,500" 
+            },
+            "stat3-label": { 
+                en: "Languages", 
+                te: "భాషలు" 
+            },
+            "stat3-value": { 
+                en: "Telugu", 
+                te: "తెలుగు" 
+            },
+            "stat4-label": { 
+                en: "Literacy", 
+                te: "సాక్షరత" 
+            },
+            "stat4-value": { 
+                en: "~75%", 
+                te: "~75%" 
+            },
+            "stat5-label": { 
+                en: "Occupation", 
+                te: "వృత్తి" 
+            },
+            "stat5-value": { 
+                en: "Toy-making, agriculture", 
+                te: "బొమ్మల తయారీ, వ్యవసాయం" 
+            },
+            "stat6-label": { 
+                en: "Nearest City", 
+                te: "సమీప నగరం" 
+            },
+            "stat6-value": { 
+                en: "Vijayawada (~18 km)", 
+                te: "విజయవాడ (~18 కి.మీ.)" 
+            },
+            "stat7-label": { 
+                en: "Transport", 
+                te: "రవాణా" 
+            },
+            "stat7-value": { 
+                en: "APSRTC buses, Kondapalli railway", 
+                te: "ఏపీఎస్‌ఆర్‌టీసీ బస్సులు, కొండపల్లి రైల్వే" 
+            },
+            "stat8-label": { 
+                en: "Specialty", 
+                te: "ప్రత్యేకత" 
+            },
+            "stat8-value": { 
+                en: "GI-tagged Kondapalli Toys", 
+                te: "జీఐ ట్యాగ్ చేయబడిన కొండపల్లి బొమ్మలు" 
+            },
+
+            // Facts
+            "facts-title": { 
+                en: "Cultural Gems & Facts", 
+                te: "సాంస్కృతిక రత్నాలు & విశేషాలు" 
+            },
+            "fact1-title": { 
+                en: "Royal Retreat", 
+                te: "రాయల్ రిట్రీట్" 
+            },
+            "fact1-desc": { 
+                en: "The fort was a summer palace called \"Darbar Hill\", with cooling chambers for royalty.",
+                te: "కోట \"దర్బార్ హిల్\" అని పిలువబడే వేసవి ప్యాలెస్, రాజకుటుంబాల కోసం శీతలీకరణ గదులతో."
+            },
+            "fact2-title": { 
+                en: "Global Toys", 
+                te: "గ్లోబల్ బొమ్మలు" 
+            },
+            "fact2-desc": { 
+                en: "Kondapalli Bommalu are exported to the USA, UK, and Japan via artisan cooperatives.",
+                te: "కొండపల్లి బొమ్మలు కళాకారుల సహకార సంఘాల ద్వారా USA, UK మరియు జపాన్‌కు ఎగుమతి చేయబడతాయి."
+            },
+            "fact3-title": { 
+                en: "Unique Wood", 
+                te: "ప్రత్యేకమైన కలప" 
+            },
+            "fact3-desc": { 
+                en: "Tella Poniki wood grows only in these hills and is government-protected.",
+                te: "తెల్ల పోనికి కలప ఈ కొండలలో మాత్రమే పెరుగుతుంది మరియు ప్రభుత్వం రక్షించబడింది."
+            },
+            "fact4-title": { 
+                en: "Earthquake-Proof", 
+                te: "భూకంప రక్షిత" 
+            },
+            "fact4-desc": { 
+                en: "The fort's main gate has withstood earthquakes for 650+ years without damage.",
+                te: "కోట యొక్క ప్రధాన ద్వారం 650+ సంవత్సరాలుగా ఏవిధమైన నష్టం లేకుండా భూకంపాలను తట్టుకుంది."
+            },
+            "fact5-title": { 
+                en: "Ghost Lore", 
+                te: "భూత కథ" 
+            },
+            "fact5-desc": { 
+                en: "Locals believe the fort's prison cellars are haunted by a rebel commander's spirit.",
+                te: "కోట యొక్క జైలు సెల్లార్లు తిరుగుబాటు కమాండర్ యొక్క ఆత్మచేత హాంట్ చేయబడతాయని స్థానికులు నమ్ముతారు."
+            },
+            "fact6-title": { 
+                en: "Endangered Art", 
+                te: "అంతరించిపోతున్న కళ" 
+            },
+            "fact6-desc": { 
+                en: "Only ~30 traditional families still practice toy-making, prompting preservation efforts.",
+                te: "కేవలం ~30 సాంప్రదాయ కుటుంబాలు మాత్రమే బొమ్మల తయారీని కొనసాగిస్తున్నాయి, సంరక్షణ ప్రయత్నాలకు దారితీసింది."
+            },
+
+            // Footer
+            "footer-quote": { 
+                en: "\"Kondapalli is where warriors built walls, and artisans carved stories. A living museum guarded by a fort and blessed by the forest.\"", 
+                te: "\"కొండపల్లి అంటే యోధులు గోడలు నిర్మించిన, కళాకారులు కథలు చెక్కిన ప్రదేశం. కోటచే కాపాడబడిన, అడవిచే ఆశీర్వదించబడిన జీవంతమైన మ్యూజియం.\"" 
+            },
+            "map-btn": { 
+                en: "View on Google Maps", 
+                te: "గూగుల్ మ్యాప్స్‌లో వీక్షించండి" 
+            },
+            "copyright": { 
+                en: "© 2023 Kondapalli Heritage Project. All rights reserved.", 
+                te: "© 2023 కొండపల్లి వారసత్వ ప్రాజెక్ట్. అన్ని హక్కులు ప్రత్యేకించబడినవి." 
+            }
+        };
+
+        // Language Toggle Functionality
+        function setLanguage(lang) {
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update button states
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            document.getElementById('te-btn').classList.toggle('active', lang === 'te');
+            
+            // Update all translatable elements
+            for (const [id, texts] of Object.entries(translations)) {
+                const element = document.getElementById(id);
+                if (element) element.textContent = texts[lang];
+            }
+        }
+
+        // Scroll Animations for Timeline
+        function checkVisibility() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial language from localStorage or default to English
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+            
+            // Set up event listeners
+            document.getElementById('en-btn').addEventListener('click', () => setLanguage('en'));
+            document.getElementById('te-btn').addEventListener('click', () => setLanguage('te'));
+            
+            // Run initial animations
+            checkVisibility();
+        });
+
+        window.addEventListener('scroll', checkVisibility);
+    </script>
+</body>
+</html>

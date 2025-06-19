@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chennarayunipalle | Legacy of Warriors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Modern Color Scheme */
+        :root {
+            --primary: #8e44ad;   /* Royal Purple */
+            --secondary: #2c3e50;  /* Navy */
+            --accent: #6c3483;     /* Dark Purple */
+            --light: #f9f9f9;
+            --dark: #333;
+            --text: #555;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Skip to Content Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header with Parallax */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('./images/chennurayuni.jpg') center/cover fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header-content {
+            width: 100%;
+            animation: fadeIn 1.5s ease;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0 auto;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+        }
+
+        /* Grid Layouts */
+        .name-breakdown,
+        .geo-features,
+        .facts-grid,
+        .temple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-content h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Stats Table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .stats-table th, .stats-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stats-table th {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .stats-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        /* Facts Cards */
+        .fact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .fact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .map-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 10px 0;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            header {
+                background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)),
+                            url('images/chennarayunipalle-banner-mobile.jpg') center/cover;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 50px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .name-breakdown,
+            .geo-features,
+            .facts-grid,
+            .temple-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to Content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="en-btn" aria-label="Switch to English">English</button>
+            <button class="lang-btn" id="te-btn" aria-label="Switch to Telugu">తెలుగు</button>
+        </div>
+
+        <div class="header-content">
+            <h1 id="header-title">Chennarayunipalle</h1>
+            <p id="header-subtitle">Legacy of Warriors and Rain Prayers</p>
+            <div class="location-tag" id="location-tag">Anantapur District, Andhra Pradesh</div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#name" id="nav-name">Name Origin</a></li>
+            <li><a href="#history" id="nav-history">History</a></li>
+            <li><a href="#geography" id="nav-geography">Geography</a></li>
+            <li><a href="#temples" id="nav-temples">Temples</a></li>
+            <li><a href="#agriculture" id="nav-agriculture">Agriculture</a></li>
+            <li><a href="#demographics" id="nav-demographics">Demographics</a></li>
+            <li><a href="#facts" id="nav-facts">Facts</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Name Origin Section -->
+        <section id="name" class="name-origin">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="name-title">Why "Chennarayunipalle"?</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name1-title">"Chennarayudu" (చెన్నరాయుడు)</h3>
+                            <p id="name1-desc">
+                                A personal name combining "Chenna", meaning handsome or noble, and "Rayudu", 
+                                a title denoting feudal lords or respected warriors, common among the Balija and Reddy castes.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name2-title">"-ni" (Possession)</h3>
+                            <p id="name2-desc">
+                                A genitive marker in Telugu, denoting possession: "of". Shows the village's connection to its namesake.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 id="name3-title">"Palle" (పల్లె)</h3>
+                            <p id="name3-desc">
+                                A common Telugu suffix for villages, meaning hamlet or small rural settlement. 
+                                Indicates the modest size of the original community.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="history">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="history-title">Historical Timeline</h2>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era1-title">Medieval Period (12th-17th Century)</h3>
+                            <p id="era1-desc">
+                                Part of the Vijayanagara Empire's Rayalaseema division, controlled by local Rayas and Nayaks. 
+                                The region saw frequent wars between Palegarlu (chieftains).
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era2-title">Post-Vijayanagara to Nizam Influence</h3>
+                            <p id="era2-desc">
+                                After the fall of Vijayanagara, the area came under Cuddapah Nawabs and the Nizam's sub-rule. 
+                                Chennarayunipalle remained a revenue village supplying grain and cattle.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era3-title">British Period to Independence</h3>
+                            <p id="era3-desc">
+                                Became part of the Anantapur Taluka under Madras Presidency. Suffered from chronic drought, 
+                                but locals adapted with deep tank irrigation and traditional water conservation wells.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 id="era4-title">Post-Independence</h3>
+                            <p id="era4-desc">
+                                Recognized for its resilient dryland farming community. Despite limited rain, 
+                                farmers grew groundnut, jowar, and cotton. Received support under various drought-relief schemes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Geography & Ecology Section -->
+        <section id="geography" class="geography">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="geo-title">Geography & Environment</h2>
+                </div>
+                
+                <div class="geo-features">
+                    <div class="card">
+                        <img src="images/rayalaseema-landscape.jpg" alt="Rayalaseema dryland landscape" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo1-title">Region & Climate</h3>
+                            <p id="geo1-desc">
+                                Located in Rayalaseema, known for its semi-arid climate and rocky plains. 
+                                Average temperature ranges from 25°C to 45°C with hot summers.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/red-soil.jpg" alt="Red loamy soil of Chennarayunipalle" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo2-title">Soil Composition</h3>
+                            <p id="geo2-desc">
+                                Red loamy and black cotton mix with low moisture retention. 
+                                Requires careful water management for agriculture.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/stepwell.jpg" alt="Ancient stepwell in the village" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="geo3-title">Water Resources</h3>
+                            <p id="geo3-desc">
+                                Depends on borewells, farm tanks, and ancient stepwells (gunta). 
+                                Average rainfall is just 450-600 mm annually.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Temples Section -->
+        <section id="temples" class="temples">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="temples-title">Sacred Temples</h2>
+                </div>
+                
+                <div class="temple-grid">
+                    <div class="card">
+                        <img src="images/chennarayudu-temple.jpg" alt="Chennarayudu Gudi temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple1-title">Chennarayudu Gudi</h3>
+                            <p id="temple1-desc">
+                                Dedicated to the village's founder or namesake lord. Worshipped as a local protective warrior deity. 
+                                Celebrated during Makara Sankranti and village fair (Thirunalu).
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/poleramma-temple.jpg" alt="Poleramma Temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple2-title">Poleramma Temple</h3>
+                            <p id="temple2-desc">
+                                The Grama Devatha (village goddess), known for protecting from droughts and diseases. 
+                                Locals offer turmeric, neem leaves, and pongal during rituals.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/veerabhadra-temple.jpg" alt="Veerabhadra Temple" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="temple3-title">Veerabhadra Temple</h3>
+                            <p id="temple3-desc">
+                                Associated with ancestral valor and martial traditions. 
+                                Worshipped especially by Reddy and Balija youth before military recruitment drives.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agriculture Section -->
+        <section id="agriculture" class="agriculture">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="agri-title">Agriculture & Livelihood</h2>
+                </div>
+                
+                <div class="name-breakdown">
+                    <div class="card">
+                        <img src="images/groundnut-field.jpg" alt="Groundnut fields in Chennarayunipalle" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="crop1-title">Groundnut (Aadulu)</h3>
+                            <p id="crop1-desc">
+                                Main crop and economic base of the village. Grown in both kharif and rabi seasons 
+                                depending on water availability.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/millet-farming.jpg" alt="Millet cultivation" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="crop2-title">Millets</h3>
+                            <p id="crop2-desc">
+                                Jowar and bajra grown during kharif season. Traditional drought-resistant crops 
+                                that form staple food.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="images/cattle-rearing.jpg" alt="Village cattle rearing" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="crop3-title">Livestock</h3>
+                            <p id="crop3-desc">
+                                Cattle rearing with buffaloes and local cows. Goat farming provides secondary income. 
+                                Traditional oil pressing units use bulls to crush oilseeds.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demographics Section -->
+        <section id="demographics" class="demographics">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="demo-title">Village Profile</h2>
+                </div>
+                
+                <table class="stats-table">
+                    <tr>
+                        <th id="stat1-label">Category</th>
+                        <th id="stat1-value">Details</th>
+                    </tr>
+                    <tr>
+                        <td id="stat2-label">Population</td>
+                        <td id="stat2-value">~1,900</td>
+                    </tr>
+                    <tr>
+                        <td id="stat3-label">Major Communities</td>
+                        <td id="stat3-value">Reddy, Balija, BC, SC groups</td>
+                    </tr>
+                    <tr>
+                        <td id="stat4-label">Languages</td>
+                        <td id="stat4-value">Telugu</td>
+                    </tr>
+                    <tr>
+                        <td id="stat5-label">Literacy Rate</td>
+                        <td id="stat5-value">~62%</td>
+                    </tr>
+                    <tr>
+                        <td id="stat6-label">Transport</td>
+                        <td id="stat6-value">Village road to Kalyandurg & Gooty</td>
+                    </tr>
+                    <tr>
+                        <td id="stat7-label">PIN Code</td>
+                        <td id="stat7-value">515761</td>
+                    </tr>
+                    <tr>
+                        <td id="stat8-label">Nearest Town</td>
+                        <td id="stat8-value">Kalyandurg (~18 km)</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Fascinating Facts Section -->
+        <section id="facts" class="facts">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="facts-title">Fascinating Facts</h2>
+                </div>
+                
+                <div class="facts-grid">
+                    <div class="fact-card">
+                        <h3 id="fact1-title">Hero Memorial (Veeragallu)</h3>
+                        <p id="fact1-desc">
+                            A stone hero memorial stands near the Chennarayudu temple, indicating a fallen warrior chief 
+                            from the village's history.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact2-title">Neeti Harathi Ritual</h3>
+                        <p id="fact2-desc">
+                            Unique rain prayer ritual where villagers float a lamp on water to pray for rain during droughts.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact3-title">Ancient Inscriptions</h3>
+                        <p id="fact3-desc">
+                            Some stone inscriptions in Telugu-Kannada script still exist near the Poleramma shrine, 
+                            dating back centuries.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact4-title">Burra Katha Tradition</h3>
+                        <p id="fact4-desc">
+                            Oral storytelling performances narrating Chennarayudu's bravery and village history.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact5-title">Traditional Oil Pressing</h3>
+                        <p id="fact5-desc">
+                            Chekka Gaani units still use bulls to crush oilseeds in traditional methods.
+                        </p>
+                    </div>
+                    
+                    <div class="fact-card">
+                        <h3 id="fact6-title">Drought Resilience</h3>
+                        <p id="fact6-desc">
+                            Despite average rainfall of just 450-600mm, villagers have developed sophisticated 
+                            water conservation techniques.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-quote" id="footer-quote">
+                "Chennarayunipalle may not be found in textbooks, but it lives in the hearts of those who know the meaning of courage, drought, hope, and community."
+            </p>
+            
+            <a href="https://www.google.com/maps/place/Chennarayunipalle,+Andhra+Pradesh" class="map-btn" target="_blank" id="map-btn" aria-label="View Chennarayunipalle on Google Maps">
+                <i class="fas fa-map-marker-alt"></i> View on Google Maps
+            </a>
+            
+            
+        </div>
+    </footer>
+
+    <script>
+        // Language Data
+        const translations = {
+            // Header
+            "header-title": { 
+                en: "Chennarayunipalle", 
+                te: "చెన్నరాయునిపల్లె" 
+            },
+            "header-subtitle": { 
+                en: "Legacy of Warriors and Rain Prayers", 
+                te: "యోధులు మరియు వర్షపు ప్రార్థనల వారసత్వం" 
+            },
+            "location-tag": { 
+                en: "Anantapur District, Andhra Pradesh", 
+                te: "అనంతపురం జిల్లా, ఆంధ్రప్రదేశ్" 
+            },
+
+            // Navigation
+            "nav-name": { 
+                en: "Name Origin", 
+                te: "పేరు మూలం" 
+            },
+            "nav-history": { 
+                en: "History", 
+                te: "చరిత్ర" 
+            },
+            "nav-geography": { 
+                en: "Geography", 
+                te: "భౌగోళికం" 
+            },
+            "nav-temples": { 
+                en: "Temples", 
+                te: "దేవాలయాలు" 
+            },
+            "nav-agriculture": { 
+                en: "Agriculture", 
+                te: "వ్యవసాయం" 
+            },
+            "nav-demographics": { 
+                en: "Demographics", 
+                te: "జనాభా గణాంకాలు" 
+            },
+            "nav-facts": { 
+                en: "Facts", 
+                te: "విశేషాలు" 
+            },
+
+            // Name Origin
+            "name-title": { 
+                en: "Why \"Chennarayunipalle\"?", 
+                te: "\"చెన్నరాయునిపల్లె\" అనే పేరు ఎందుకు?" 
+            },
+            "name1-title": { 
+                en: "\"Chennarayudu\" (చెన్నరాయుడు)", 
+                te: "\"చెన్నరాయుడు\" (చెన్నరాయుడు)" 
+            },
+            "name1-desc": { 
+                en: "A personal name combining \"Chenna\", meaning handsome or noble, and \"Rayudu\", a title denoting feudal lords or respected warriors, common among the Balija and Reddy castes.",
+                te: "చెన్న (అందమైన లేదా గొప్ప) మరియు రాయుడు (సామంతుల లేదా గౌరవనీయ యోధుల బిరుదు) కలిపిన వ్యక్తిగత పేరు, బలిజ మరియు రెడ్డి కులాలలో సాధారణం."
+            },
+            "name2-title": { 
+                en: "\"-ni\" (Possession)", 
+                te: "\"-ni\" (స్వాధీనం)" 
+            },
+            "name2-desc": { 
+                en: "A genitive marker in Telugu, denoting possession: \"of\". Shows the village's connection to its namesake.",
+                te: "తెలుగులో స్వాధీనాన్ని సూచించే ప్రత్యయం: \"యొక్క\". గ్రామం దాని పేరుకు కలిగిన సంబంధాన్ని చూపిస్తుంది."
+            },
+            "name3-title": { 
+                en: "\"Palle\" (పల్లె)", 
+                te: "\"పల్లె\" (పల్లె)" 
+            },
+            "name3-desc": { 
+                en: "A common Telugu suffix for villages, meaning hamlet or small rural settlement. Indicates the modest size of the original community.",
+                te: "గ్రామాలకు సాధారణ తెలుగు ప్రత్యయం, పల్లెటూరు లేదా చిన్న గ్రామీణ స్థావరం అని అర్థం. అసలు సమాజం యొక్క మితమైన పరిమాణాన్ని సూచిస్తుంది."
+            },
+
+            // History
+            "history-title": { 
+                en: "Historical Timeline", 
+                te: "చారిత్రక కాలక్రమం" 
+            },
+            "era1-title": { 
+                en: "Medieval Period (12th-17th Century)", 
+                te: "మధ్యయుగ కాలం (12-17వ శతాబ్దం)" 
+            },
+            "era1-desc": { 
+                en: "Part of the Vijayanagara Empire's Rayalaseema division, controlled by local Rayas and Nayaks. The region saw frequent wars between Palegarlu (chieftains).",
+                te: "విజయనగర సామ్రాజ్యం యొక్క రాయలసీమ విభాగంలో భాగం, స్థానిక రాయలు మరియు నాయకులచే నియంత్రించబడింది. ఈ ప్రాంతం పాలేగార్లు (స్థానిక నాయకులు) మధ్య తరచుగా యుద్ధాలను చూసింది."
+            },
+            "era2-title": { 
+                en: "Post-Vijayanagara to Nizam Influence", 
+                te: "విజయనగరం తర్వాత నిజాం ప్రభావం" 
+            },
+            "era2-desc": { 
+                en: "After the fall of Vijayanagara, the area came under Cuddapah Nawabs and the Nizam's sub-rule. Chennarayunipalle remained a revenue village supplying grain and cattle.",
+                te: "విజయనగరం పతనం తర్వాత, ఈ ప్రాంతం కడప నవాబులు మరియు నిజాం పాలనలోకి వచ్చింది. చెన్నరాయునిపల్లె ధాన్యం మరియు పశువులను సరఫరా చేసే రెవెన్యూ గ్రామంగా మిగిలింది."
+            },
+            "era3-title": { 
+                en: "British Period to Independence", 
+                te: "బ్రిటిష్ కాలం నుండి స్వాతంత్ర్యం వరకు" 
+            },
+            "era3-desc": { 
+                en: "Became part of the Anantapur Taluka under Madras Presidency. Suffered from chronic drought, but locals adapted with deep tank irrigation and traditional water conservation wells.",
+                te: "మద్రాసు ప్రెసిడెన్సీ క్రింద అనంతపురం తాలూకాలో భాగమైంది. దీర్ఘకాలిక కరువు నుండి బాధపడింది, కానీ స్థానికులు లోతైన ట్యాంక్ సాగు మరియు సాంప్రదాయ నీటి సంరక్షణ బావులతో స్వీకరించారు."
+            },
+            "era4-title": { 
+                en: "Post-Independence", 
+                te: "స్వాతంత్ర్యం తర్వాత" 
+            },
+            "era4-desc": { 
+                en: "Recognized for its resilient dryland farming community. Despite limited rain, farmers grew groundnut, jowar, and cotton. Received support under various drought-relief schemes.",
+                te: "దాని స్థితిస్థాపక శక్తి గల ఎండు నేల వ్యవసాయ సమాజానికి గుర్తింపు లభించింది. పరిమిత వర్షపాతం ఉన్నప్పటికీ, రైతులు వేరుశనగ, జొన్న మరియు పత్తిని పండించారు. వివిధ కరువు నివారణ పథకాల క్రింద మద్దతు పొందింది."
+            },
+
+            // Geography
+            "geo-title": { 
+                en: "Geography & Environment", 
+                te: "భౌగోళికం & పర్యావరణం" 
+            },
+            "geo1-title": { 
+                en: "Region & Climate", 
+                te: "ప్రాంతం & వాతావరణం" 
+            },
+            "geo1-desc": { 
+                en: "Located in Rayalaseema, known for its semi-arid climate and rocky plains. Average temperature ranges from 25°C to 45°C with hot summers.",
+                te: "సెమీ-ఎరిడ్ వాతావరణం మరియు రాతి సమతలాలకు ప్రసిద్ధి చెందిన రాయలసీమలో ఉంది. సగటు ఉష్ణోగ్రత 25°C నుండి 45°C వరకు ఉంటుంది, వేసవి కాలంలో వేడిగా ఉంటుంది."
+            },
+            "geo2-title": { 
+                en: "Soil Composition", 
+                te: "నేల కూర్పు" 
+            },
+            "geo2-desc": { 
+                en: "Red loamy and black cotton mix with low moisture retention. Requires careful water management for agriculture.",
+                te: "తక్కువ తేమ నిలుపుకునే ఎరుపు బంకమట్టి మరియు నల్లపత్తి మిశ్రమం. వ్యవసాయం కోసం జాగ్రత్తగా నీటి నిర్వహణ అవసరం."
+            },
+            "geo3-title": { 
+                en: "Water Resources", 
+                te: "నీటి వనరులు" 
+            },
+            "geo3-desc": { 
+                en: "Depends on borewells, farm tanks, and ancient stepwells (gunta). Average rainfall is just 450-600 mm annually.",
+                te: "బోర్వెల్లు, వ్యవసాయ ట్యాంకులు మరియు ప్రాచీన స్టెప్వెల్స్ (గుంట) మీద ఆధారపడి ఉంటుంది. సగటు వార్షిక వర్షపాతం కేవలం 450-600 మిమీ."
+            },
+
+            // Temples
+            "temples-title": { 
+                en: "Sacred Temples", 
+                te: "పవిత్ర దేవాలయాలు" 
+            },
+            "temple1-title": { 
+                en: "Chennarayudu Gudi", 
+                te: "చెన్నరాయుడు గుడి" 
+            },
+            "temple1-desc": { 
+                en: "Dedicated to the village's founder or namesake lord. Worshipped as a local protective warrior deity. Celebrated during Makara Sankranti and village fair (Thirunalu).",
+                te: "గ్రామ స్థాపకుడు లేదా పేరుకు కారణమైన ప్రభువుకు అంకితం చేయబడింది. స్థానిక రక్షణ యోధ దేవతగా పూజించబడుతుంది. మకర సంక్రాంతి మరియు గ్రామ ఫెయిర్ (తిరునాళ్ళు) సమయంలో జరుపుకుంటారు."
+            },
+            "temple2-title": { 
+                en: "Poleramma Temple", 
+                te: "పోలేరమ్మ దేవాలయం" 
+            },
+            "temple2-desc": { 
+                en: "The Grama Devatha (village goddess), known for protecting from droughts and diseases. Locals offer turmeric, neem leaves, and pongal during rituals.",
+                te: "గ్రామ దేవత (గ్రామ దేవత), కరువు మరియు వ్యాధుల నుండి రక్షించడానికి ప్రసిద్ధి చెందింది. స్థానికులు ఆచారాల సమయంలో పసుపు, వేప ఆకులు మరియు పొంగల్ అర్పిస్తారు."
+            },
+            "temple3-title": { 
+                en: "Veerabhadra Temple", 
+                te: "వీరభద్ర దేవాలయం" 
+            },
+            "temple3-desc": { 
+                en: "Associated with ancestral valor and martial traditions. Worshipped especially by Reddy and Balija youth before military recruitment drives.",
+                te: "పూర్వీకుల శౌర్యం మరియు యుద్ధ సంప్రదాయాలతో సంబంధం కలిగి ఉంది. మిలిటరీ నియామక ప్రచారాలకు ముందు రెడ్డి మరియు బలిజ యువత ప్రత్యేకంగా పూజిస్తారు."
+            },
+
+            // Agriculture
+            "agri-title": { 
+                en: "Agriculture & Livelihood", 
+                te: "వ్యవసాయం & జీవనోపాధి" 
+            },
+            "crop1-title": { 
+                en: "Groundnut (Aadulu)", 
+                te: "వేరుశనగ (ఆడులు)" 
+            },
+            "crop1-desc": { 
+                en: "Main crop and economic base of the village. Grown in both kharif and rabi seasons depending on water availability.",
+                te: "గ్రామం యొక్క ప్రధాన పంట మరియు ఆర్థిక ఆధారం. నీటి లభ్యతను బట్టి ఖరీఫ్ మరియు రబీ సీజన్లలో పండిస్తారు."
+            },
+            "crop2-title": { 
+                en: "Millets", 
+                te: "చిరుధాన్యాలు" 
+            },
+            "crop2-desc": { 
+                en: "Jowar and bajra grown during kharif season. Traditional drought-resistant crops that form staple food.",
+                te: "ఖరీఫ్ సీజన్‌లో పండించే జొన్న మరియు బజ్రా. సాంప్రదాయ కరువు-నిరోధక పంటలు ప్రధాన ఆహారంగా ఉంటాయి."
+            },
+            "crop3-title": { 
+                en: "Livestock", 
+                te: "పశుసంపద" 
+            },
+            "crop3-desc": { 
+                en: "Cattle rearing with buffaloes and local cows. Goat farming provides secondary income. Traditional oil pressing units use bulls to crush oilseeds.",
+                te: "ఎద్దులు మరియు స్థానిక ఆవులతో పశుపోషణ. మేకల పెంపకం ద్వితీయ ఆదాయాన్ని అందిస్తుంది. సాంప్రదాయ నూనె పిండి యూనిట్లు నూనెగింజలను పిండడానికి ఎద్దులను ఉపయోగిస్తాయి."
+            },
+
+            // Demographics
+            "demo-title": { 
+                en: "Village Profile", 
+                te: "గ్రామ ప్రొఫైల్" 
+            },
+            "stat1-label": { 
+                en: "Category", 
+                te: "వర్గం" 
+            },
+            "stat1-value": { 
+                en: "Details", 
+                te: "వివరాలు" 
+            },
+            "stat2-label": { 
+                en: "Population", 
+                te: "జనాభా" 
+            },
+            "stat2-value": { 
+                en: "~1,900", 
+                te: "~1,900" 
+            },
+            "stat3-label": { 
+                en: "Major Communities", 
+                te: "ప్రధాన సంఘాలు" 
+            },
+            "stat3-value": { 
+                en: "Reddy, Balija, BC, SC groups", 
+                te: "రెడ్డి, బలిజ, బీసీ, ఎస్సీ సమూహాలు" 
+            },
+            "stat4-label": { 
+                en: "Languages", 
+                te: "భాషలు" 
+            },
+            "stat4-value": { 
+                en: "Telugu", 
+                te: "తెలుగు" 
+            },
+            "stat5-label": { 
+                en: "Literacy Rate", 
+                te: "సాక్షరత రేటు" 
+            },
+            "stat5-value": { 
+                en: "~62%", 
+                te: "~62%" 
+            },
+            "stat6-label": { 
+                en: "Transport", 
+                te: "రవాణా" 
+            },
+            "stat6-value": { 
+                en: "Village road to Kalyandurg & Gooty", 
+                te: "కల్యాణదుర్గ్ & గూటీకి గ్రామ రోడ్డు" 
+            },
+            "stat7-label": { 
+                en: "PIN Code", 
+                te: "పిన్ కోడ్" 
+            },
+            "stat7-value": { 
+                en: "515761", 
+                te: "515761" 
+            },
+            "stat8-label": { 
+                en: "Nearest Town", 
+                te: "సమీప పట్టణం" 
+            },
+            "stat8-value": { 
+                en: "Kalyandurg (~18 km)", 
+                te: "కల్యాణదుర్గ్ (~18 కి.మీ.)" 
+            },
+
+            // Facts
+            "facts-title": { 
+                en: "Fascinating Facts", 
+                te: "ఆకర్షణీయ వాస్తవాలు" 
+            },
+            "fact1-title": { 
+                en: "Hero Memorial (Veeragallu)", 
+                te: "హీరో మెమోరియల్ (వీరగల్లు)" 
+            },
+            "fact1-desc": { 
+                en: "A stone hero memorial stands near the Chennarayudu temple, indicating a fallen warrior chief from the village's history.",
+                te: "చెన్నరాయుడు దేవాలయం సమీపంలో ఒక రాతి హీరో మెమోరియల్ నిలిచి ఉంది, గ్రామ చరిత్రలో పడిపోయిన యోధ నాయకుని సూచిస్తుంది."
+            },
+            "fact2-title": { 
+                en: "Neeti Harathi Ritual", 
+                te: "నీతి హారతి ఆచారం" 
+            },
+            "fact2-desc": { 
+                en: "Unique rain prayer ritual where villagers float a lamp on water to pray for rain during droughts.",
+                te: "అనుకూలమైన వర్షపు ప్రార్థన ఆచారం, కరువు సమయంలో వర్షం కోసం ప్రార్థించడానికి గ్రామస్తులు నీటిపై దీపాన్ని తేలుతారు."
+            },
+            "fact3-title": { 
+                en: "Ancient Inscriptions", 
+                te: "ప్రాచీన శాసనాలు" 
+            },
+            "fact3-desc": { 
+                en: "Some stone inscriptions in Telugu-Kannada script still exist near the Poleramma shrine, dating back centuries.",
+                te: "తెలుగు-కన్నడ లిపిలో కొన్ని రాతి శాసనాలు ఇప్పటికీ పోలేరమ్మ దేవాలయం సమీపంలో ఉన్నాయి, ఇవి శతాబ్దాల క్రితం నాటివి."
+            },
+            "fact4-title": { 
+                en: "Burra Katha Tradition", 
+                te: "బుర్రకథ సంప్రదాయం" 
+            },
+            "fact4-desc": { 
+                en: "Oral storytelling performances narrating Chennarayudu's bravery and village history.",
+                te: "చెన్నరాయుడు యొక్క ధైర్యం మరియు గ్రామ చరిత్రను వర్ణించే మౌఖిక కథన ప్రదర్శనలు."
+            },
+            "fact5-title": { 
+                en: "Traditional Oil Pressing", 
+                te: "సాంప్రదాయ నూనె పిండి" 
+            },
+            "fact5-desc": { 
+                en: "Chekka Gaani units still use bulls to crush oilseeds in traditional methods.",
+                te: "చెక్క గాని యూనిట్లు ఇప్పటికీ సాంప్రదాయ పద్ధతుల్లో నూనెగింజలను పిండడానికి ఎద్దులను ఉపయోగిస్తున్నాయి."
+            },
+            "fact6-title": { 
+                en: "Drought Resilience", 
+                te: "కరువు స్థితిస్థాపకత" 
+            },
+            "fact6-desc": { 
+                en: "Despite average rainfall of just 450-600mm, villagers have developed sophisticated water conservation techniques.",
+                te: "కేవలం 450-600మిమీ సగటు వర్షపాతం ఉన్నప్పటికీ, గ్రామస్తులు అధునాతన నీటి సంరక్షణ పద్ధతులను అభివృద్ధి చేసుకున్నారు."
+            },
+
+            // Footer
+            "footer-quote": { 
+                en: "\"Chennarayunipalle may not be found in textbooks, but it lives in the hearts of those who know the meaning of courage, drought, hope, and community.\"", 
+                te: "\"చెన్నరాయునిపల్లె పాఠ్యపుస్తకాలలో కనిపించకపోవచ్చు, కానీ ధైర్యం, కరువు, ఆశ మరియు సమాజం యొక్క అర్థాన్ని తెలిసిన వారి హృదయాలలో అది జీవిస్తుంది.\"" 
+            },
+            "map-btn": { 
+                en: "View on Google Maps", 
+                te: "గూగుల్ మ్యాప్స్‌లో వీక్షించండి" 
+            },
+            "copyright": { 
+                en: "© 2023 Chennarayunipalle Heritage Project. All rights reserved.", 
+                te: "© 2023 చెన్నరాయునిపల్లె వారసత్వ ప్రాజెక్ట్. అన్ని హక్కులు ప్రత్యేకించబడినవి." 
+            }
+        };
+
+        // Language Toggle Functionality
+        function setLanguage(lang) {
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update button states
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            document.getElementById('te-btn').classList.toggle('active', lang === 'te');
+            
+            // Update all translatable elements
+            for (const [id, texts] of Object.entries(translations)) {
+                const element = document.getElementById(id);
+                if (element) element.textContent = texts[lang];
+            }
+        }
+
+        // Scroll Animations for Timeline
+        function checkVisibility() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial language from localStorage or default to English
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+            
+            // Set up event listeners
+            document.getElementById('en-btn').addEventListener('click', () => setLanguage('en'));
+            document.getElementById('te-btn').addEventListener('click', () => setLanguage('te'));
+            
+            // Run initial animations
+            checkVisibility();
+        });
+
+        window.addEventListener('scroll', checkVisibility);
+    </script>
+</body>
+</html>
