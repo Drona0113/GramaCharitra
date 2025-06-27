@@ -7,17 +7,17 @@
     <title>Bheemavaram | Land of Strength</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Modern Color Scheme */
+        
         :root {
-            --primary: #e67e22;  /* Orange */
-            --secondary: #2c3e50; /* Navy */
-            --accent: #d35400;    /* Dark Orange */
+            --primary: #e67e22;  
+            --secondary: #2c3e50; 
+            --accent: #d35400;    
             --light: #f9f9f9;
             --dark: #333;
             --text: #555;
         }
 
-        /* Base Styles */
+       
         * {
             margin: 0;
             padding: 0;
@@ -30,6 +30,8 @@
             color: var(--text);
             background: var(--light);
             overflow-x: hidden;
+       
+
         }
 
         .container {
@@ -58,7 +60,7 @@
             top: 0;
         }
 
-        /* Header with Parallax */
+       
         header {
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('images/bhimagreen.jpg') center/cover fixed;
@@ -99,34 +101,120 @@
             z-index: 2;
         }
 
-        /* Language Toggle */
-        .lang-toggle {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            background: white;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
-            z-index: 10;
-        }
+        
 
-        .lang-btn {
-            border: none;
-            background: transparent;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
+.goog-te-banner-frame {
+    display: none !important;
+}
 
-        .lang-btn.active {
-            background: var(--primary);
-            color: white;
-        }
+.goog-te-gadget {
+    color: transparent !important;
+    font-size: 0 !important;
+}
 
-        /* Navigation */
-        nav {
+
+.goog-te-gadget a {
+    display: none !important;
+}
+
+
+.goog-te-menu-frame {
+    display: none !important;
+}
+
+
+.goog-te-menu2 {
+    display: none !important;
+}
+
+.lang-toggle {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    padding: 5px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+
+.goog-te-combo {
+    padding: 8px 35px 8px 15px !important;
+    border: none !important;
+    background: transparent !important;
+    color: white !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 10px center !important;
+    background-size: 15px !important;
+}
+
+
+.goog-te-combo:hover {
+    color: var(--primary) !important;
+}
+
+
+.goog-te-menu2-item {
+    padding: 10px 20px !important;
+    color: white !important;
+    transition: all 0.2s ease !important;
+}
+
+
+.goog-te-menu2-item:hover {
+    background: var(--primary) !important;
+}
+
+@media (max-width: 768px) {
+    .lang-toggle {
+        top: 20px;
+        right: 20px;
+        transform: none;
+        background: var(--secondary);
+    }
+
+    .goog-te-combo {
+        padding: 6px 30px 6px 12px !important;
+        font-size: 14px !important;
+    }
+
+   
+    .goog-te-menu2 {
+        box-shadow: none !important;
+        border-radius: 5px !important;
+    }
+
+
+    .goog-te-menu2-item {
+        padding: 12px 25px !important;
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .lang-toggle {
+        top: 20px;
+        right: 20px;
+        transform: none;
+        background: var(--secondary);
+    }
+    
+    .goog-te-combo {
+        padding: 6px 30px 6px 12px !important;
+        font-size: 14px !important;
+    }
+}
+          nav {
             background: var(--secondary);
             position: sticky;
             top: 0;
@@ -467,14 +555,14 @@
     </style>
 </head>
 <body>
-    <!-- Skip to Content Link -->
     <a href="#main-content" class="skip-link">Skip to Content</a>
 
     <!-- Header -->
     <header>
         <div class="lang-toggle">
-            <button class="lang-btn active" id="en-btn" aria-label="Switch to English">English</button>
-            <button class="lang-btn" id="te-btn" aria-label="Switch to Telugu">తెలుగు</button>
+            <div id="google_translate_element">
+           
+            </div>
         </div>
 
         <div class="header-content">
@@ -499,7 +587,6 @@
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Name Origin Section -->
         <section id="name" class="name-origin">
             <div class="container">
                 <div class="section-title">
@@ -786,7 +873,7 @@
             </p>
         </div>
     </footer>
-
+<!--
     <script>
         // Language Data
         const translations = {
@@ -1125,6 +1212,30 @@
         });
 
         window.addEventListener('scroll', checkVisibility);
+    </script> -->
+   <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "en" },
+          "google_translate_element"
+        );
+      }
+
+       function checkVisibility() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+        checkVisibility();
+        window.addEventListener('scroll', checkVisibility);
     </script>
+    <script
+      type="text/javascript"
+      src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
 </body>
 </html>
